@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="MinecraftToolsBoxSDK.IPBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:MinecraftToolsBoxSDK"
+             mc:Ignorable="d" Width="169">
+    <StackPanel Orientation="Horizontal">
+        <my:IPTextBox x:Name="ipTextBox1" TextChanged="IPTextBox_TextChanged" Height="25" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,2,0,1"  />
+        <TextBlock Text="." VerticalAlignment="Center"/>
+        <my:IPTextBox x:Name="ipTextBox2" TextChanged="IPTextBox_TextChanged" Height="25" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,2,0,1" />
+        <TextBlock Text="." VerticalAlignment="Center" Margin="0,5"/>
+        <my:IPTextBox x:Name="ipTextBox3" TextChanged="IPTextBox_TextChanged" Height="25" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,2,0,1" />
+        <TextBlock Text="." VerticalAlignment="Center" Margin="0,5"/>
+        <my:IPTextBox x:Name="ipTextBox4" TextChanged="IPTextBox_TextChanged" Height="25" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,2,0,1" />
+    </StackPanel>
+</UserControl>

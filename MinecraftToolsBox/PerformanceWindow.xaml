@@ -1,0 +1,53 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MinecraftToolsBox"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+      x:Class="MinecraftToolsBox.PerformanceWindow"
+      mc:Ignorable="d" d:DesignWidth="540" d:DesignHeight="720">
+    <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+    </Grid.RowDefinitions>
+    <lvc:CartesianChart x:Name="c1" Grid.Row="0" Margin="5,0,0,0" Series="{Binding Cpu}" Foreground="Black">
+        <lvc:CartesianChart.Resources>
+            <Style TargetType="lvc:LineSeries">
+                <Setter Property="StrokeThickness" Value="2"/>
+                <Setter Property="PointGeometrySize" Value="0"/>
+                <Setter Property="LineSmoothness" Value="0"/>
+                <Setter Property="Stroke" Value="#FF61BBF0"/>
+                <Setter Property="Fill" Value="#8871C5F5"/>
+            </Style>
+        </lvc:CartesianChart.Resources>
+        <lvc:CartesianChart.AxisX>
+            <lvc:Axis MinValue="0" MaxValue="60"/>
+        </lvc:CartesianChart.AxisX>
+        <lvc:CartesianChart.AxisY>
+            <lvc:Axis MinValue="0" MaxValue="100"/>
+        </lvc:CartesianChart.AxisY>
+    </lvc:CartesianChart>
+    <lvc:CartesianChart x:Name="c2" Grid.Row="1" Series="{Binding Ram}" Foreground="Black">
+        <lvc:CartesianChart.Resources>
+            <Style TargetType="lvc:LineSeries">
+                <Setter Property="StrokeThickness" Value="2"/>
+                <Setter Property="PointGeometrySize" Value="0"/>
+                <Setter Property="LineSmoothness" Value="0"/>
+                <Setter Property="Stroke" Value="#FF9528B4"/>
+                <Setter Property="Fill" Value="#889528B4"/>
+            </Style>
+        </lvc:CartesianChart.Resources>
+        <lvc:CartesianChart.AxisX>
+            <lvc:Axis MinValue="0" MaxValue="60"/>
+        </lvc:CartesianChart.AxisX>
+        <lvc:CartesianChart.AxisY>
+            <lvc:Axis MinValue="0" MaxValue="{Binding TotalRam}"/>
+        </lvc:CartesianChart.AxisY>
+    </lvc:CartesianChart>
+    <TextBlock Grid.Row="0" x:Name="cpuUsageText" Text="CPU使用率：0%" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" FontSize="16"/>
+    <TextBlock Grid.Row="1" x:Name="ramUsageText" Text="内存使用率：0%" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" FontSize="16" TextAlignment="Center"/>
+    <Custom:ToggleSwitchButton x:Name="start" Content="ToggleSwitchButton" HorizontalAlignment="Right" Margin="0,-40,0,0" VerticalAlignment="Top" Click="start_Click"/>
+    <Label Content="开始统计" HorizontalAlignment="Right" Margin="0,-38,65,0" VerticalAlignment="Top" FontSize="16"/>
+</Grid>

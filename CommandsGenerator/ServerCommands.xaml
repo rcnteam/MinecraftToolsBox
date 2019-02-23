@@ -1,0 +1,109 @@
+﻿<Custom:HamburgerMenu
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    mc:Ignorable="d" x:Name="menu" ItemClick="HamburgerMenu_ItemClick" 
+    x:Class="MinecraftToolsBox.Commands.ServerCommands"
+    PaneBackground="#FF303031" SelectedIndex="0" IsPaneOpen="True" ContentTemplate="{DynamicResource HamburgerMenuContentTemplate}" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+    <Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <DataTemplate>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="服务器命令"/>
+        </DataTemplate>
+    </Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+    <Custom:HamburgerMenu.ItemsSource>
+        <Custom:HamburgerMenuItemCollection>
+            <tools:HamburgerMenuContentItem Label="黑名单" Tag="pack://application:,,,/CommandsGenerator;component/images/icon12.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10,10,0,0">
+                        <Label x:Name="operation" Content="操作方式：" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="85" FontSize="16"/>
+                        <ComboBox x:Name="Operation" HorizontalAlignment="Left" Margin="90,2,0,0" VerticalAlignment="Top" Width="250" FontSize="16" SelectedIndex="0" SelectionChanged="Operation_SelectionChanged">
+                            <ComboBoxItem Content="封禁"/>
+                            <ComboBoxItem Content="解禁"/>
+                        </ComboBox>
+                        <Label x:Name="tar" Content="目标种类：" HorizontalAlignment="Left" Height="30" Margin="0,35,0,0" VerticalAlignment="Top" Width="85" FontSize="16"/>
+                        <ComboBox x:Name="TargetKind" HorizontalAlignment="Left" Margin="90,37,0,0" VerticalAlignment="Top" Width="250" SelectedIndex="0" FontSize="16" SelectionChanged="TargetKind_SelectionChanged">
+                            <ComboBoxItem Content="玩家" FontSize="16"/>
+                            <ComboBoxItem Content="IP" FontSize="16"/>
+                        </ComboBox>
+                        <tools:IPBox x:Name="IP" HorizontalAlignment="Left" Height="35" Margin="290,76,0,0" VerticalAlignment="Top" Width="175" FontSize="16" IsEnabled="False"/>
+                        <Label x:Name="ip" Content="IP：" HorizontalAlignment="Left" Margin="250,79,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False"/>
+                        <Label x:Name="player" Content="玩家：" HorizontalAlignment="Left" Margin="0,79,0,0" VerticalAlignment="Top"  FontSize="16"/>
+                        <TextBox x:Name="Player" HorizontalAlignment="Left" Margin="58,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" FontSize="16"/>
+                        <Label x:Name="reason" Content="原因：" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top" FontSize="16"/>
+                        <TextBox x:Name="Reason" HorizontalAlignment="Left" Height="90" Margin="55,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="410" FontSize="16"/>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="白名单" Tag="pack://application:,,,/CommandsGenerator;component/images/icon13.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10,10,0,0">
+                        <GroupBox Header="其他操作" HorizontalAlignment="Left" Margin="0,105,0,0" VerticalAlignment="Top" Width="425">
+                            <WrapPanel>
+                                <Custom:Tile Title="显示白名单" Height="100" Width="200" Click="AddCommand" FontFamily="等线" ToolTip="/whitelist list"/>
+                                <Custom:Tile Title="重载白名单" Height="100" Width="200" Click="AddCommand" FontFamily="等线" ToolTip="/whitelist reload"/>
+                                <Custom:Tile Title="启用白名单" Height="100" Width="200" Click="AddCommand" FontFamily="等线" ToolTip="/whitelist on"/>
+                                <Custom:Tile Title="禁用白名单" Height="100" Width="200" Click="AddCommand" FontFamily="等线" ToolTip="/whitelist off"/>
+                            </WrapPanel>
+                        </GroupBox>
+                        <GroupBox Header="添加/移除玩家" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="0">
+                            <Grid>
+                                <Label Content="玩家：" HorizontalAlignment="Left" Height="30" Margin="0,26,0,0" VerticalAlignment="Top" Width="55" FontSize="16"/>
+                                <TextBox x:Name="WPlayer" Margin="55,28,0,0"  FontSize="16"/>
+                                <RadioButton x:Name="Add" Content="添加玩家" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" IsChecked="True"/>
+                                <RadioButton Content="移除玩家" HorizontalAlignment="Left" Margin="117,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="管理员" Tag="pack://application:,,,/CommandsGenerator;component/images/icon14.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10,10,0,0">
+                        <Label Content="玩家：" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top" FontSize="16"/>
+                        <TextBox x:Name="OPPlayer" HorizontalAlignment="Left" Margin="55,52,0,0" VerticalAlignment="Top" Width="250" FontSize="16"/>
+                        <RadioButton x:Name="OP_" Content="给予OP权限" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" IsChecked="True"/>
+                        <RadioButton Content="撤销OP权限" HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="服务器操作" Tag="pack://application:,,,/CommandsGenerator;component/images/icon15.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10,10,0,0">
+                        <GroupBox Header="其他操作" HorizontalAlignment="Left" Margin="357,0,0,0" VerticalAlignment="Top">
+                            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="320">
+                                <Custom:Tile Title="禁用自动保存" Height="100" Width="205" Click="AddCommand" FontSize="14" FontFamily="等线" ToolTip="/save-off"/>
+                                <Custom:Tile Title="保存" Height="100" Width="100" Click="AddCommand" FontSize="14" FontFamily="等线" ToolTip="/save"/>
+                                <Custom:Tile Title="启用自动保存" Height="100" Width="205" Click="AddCommand" FontSize="14" FontFamily="等线" ToolTip="/save-on"/>
+                                <Custom:Tile Title="关闭服务器" Height="100" Width="100" Click="AddCommand" FontSize="14" FontFamily="等线" ToolTip="/stop"/>
+                                <Custom:Tile Title="显示在线玩家"  Height="100" Width="310" Click="AddCommand" FontSize="14" FontFamily="等线" ToolTip="/list"/>
+                            </WrapPanel>
+                        </GroupBox>
+                        <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="c1" Content="踢出玩家" FontSize="16" IsChecked="True" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                            </GroupBox.Header>
+                            <Grid>
+                                <Label Content="玩家：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+                                <TextBox x:Name="OPlayer" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="16" Margin="70,0,0,0"/>
+                                <Label Content="原因：" FontSize="16" Margin="0,33,267,97"/>
+                                <TextBox x:Name="kickReason" TextWrapping="Wrap" FontSize="16" Margin="70,39,0,2"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox HorizontalAlignment="Left" Margin="5,220,0,0" VerticalAlignment="Top">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="c2" Content="踢出挂机玩家" FontSize="16" IsChecked="True" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                            </GroupBox.Header>
+                            <Grid>
+                                <Label Content="挂机时间(分钟)" FontSize="16" Margin="0,0,210,1"/>
+                                <Custom:NumericUpDown x:Name="idletime" HorizontalAlignment="Left" VerticalAlignment="Top" Minimum="0" Height="30" Width="208" FontSize="16" Value="0" Margin="117,1,0,0"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+        </Custom:HamburgerMenuItemCollection>
+    </Custom:HamburgerMenu.ItemsSource>
+</Custom:HamburgerMenu>

@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9098AA01-9787-4AF9-B17A-000CB9576268}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>CommandsGenerator</RootNamespace>
+    <AssemblyName>CommandsGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="HelixToolkit">
+      <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="HelixToolkit.Wpf">
+      <HintPath>..\packages\HelixToolkit.Wpf.2015.1.715\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.1.6.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2013">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArmorStand.xaml.cs">
+      <DependentUpon>ArmorStand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Banners.xaml.cs">
+      <DependentUpon>Banners.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicCommands.xaml.cs">
+      <DependentUpon>BasicCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorEditor.xaml.cs">
+      <DependentUpon>ColorEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommandsGeneratorTemplate.xaml.cs">
+      <DependentUpon>CommandsGeneratorTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityBoss.xaml.cs">
+      <DependentUpon>EntityBoss.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityCommands.xaml.cs">
+      <DependentUpon>EntityCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityFriend.xaml.cs">
+      <DependentUpon>EntityFriend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityHostile.xaml.cs">
+      <DependentUpon>EntityHostile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityNBT.xaml.cs">
+      <DependentUpon>EntityNBT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityNeutral.xaml.cs">
+      <DependentUpon>EntityNeutral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityOther.xaml.cs">
+      <DependentUpon>EntityOther.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityThrow.xaml.cs">
+      <DependentUpon>EntityThrow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\EntityTraffic.xaml.cs">
+      <DependentUpon>EntityTraffic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExecuteAndDetect.xaml.cs">
+      <DependentUpon>ExecuteAndDetect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Firework.xaml.cs">
+      <DependentUpon>Firework.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GetElement.xaml.cs">
+      <DependentUpon>GetElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemNBT.xaml.cs">
+      <DependentUpon>ItemNBT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Book.xaml.cs">
+      <DependentUpon>Book.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubPages\BookPage.xaml.cs">
+      <DependentUpon>BookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sign.xaml.cs">
+      <DependentUpon>Sign.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tellraw.xaml.cs">
+      <DependentUpon>Tellraw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Title.xaml.cs">
+      <DependentUpon>Title.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommandsGenerator.cs" />
+    <Compile Include="MobSpawner.xaml.cs">
+      <DependentUpon>MobSpawner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerCommands.xaml.cs">
+      <DependentUpon>PlayerCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Potion.xaml.cs">
+      <DependentUpon>Potion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PotionEditor.xaml.cs">
+      <DependentUpon>PotionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ScoreboardObjective.xaml.cs">
+      <DependentUpon>ScoreboardObjective.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreboardPlayers.xaml.cs">
+      <DependentUpon>ScoreboardPlayers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreboardTeam.xaml.cs">
+      <DependentUpon>ScoreboardTeam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServerCommands.xaml.cs">
+      <DependentUpon>ServerCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetBlocks.xaml.cs">
+      <DependentUpon>SetBlocks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VillagerTrade.xaml.cs">
+      <DependentUpon>VillagerTrade.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\achievement_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BookPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\easy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\face.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\peaceful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\spawnarea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\spreadplayers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Standing_Sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Wall_Sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ArmorStand.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Banners.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicCommands.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CommandsGeneratorTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityBoss.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityCommands.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityFriend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityHostile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityNBT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityNeutral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityOther.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityThrow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\EntityTraffic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExecuteAndDetect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Firework.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GetElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemNBT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Book.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubPages\BookPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sign.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tellraw.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Title.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MobSpawner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PlayerCommands.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Potion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PotionEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScoreboardObjective.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScoreboardPlayers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScoreboardTeam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Search.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServerCommands.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SetBlocks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VillagerTrade.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cmd_block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\basic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\entity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\ItemNBT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\tellraw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cat\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cat\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cat\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cat\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\beacon\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\BlockPickBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\ItemPickBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ItemsPick\MetaBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rabbit\99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\brewing_stand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\canbreak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\chest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CSys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\dispenser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\display.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\enchant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\furnace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\GUI_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hopper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\mobspawner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\OProperty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\potion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Steve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\villager_trade_gui.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MinecraftToolsBoxSDK\MinecraftToolsBoxSDK.csproj">
+      <Project>{b034eab8-30dc-4d5d-9525-9913c338628d}</Project>
+      <Name>MinecraftToolsBoxSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\scoreboard_obj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\scoreboard_Player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tileIcons\scoreboard_Team.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,132 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:Tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+      x:Class="MinecraftToolsBox.Config" mc:Ignorable="d" Background="{DynamicResource BackgroundBrush}" Margin="10">
+    <GroupBox Header="背景色：设置容器背景色" HorizontalAlignment="Left" Margin="269,0,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16" Width="328">
+        <Tools:ColorPicker x:Name="background" Foreground="{DynamicResource ForegroundBrush}"/>
+    </GroupBox>
+    <Rectangle HorizontalAlignment="Left" Height="28" Margin="455,1,0,0" Stroke="Black" VerticalAlignment="Top" Width="28">
+        <Rectangle.Fill>
+            <SolidColorBrush Color="{Binding SelectedColor, ElementName=background}"/>
+        </Rectangle.Fill>
+    </Rectangle>
+    <GroupBox Header="选项卡：设置选项卡页面" HorizontalAlignment="Left" Margin="269,171,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16" Width="328">
+        <Tools:ColorPicker x:Name="foreground" Foreground="{DynamicResource ForegroundBrush}"/>
+    </GroupBox>
+    <Rectangle HorizontalAlignment="Left" Height="28" Margin="458,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="28">
+        <Rectangle.Fill>
+            <SolidColorBrush Color="{Binding SelectedColor, ElementName=Front}"/>
+        </Rectangle.Fill>
+    </Rectangle>
+    <GroupBox Header="主题颜色" HorizontalAlignment="Left" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16" Width="260" MaxHeight="615">
+        <ListView x:Name="theme" SelectionMode="Single" SelectedIndex="2">
+            <StackPanel Orientation="Horizontal" ToolTip="Red">
+                <Ellipse Height="21" Fill="Red" Width="21" Stroke="White"/>
+                <TextBlock Text=" 红色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Green">
+                <Ellipse Height="21" Fill="#FF80BA45" Width="21" Stroke="White"/>
+                <TextBlock Text=" 绿色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Blue">
+                <Ellipse Height="21" Fill="#FF41B1E1" Width="21" Stroke="White"/>
+                <TextBlock Text=" 蓝色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Purple">
+                <Ellipse Height="21" Fill="#FF837AE5" Width="21" Stroke="White"/>
+                <TextBlock Text=" 紫色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Orange">
+                <Ellipse Height="21" Fill="#FFFB8633" Width="21" Stroke="White"/>
+                <TextBlock Text=" 橙色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Lime">
+                <Ellipse Height="21" Fill="#FFB6D033" Width="21" Stroke="White"/>
+                <TextBlock Text=" 柠檬绿" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Emerald">
+                <Ellipse Height="21" Fill="#FF33A133" Width="21" Stroke="White"/>
+                <TextBlock Text=" 翡翠绿" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Teal">
+                <Ellipse Height="21" Fill="#FF33BCBA" Width="21" Stroke="White"/>
+                <TextBlock Text=" 蓝绿色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Cyan">
+                <Ellipse Height="21" Fill="#FF49B4E8" Width="21" Stroke="White"/>
+                <TextBlock Text=" 青色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Cobalt">
+                <Ellipse Height="21" Fill="#FF3373F2" Width="21" Stroke="White"/>
+                <TextBlock Text=" 深蓝色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Indigo">
+                <Ellipse Height="21" Fill="#FF8833FF" Width="21" Stroke="White"/>
+                <TextBlock Text=" 靛蓝" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Violet">
+                <Ellipse Height="21" Fill="#FFBB33FF" Width="21" Stroke="White"/>
+                <TextBlock Text=" 紫罗兰" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Pink">
+                <Ellipse Height="21" Fill="#FFF68ED9" Width="21" Stroke="White"/>
+                <TextBlock Text=" 粉色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Magenta">
+                <Ellipse Height="21" Fill="#FFE0338F" Width="21" Stroke="White"/>
+                <TextBlock Text=" 品红色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Crimson">
+                <Ellipse Height="21" Fill="#FFB53351" Width="21" Stroke="White"/>
+                <TextBlock Text=" 深红" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Amber">
+                <Ellipse Height="21" Fill="#FFF3B53B" Width="21" Stroke="White"/>
+                <TextBlock Text=" 琥珀" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Yellow">
+                <Ellipse Height="21" Fill="#FFFEE538" Width="21" Stroke="White"/>
+                <TextBlock Text=" 黄色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Brown">
+                <Ellipse Height="21" Fill="#FF9B7B56" Width="21" Stroke="White"/>
+                <TextBlock Text=" 棕色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Olive">
+                <Ellipse Height="21" Fill="#FF8A9F83" Width="21" Stroke="White"/>
+                <TextBlock Text=" 橄榄绿" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Steel">
+                <Ellipse Height="21" Fill="#FF83919F" Width="21" Stroke="White"/>
+                <TextBlock Text=" 金属灰" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Mauve">
+                <Ellipse Height="21" Fill="#FF9180A1" Width="21" Stroke="White"/>
+                <TextBlock Text=" 紫红色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Taupe">
+                <Ellipse Height="21" Fill="#FF9F9471" Width="21" Stroke="White"/>
+                <TextBlock Text=" 灰褐色" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTip="Sienna">
+                <Ellipse Height="21" Fill="#FFB37557" Width="21" Stroke="White"/>
+                <TextBlock Text=" 赭色" FontSize="16"/>
+            </StackPanel>
+        </ListView>
+    </GroupBox>
+    <Custom:ToggleSwitchButton x:Name="dark" HorizontalAlignment="Left" Margin="190,-2,0,0" VerticalAlignment="Top" OnSwitchBrush="#CCFFFFFF"/>
+    <Label Content="暗色" HorizontalAlignment="Left" Margin="148,0,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="使用暗色控件"/>
+    <Button x:Name="preview" Content="预览" HorizontalAlignment="Left" Margin="522,335,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource SquareButtonStyle}" ToolTip="立即生效配置，不保存" Click="Preview_Click"/>
+    <Button x:Name="save" Content="保存" HorizontalAlignment="Left" Margin="442,335,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource SquareButtonStyle}" ToolTip="保存当前配置，部分设置将在重启后生效" Click="Save_Click"/>
+    <Button x:Name="reset" Content="恢复" HorizontalAlignment="Left" Margin="362,335,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource SquareButtonStyle}" ToolTip="恢复到原来的设置，即已保存的设置" Click="Reset_Click"/>
+    <Custom:DropDownButton x:Name="pre" HorizontalAlignment="Left" Margin="269,335,0,0" VerticalAlignment="Top" Width="88" ToolTip="点击查看预设配置" Content="预设">
+        <Custom:DropDownButton.Items>
+            <TextBlock Text="蓝黑" PreviewMouseLeftButtonDown="TextBlock_PreviewMouseLeftButtonDown" Background="Transparent"/>
+        </Custom:DropDownButton.Items>
+    </Custom:DropDownButton>
+    <Button Content="重启程序" Margin="269,367,0,0" Width="328" Style="{DynamicResource SquareButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="重新启动程序" Click="Button_Click"/>
+</Grid>

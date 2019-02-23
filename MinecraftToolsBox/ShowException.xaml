@@ -1,0 +1,20 @@
+﻿<controls:MetroWindow x:Class="MinecraftToolsBox.ShowException"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:MinecraftToolsBox"
+        mc:Ignorable="d"
+        Title="错误报告" Height="300" Width="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="63" Stretch="Fill" VerticalAlignment="Top" Width="63" Margin="8,4,0,0" Source="pack://application:,,,/MinecraftToolsBox;component/images/error.png"/>
+        <TextBlock TextWrapping="Wrap" Text="发生无法处理的异常！" VerticalAlignment="Top" FontSize="45" Margin="82,9,-19,0"/>
+        <TextBox x:Name="message" Margin="79,117,10,55"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,117,0,0" FontSize="16" TextWrapping="Wrap" Text="错误信息" VerticalAlignment="Top"/>
+        <TextBox x:Name="help" Margin="79,221,10,10" TextWrapping="Wrap"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,221,0,0" FontSize="16" TextWrapping="Wrap" Text="帮助信息" VerticalAlignment="Top"/>
+        <TextBlock x:Name="method" HorizontalAlignment="Left" Margin="10,92,0,0" FontSize="16" TextWrapping="Wrap" Text="错误位置：" VerticalAlignment="Top"/>
+        <TextBlock x:Name="id" HorizontalAlignment="Left" Margin="10,67,0,0" FontSize="16" TextWrapping="Wrap" Text="错误代码：" VerticalAlignment="Top"/>
+    </Grid>
+</controls:MetroWindow>

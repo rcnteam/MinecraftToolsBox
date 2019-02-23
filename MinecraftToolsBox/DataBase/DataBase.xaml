@@ -1,0 +1,74 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MinecraftToolsBox.Database"
+        xmlns:core="clr-namespace:System;assembly=mscorlib"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+        x:Class="MinecraftToolsBox.Database.DataBase"
+        mc:Ignorable="d"
+        Title="命令数据库-Ctrl+S保存" Height="500" Width="777" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Closed="MetroWindow_Closed" PreviewKeyDown="MetroWindow_PreviewKeyDown">
+    <Grid>
+        <GroupBox x:Name="groupBox" Header="文件夹列表" HorizontalAlignment="Left" Margin="3,3,0,0" VerticalAlignment="Top" Height="216" Width="160" controls:ControlsHelper.HeaderFontSize="12">
+            <TreeView x:Name="folder" HorizontalAlignment="Left" Height="188" Margin="-5" VerticalAlignment="Top" Width="158" SelectedItemChanged="folder_SelectedItemChanged">
+                <TreeViewItem x:Name="root" Header="ROOT" IsSelected="True" IsExpanded="True"/>
+            </TreeView>
+        </GroupBox>
+        <GroupBox x:Name="groupBox1" Header="当前文件夹中的数据" HorizontalAlignment="Left" Margin="3,221,0,0" VerticalAlignment="Top" Height="248" Width="768" controls:ControlsHelper.HeaderFontSize="12">
+            <DataGrid x:Name="dg" ItemsSource="{Binding}" AutoGenerateColumns="False" LoadingRow="dg_LoadingRow" Margin="-5" CanUserAddRows="True" BeginningEdit="dg_BeginningEdit" CellEditEnding="dg_CellEditEnding" SelectionChanged="dg_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="编号" Width="50" Binding="{Binding idx}" IsReadOnly="True" CanUserReorder="False"/>
+                    <DataGridTextColumn Header="数据类型" Width="100" Binding="{Binding type}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="数据" Width="400" Binding="{Binding data}"/>
+                    <DataGridTextColumn Header="备注" Width="166" Binding="{Binding des}"/>
+                    <DataGridCheckBoxColumn Header="选中" Width="50" CanUserReorder="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <Label Content="当前位置：" HorizontalAlignment="Left" Margin="168,4,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="file" HorizontalAlignment="Left" Height="23" Margin="238,5,0,0" TextWrapping="Wrap" Text="ROOT://" VerticalAlignment="Top" Width="460" IsEnabled="False"/>
+        <Label Content="新文件夹：" HorizontalAlignment="Left" Margin="168,37,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="folderName" HorizontalAlignment="Left" Height="23" Margin="238,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" controls:TextBoxHelper.Watermark="文件夹名称" KeyDown="folderName_KeyDown" PreviewTextInput="folderName_PreviewTextInput"/>
+        <Button x:Name="newFolder" Content="新建文件夹" HorizontalAlignment="Left" Margin="703,36,0,0" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="11" Click="newFolder_Click"/>
+        <Button x:Name="deleteData" Content="删除选中的数据" HorizontalAlignment="Left" Margin="555,222,0,0" VerticalAlignment="Top" Width="100" Height="25" FontWeight="Normal" FontSize="11" ToolTip="删除选中的所有数据，不可恢复" Click="deleteData_Click"/>
+        <Button x:Name="back" Content="返回上一级" HorizontalAlignment="Left" Margin="703,5,0,0" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="11" Click="back_Click"/>
+        <Button x:Name="deleteFolder" Content="删除选中的文件夹" HorizontalAlignment="Left" Margin="72,4,0,0" VerticalAlignment="Top" Width="90" Height="21" FontWeight="Normal" FontSize="10" Click="deleteFolder_Click" ToolTip="删除文件夹中的所有数据，不可恢复"/>
+        <controls:MetroProgressBar x:Name="progressLoad" HorizontalAlignment="Left" Height="10" Margin="131,223,0,0" VerticalAlignment="Top" Width="150" SmallChange="1" Foreground="Lime" ToolTip="读取进度"/>
+        <CheckBox x:Name="selectAll" Content="全选" HorizontalAlignment="Left" Margin="721,226,0,0" VerticalAlignment="Top" Click="selectAll_Click"/>
+        <Button x:Name="selectChange" Content="反选" HorizontalAlignment="Left" Height="23" Margin="682,222,0,0" VerticalAlignment="Top" Width="34" FontWeight="Normal" FontSize="11" Click="selectChange_Click"/>
+        <Button x:Name="moveFolder" Content="复制文件夹" HorizontalAlignment="Left" Margin="703,67,0,0" VerticalAlignment="Top" Width="68" ToolTip="复制选中的文件夹到目标位置" Click="moveFolder_Click" FontSize="11"/>
+        <Label Content="目标位置：" HorizontalAlignment="Left" Margin="168,67,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="targetLoc" HorizontalAlignment="Left" Height="23" Margin="238,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" controls:TextBoxHelper.Watermark="文件夹名称" KeyDown="folderName_KeyDown" PreviewTextInput="folderName_PreviewTextInput" Text="ROOT://"/>
+        <Button x:Name="getLocation" Content="获取位置" HorizontalAlignment="Left" Margin="623,67,0,0" VerticalAlignment="Top" Width="75" Height="25" FontSize="11" ToolTip="获取文件夹列表中选中项的路径" Click="getLocation_Click"/>
+        <controls:MetroProgressBar x:Name="progressSave" HorizontalAlignment="Left" Height="10" Margin="131,236,0,0" VerticalAlignment="Top" Width="150" SmallChange="1" Foreground="Yellow" ToolTip="存储进度"/>
+        <GroupBox x:Name="groupBox2" Header="添加数据" HorizontalAlignment="Left" Margin="168,98,0,0" VerticalAlignment="Top" Height="121" Width="603" controls:ControlsHelper.HeaderFontSize="12">
+            <Grid HorizontalAlignment="Left" Height="96" Margin="-6,-7,-6,-6" VerticalAlignment="Top" Width="603">
+                <Label Content="数据类型：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="CmdType" HorizontalAlignment="Left" Height="15" Margin="80,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="CmdType_SelectionChanged">
+                    <ComboBoxItem Content="原版命令"/>
+                    <ComboBoxItem Content="玩家选择器"/>
+                    <ComboBoxItem Content="实体选择器"/>
+                    <ComboBoxItem Content="绝对坐标"/>
+                    <ComboBoxItem Content="相对坐标"/>
+                    <ComboBoxItem Content="物品_Json书"/>
+                    <ComboBoxItem Content="物品_告示牌"/>
+                    <ComboBoxItem Content="方块_告示牌"/>
+                    <ComboBoxItem Content="物品NBT"/>
+                    <ComboBoxItem Content="实体NBT"/>
+                </ComboBox>
+                <Label Content="数据：" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top"/>
+                <Grid x:Name="dataEditor" Margin="261,10,10,60">
+                    <TextBox x:Name="command" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="332"/>
+                </Grid>
+                <Label Content="备注：" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="description" HorizontalAlignment="Left" Height="46" Margin="56,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="537"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="addData" Content="添加新数据" HorizontalAlignment="Left" Margin="236,99,0,0" VerticalAlignment="Top" Width="75" Height="24" FontSize="11" FontWeight="Normal" ToolTip="添加一条新的数据到数据库" Click="addData_Click"/>
+        <Button x:Name="editData" Content="更改选中项" HorizontalAlignment="Left" Margin="321,99,0,0" VerticalAlignment="Top" Width="75" Height="24" FontSize="11" FontWeight="Normal" ToolTip="使用新的数据替换选中项" Click="editData_Click"/>
+        <Button x:Name="insert" Content="移动选中项到 编号：" HorizontalAlignment="Left" Margin="286,222,0,0" VerticalAlignment="Top" Width="112" Height="24" FontSize="11" FontWeight="Normal" ToolTip="移动选中的数据到指定的位置" Click="insert_Click"/>
+        <tools:NumTextBox x:Name="index" HorizontalAlignment="Left" Margin="403,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="81"/>
+    </Grid>
+</controls:MetroWindow>

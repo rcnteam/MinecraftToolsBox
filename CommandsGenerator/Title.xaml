@@ -1,0 +1,72 @@
+﻿<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+    x:Class="MinecraftToolsBox.Commands.Title"
+    mc:Ignorable="d">
+    <GroupBox Header="    时间设置" Margin="0,0,590,5" VerticalAlignment="Bottom" Height="146" Custom:ControlsHelper.HeaderFontSize="16">
+        <Grid>
+            <Label Content="渐入时间：" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" ToolTip="标题渐入所花的时间"/>
+            <Custom:NumericUpDown x:Name="fadeIn" Height="30" Margin="90,0,0,0" VerticalAlignment="Top" FontSize="16" Custom:TextBoxHelper.Watermark="Ticks"/>
+            <Label Content="保留时间：" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" ToolTip="标题在屏幕的保留时间"/>
+            <Custom:NumericUpDown x:Name="stay" Height="30" Margin="90,35,0,0" VerticalAlignment="Top" FontSize="16" Custom:TextBoxHelper.Watermark="Ticks"/>
+            <Label Content="渐出时间：" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" ToolTip="标题渐出所花的时间"/>
+            <Custom:NumericUpDown x:Name="fadeOut" Height="30" Margin="90,70,0,0" VerticalAlignment="Top" FontSize="16" Custom:TextBoxHelper.Watermark="Ticks"/>
+        </Grid>
+    </GroupBox>
+    <RadioButton x:Name="setTime" Content="RadioButton" HorizontalAlignment="Left" Height="18" Margin="4,0,0,125" VerticalAlignment="Bottom" Width="18" IsChecked="True"/>
+    <GroupBox Header="重置" HorizontalAlignment="Right" Margin="0,0,405,5" VerticalAlignment="Bottom" Custom:ControlsHelper.HeaderFontSize="16" Height="180" Width="175">
+        <StackPanel>
+            <Custom:Tile x:Name="clear" Title="移除标题" Height="65" Margin="0" VerticalAlignment="Top" Click="Button_Click" FontSize="14" ToolTip="移除指定玩家的标题" Width="Auto"/>
+            <Custom:Tile x:Name="reset" Title="重置标题变量" Height="65" Margin="0,5,0,0" VerticalAlignment="Top" Click="Button_Click" FontSize="14" ToolTip="重置指定玩家的标题变量" Width="Auto"/>
+        </StackPanel>
+    </GroupBox>
+    <GroupBox Header="    设置标题" Margin="0,0,405,190" Custom:ControlsHelper.HeaderFontSize="16">
+        <Grid>
+            <RadioButton x:Name="T" Content="主标题" HorizontalAlignment="Right" Margin="0,-30,170,0" VerticalAlignment="Top" Foreground="White" FontSize="16" IsChecked="True" Height="20" RenderTransformOrigin="0.5,0.5" Width="77"/>
+            <RadioButton x:Name="subT" Content="副标题" HorizontalAlignment="Right" Margin="0,-30,85,0" VerticalAlignment="Top" Foreground="White" FontSize="16" FontStyle="Italic" Width="77"/>
+            <RadioButton Content="快捷栏" HorizontalAlignment="Right" Margin="0,-30,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Width="77"/>
+            <Button x:Name="c" HorizontalAlignment="Left" Height="30" Margin="204,0,0,0" VerticalAlignment="Top" Width="60">
+                <Grid Margin="0,-5">
+                    <ComboBox x:Name="TextColor" SelectedIndex="15" MinHeight="10" MinWidth="15" Width="50" BorderThickness="0" Margin="0" HorizontalAlignment="Left">
+                        <ComboBoxItem ToolTip="white" Background="White" Height="20" Width="20" Margin="0,0,57,-20" BorderBrush="Black" BorderThickness="1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_blue" Background="#FF0000AA" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_green" Background="#FF00AA00" Height="20" Margin="39,-2,19,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_aqua" Background="#FF00AAAA" Height="20" Margin="58,-22,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_red" Background="#FFAA0000" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_purple" Background="#FFAA00AA" Height="20" Margin="20,-2,38,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="gold" Background="#FFFFAA00" Height="20" Margin="39,-42,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="gray" Background="#FFAAAAAA" Height="20" Margin="58,-23,0,-1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_gray" Background="#FF555555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="blue" Background="#FF5555FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="green" Background="#FF55FF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="aqua" Background="#FF55FFFF" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="red" Background="#FFFF5555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="light_purple" Background="#FFFF55FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="yellow" Background="#FFFFFF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="black" Background="Black" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                    </ComboBox>
+                    <Image Height="22" Width="22" Stretch="None" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/fontcolor.png" ToolTip="改变颜色" HorizontalAlignment="Left"/>
+                </Grid>
+            </Button>
+            <ToggleButton x:Name="bold" Content="B" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="加粗"/>
+            <ToggleButton x:Name="italic" Content="I" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="40,0,0,0" FontStyle="Italic" FontFamily="NSimSun" FontWeight="Bold" ToolTip="斜体"/>
+            <ToggleButton x:Name="underlined" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="81,0,0,0" FontWeight="Bold" ToolTip="下划线">
+                <Image Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/underlined.png"/>
+            </ToggleButton>
+            <ToggleButton x:Name="strikethrough" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="122,0,0,0" FontWeight="Bold" ToolTip="删除线">
+                <Image x:Name="image" Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/strikethrough.png"/>
+            </ToggleButton>
+            <Button x:Name="clearStyle" Content="A" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="清除文本格式"/>
+            <ToggleButton x:Name="obfuscated" Content="O" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="163,0,0,0" FontWeight="Normal" ToolTip="随机字符"/>
+            <tools:JsonEditor x:Name="doc" Margin="0,35,0,0" Background="#FF41547D" Foreground="White" FontSize="16" AcceptsReturn="False"/>
+        </Grid>
+    </GroupBox>
+    <RadioButton x:Name="setTitle" Content="RadioButton" HorizontalAlignment="Left" Height="18" Margin="4,8,0,0" VerticalAlignment="Top" Width="18" IsChecked="True"/>
+    <tools:EntitySelector x:Name="ES" HorizontalAlignment="Right" Margin="0,0,0,5"/>
+    <Button x:Name="addSelector" Content="添加目标选择器到文本中" HorizontalAlignment="Left" Margin="0,0,0,156" VerticalAlignment="Bottom" Width="158" ToolTip="在右侧编辑目标选择器，添加后将会显示符合条件的实体名称"/>
+    <Button x:Name="addObjective" Content="添加计分板数据到文本中" HorizontalAlignment="Left" Margin="163,0,0,156" VerticalAlignment="Bottom" Width="167" ToolTip="添加一个记分板分数到文本中，将会显示符合条件的实体在指定记分板上的分数"/>
+</Grid>

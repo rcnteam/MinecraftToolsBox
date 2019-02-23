@@ -1,0 +1,467 @@
+﻿<Grid  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"     
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        
+    xmlns:control="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="MinecraftToolsBox.Commands.ItemNBT"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    mc:Ignorable="d">
+    <control:HamburgerMenu x:Name="menu" ItemClick="HamburgerMenu_ItemClick" PaneBackground="#FF303031" SelectedIndex="0" IsPaneOpen="True" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+        <control:HamburgerMenu.ContentTemplate>
+            <DataTemplate>
+                <ContentControl Content="{Binding Content}"/>
+            </DataTemplate>
+        </control:HamburgerMenu.ContentTemplate>
+        <control:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="物品NBT"/>
+            </DataTemplate>
+        </control:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <control:HamburgerMenu.ItemsSource>
+            <control:HamburgerMenuItemCollection>
+                <tools:HamburgerMenuContentItem Label="物品数据" Tag="pack://application:,,,/CommandsGenerator;component/images/item.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="0">
+                            <Grid HorizontalAlignment="Left" Height="364" VerticalAlignment="Top" Width="390">
+                                <Image Source="images/ItemsPick/ItemPickBack.png" Stretch="Uniform"/>
+                                <control:Tile x:Name="Other" HorizontalAlignment="Left" Height="62" Margin="180,0,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="交通/杂项" Click="UpdateItemPick"/>
+                                <control:Tile x:Name="Food" HorizontalAlignment="Left" Height="54" Margin="0,310,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="食物" Click="UpdateItemPick"/>
+                                <control:Tile x:Name="Tools_Weapons" HorizontalAlignment="Left" Height="54" Margin="64,310,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="工具与武器" Click="UpdateItemPick"/>
+                                <control:Tile x:Name="Materials" HorizontalAlignment="Left" Height="54" Margin="128,310,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="材料" Click="UpdateItemPick"/>
+                            </Grid>
+                            <control:NumericUpDown x:Name="count" HorizontalAlignment="Left" Margin="600,287.696,0,0" VerticalAlignment="Top" Value="1" Maximum="64" Minimum="1" Width="86" ToolTip="控制物品的数量" HasDecimals="False"/>
+                            <TextBlock Text="数量：" HorizontalAlignment="Left" Margin="552,289.013,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <control:NumericUpDown x:Name="Meta" HorizontalAlignment="Left" Margin="462,287.696,0,0" VerticalAlignment="Top" Value="0" Minimum="0" Width="85" ToolTip="设置物品的数据附加值" HasDecimals="False"/>
+                            <TextBlock Text="数据值：" HorizontalAlignment="Left" Margin="398,289.013,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <TextBlock Text="物品名称：" HorizontalAlignment="Left" Margin="398,255.333,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <TextBox x:Name="ItemName" HorizontalAlignment="Left" Height="22" Margin="479,252,0,0" VerticalAlignment="Top" Width="207" Text="minecraft:stone"/>
+                            <GroupBox Header="附加数据选项" HorizontalAlignment="Left" Margin="407,0,0,0" VerticalAlignment="Top" Height="244" Width="217">
+                                <Grid>
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="images/ItemsPick/MetaBack.png" Stretch="Uniform"/>
+                                    </Grid.Background>
+                                    <WrapPanel x:Name="MetaData">
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="51" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetMeta"/>
+                                    </WrapPanel>
+                                </Grid>
+                            </GroupBox>
+                            <Label x:Name="EnableMeta" Margin="408,27,0,0" Width="215" Height="216" Foreground="Black" Content="&#xA;&#xA;        &#xA;          当前物品&#xA;     无附加数据选项" Background="#7FFFFFFF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBlock Text="选择物品" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top" FontSize="20" FontStyle="Italic" Foreground="Red"/>
+                            <Button x:Name="get" Content="获取物品的NBT标签" control:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Left" BorderThickness="1" Margin="398,321.68,0,0" Style="{DynamicResource SquareButtonStyle}" VerticalAlignment="Top" Width="288" FontSize="16" Click="OtherGenerate"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="附魔" Tag="pack://application:,,,/CommandsGenerator;component/images/enchant.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <tools:VerticalSmoothScrollViewer>
+                            <Grid Margin="10">
+                                <GroupBox Header="常用于盔甲的附魔" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E1">
+                                        <control:NumericUpDown x:Name="Protection" HorizontalAlignment="Left" Margin="72,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="保护：" HorizontalAlignment="Left" Margin="0,6.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="火焰保护：" HorizontalAlignment="Left" Margin="0,37.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,62,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="摔落保护：" HorizontalAlignment="Left" Margin="0,68.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,93,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="爆炸保护：" HorizontalAlignment="Left" Margin="0,99,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,124,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="弹射物保护：" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="244,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="水下呼吸：" HorizontalAlignment="Left" Margin="172,5.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="244,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="水下速掘：" HorizontalAlignment="Left" Margin="172,36.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="244,62,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="荆棘：" HorizontalAlignment="Left" Margin="172,67.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="244,93,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="深海探索者：" HorizontalAlignment="Left" Margin="172,98.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="244,124,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="冰霜行者：" HorizontalAlignment="Left" Margin="172,129.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown x:Name="curse_of_binding" HorizontalAlignment="Left" Margin="72,155,0,-1" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="绑定：" HorizontalAlignment="Left" Margin="0,161,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="常用于武器的附魔" HorizontalAlignment="Left" Margin="207,232,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E2">
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="锋利：" HorizontalAlignment="Left" Margin="0,5.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="亡灵杀手：" HorizontalAlignment="Left" Margin="137,5.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="219,62,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="节肢杀手：" HorizontalAlignment="Left" Margin="137,67.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="46,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="击退：" HorizontalAlignment="Left" Margin="0,36.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="219,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="火焰附加：" HorizontalAlignment="Left" Margin="137,36.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="46,62,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="抢夺：" HorizontalAlignment="Left" Margin="0,67.38,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="常用于工具的附魔" HorizontalAlignment="Left" Margin="207,375,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E3">
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="效率：" HorizontalAlignment="Left" Margin="0,5.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="精准采集：" HorizontalAlignment="Left" Margin="138,5.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="46,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="耐久：" HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="219,31,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="时运：" HorizontalAlignment="Left" Margin="138,36,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="常用于钓竿的附魔" HorizontalAlignment="Left" Margin="356,0,0,0" VerticalAlignment="Top" Height="100" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E5">
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="70,2,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="海之眷顾：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,7.38,0,0"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="70,36,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="钓饵" HorizontalAlignment="Left" Margin="0,41.38,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="其它附魔属性" HorizontalAlignment="Left" Margin="356,118,0,0" VerticalAlignment="Top" Height="100" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E6">
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="70,1,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="经验修补：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,6.38,0,0"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="70,35,0,-1" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="消失诅咒：" HorizontalAlignment="Left" Margin="0,40.38,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="常用于弓的附魔" HorizontalAlignment="Left" Margin="0,232,0,0" VerticalAlignment="Top" Width="193" Foreground="{DynamicResource ForegroundBrush}">
+                                    <Grid x:Name="E4">
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,1,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="力量：" HorizontalAlignment="Left" Margin="0,6.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,32,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="冲击：" HorizontalAlignment="Left" Margin="0,37.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,63,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="火矢：" HorizontalAlignment="Left" Margin="0,68.38,0,0" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown HorizontalAlignment="Left" Margin="72,94,0,0" VerticalAlignment="Top" Minimum="0" HasDecimals="False" Value="0" Width="85" Maximum="32767"/>
+                                        <TextBlock Text="无限：" HorizontalAlignment="Left" Margin="0,99.38,0,0" VerticalAlignment="Top"/>
+                                    </Grid>
+                                </GroupBox>
+                                <Button x:Name="getBook" Content="获取附魔书" HorizontalAlignment="Left" Margin="0,395,0,0" VerticalAlignment="Top" Width="202" ToolTip="给最近的玩家一本附魔书" Click="OtherGenerate" Style="{DynamicResource SquareButtonStyle}" FontSize="20"/>
+                                <Button x:Name="getBookNBT" control:ButtonHelper.PreserveTextCase="True" Content="  获取附魔书NBT" HorizontalAlignment="Left" Margin="0,432.4,0,0" VerticalAlignment="Top" Width="202" FontSize="20" ToolTip="获取带有附魔的书的数据标签" Click="OtherGenerate" Style="{DynamicResource SquareButtonStyle}"/>
+                            </Grid>
+                        </tools:VerticalSmoothScrollViewer>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="附加属性" Tag="pack://application:,,,/CommandsGenerator;component/images/property.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="5,5,0,0">
+                            <GroupBox Header="物品属性" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="471">
+                                <Grid>
+                                    <TextBlock Text="消失时间（秒）：" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="掉落物将在设置的时间后消失" FontSize="14" Margin="0,4.11,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:NumericUpDown x:Name="age" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="227.5" ToolTip="掉落物将在设置的时间后消失" Margin="101.5,0,0,0" FontSize="14" Value="300" Speedup="False" Minimum="0"/>
+                                    <control:ToggleSwitchButton x:Name="never" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" ToolTip="使该物品的掉落物永远不会消失" Margin="390.005,-5,-1.005,0" Click="Never_Click"/>
+                                    <TextBlock Text="永不消失" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="334,4.11,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBlock Text="捡起时间（秒）：" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="掉落物需要等多久才能被捡起" FontSize="14" Margin="0,38,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:NumericUpDown x:Name="delay" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="227.5" ToolTip="掉落物需要等多久才能被捡起" Margin="101.5,34,0,0" FontSize="14" Minimum="0" Value="0"/>
+                                    <control:ToggleSwitchButton x:Name="cantPick" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" ToolTip="使该物品的掉落物无法被捡起" Margin="390.005,30.11,-1.005,0" Click="Never_Click"/>
+                                    <TextBlock Text="无法捡起" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="334,38.11,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:ToggleSwitchButton x:Name="unBreak" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" ToolTip="令工具的耐久度不会下降" Margin="390.005,66,-1.005,-5"/>
+                                    <TextBlock Text="无限耐久" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="令工具的耐久度不会下降" FontSize="14" Margin="334,74.11,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBlock Text="修复消耗：" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="指定在铁砧中更改此物品时消耗的经验" FontSize="14" Margin="0,73,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:NumericUpDown x:Name="cost" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="260" ToolTip="指定在铁砧中更改此物品时消耗的经验" Margin="69,69,0,0" FontSize="14" Minimum="0" control:TextBoxHelper.Watermark="不填表示不指定修复消耗" HasDecimals="False"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox x:Name="box" Header="加成属性" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" Background="#FFA2FF00" BorderBrush="#FFA2FF00">
+                                <Grid x:Name="pro" IsEnabled="False" Margin="0,0,0,-9">
+                                    <control:NumericUpDown x:Name="value1" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="增加生物跟随距离"/>
+                                    <TextBlock Text="生物跟随" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="增加生物跟随距离" Margin="-2.001,4,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:NumericUpDown x:Name="value6" HorizontalAlignment="Left" Margin="291,3,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="提升最高生命值"/>
+                                    <TextBlock Text="最大生命" HorizontalAlignment="Left" Margin="232,7.56,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="提升最高生命值" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent1" Content="%" HorizontalAlignment="Left" Margin="189,4,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <CheckBox x:Name="percent6" Content="%" HorizontalAlignment="Left" Margin="424,6,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value2" HorizontalAlignment="Left" Margin="56,31,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="增加移动速度"/>
+                                    <TextBlock Text="移动速度" HorizontalAlignment="Left" Margin="-2.001,35,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="增加移动速度" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent2" Content="%" HorizontalAlignment="Left" Margin="189,35,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value7" HorizontalAlignment="Left" Margin="291,34.45,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="增加幸运值"/>
+                                    <TextBlock Text="幸运值" HorizontalAlignment="Left" Margin="232,38,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="增加幸运值" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent7" Content="%" HorizontalAlignment="Left" Margin="424,37,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value3" HorizontalAlignment="Left" Margin="56,63,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="提高攻击速度AttackSpeed"/>
+                                    <TextBlock Text="攻击速度" HorizontalAlignment="Left" Margin="-2.001,67,0,77.219" FontSize="14" ToolTip="提高攻击速度AttackSpeed" d:LayoutOverrides="Height" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent3" Content="%" HorizontalAlignment="Left" Margin="189,67,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value8" HorizontalAlignment="Left" Margin="291,65.45,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="增加攻击伤害"/>
+                                    <TextBlock Text="攻击伤害" HorizontalAlignment="Left" Margin="232,67,0,77" FontSize="14" ToolTip="增加攻击伤害" d:LayoutOverrides="Height" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent8" Content="%" HorizontalAlignment="Left" Margin="424,68,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value4" HorizontalAlignment="Left" Margin="56,95,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="增加盔甲韧性"/>
+                                    <TextBlock Text="盔甲韧性" HorizontalAlignment="Left" Margin="-2.001,99,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="增加盔甲值" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent4" Content="%" HorizontalAlignment="Left" Margin="189,99,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value9" HorizontalAlignment="Left" Margin="291,97.45,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="提高对击退的抵抗"/>
+                                    <TextBlock Text="击退抗性" HorizontalAlignment="Left" Margin="232,100,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="提高对击退的抵抗" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent9" Content="%" HorizontalAlignment="Left" Margin="424,100,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <control:NumericUpDown x:Name="value5" HorizontalAlignment="Left" Margin="56,126,0,0" VerticalAlignment="Top" Width="128" Speedup="False" HasDecimals="False" FontSize="14" Value="0" ToolTip="提高盔甲防御力"/>
+                                    <TextBlock Text="盔甲" HorizontalAlignment="Left" Margin="-2.001,130,0,0" VerticalAlignment="Top" FontSize="14" ToolTip="抵挡的伤害量" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <CheckBox x:Name="percent5" Content="%" HorizontalAlignment="Left" Margin="189,130,0,0" VerticalAlignment="Top" ToolTip="使用百分比加成"/>
+                                    <Button x:Name="clear" Content="清空属性" HorizontalAlignment="Left" Margin="235,126,0,0" VerticalAlignment="Top" Width="224" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties"/>
+                                </Grid>
+                            </GroupBox>
+                            <Button x:Name="save" Content="保存属性" HorizontalAlignment="Left" Margin="416,157,0,0" VerticalAlignment="Top" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Height="25" FontSize="11" Click="Properties" IsEnabled="False"/>
+                            <Label x:Name="enablePro" Content="&#xA;&#xA;               选择一项属性开始编辑" HorizontalAlignment="Left" Margin="1,183,0,0" VerticalAlignment="Top" Height="163" Width="469" FontSize="25" Background="#BF000000"/>
+                            <GroupBox Header="属性列表" HorizontalAlignment="Left" Margin="490,0,0,0" Height="347" VerticalAlignment="Top">
+                                <tools:VerticalSmoothScrollViewer VerticalScrollBarVisibility="Hidden" Width="150">
+                                    <StackPanel>
+                                        <TreeViewItem x:Name="all" IsExpanded="True" Foreground="Red">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="所有位置" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="所有位置" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="hand1" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="在主手上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="在主手上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="hand2" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="在副手上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="在副手上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="onHead" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="戴在头上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="戴在头上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="onBody" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="穿在身上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="穿在身上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="onLeg" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="穿在腿上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="穿在腿上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                        <TreeViewItem x:Name="onFeet" IsExpanded="True">
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Content="编辑" ToolTip="穿在脚上" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" FontSize="11"/>
+                                                    <TextBlock Text="穿在脚上" Margin="5,5,0,0"/>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TextBlock Text="无效果"/>
+                                        </TreeViewItem>
+                                    </StackPanel>
+                                </tools:VerticalSmoothScrollViewer>
+                            </GroupBox>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="破坏与放置" Tag="pack://application:,,,/CommandsGenerator;component/images/canbreak.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="0">
+                            <Image HorizontalAlignment="Left" Height="318" VerticalAlignment="Top" Width="390" Source="images/ItemsPick/BlockPickBack.png"/>
+                            <control:Tile x:Name="Other_B" HorizontalAlignment="Left" Height="62" Margin="180,0,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="杂项/其它" Click="UpdateItemPick"/>
+                            <Expander x:Name="ex1" Header="可以放置的方块" HorizontalAlignment="Left" Margin="394,0,0,40" Width="190" Expanded="Expander_Expanded" Collapsed="Expander_Expanded" SizeChanged="ex1_SizeChanged">
+                                <ListBox x:Name="canPlace"/>
+                            </Expander>
+                            <Expander x:Name="ex2" Header="可以破坏的方块" HorizontalAlignment="Left" Margin="394,37,0,0" Width="190" Expanded="Expander_Expanded" Collapsed="Expander_Expanded">
+                                <ListBox x:Name="canBreak"/>
+                            </Expander>
+                            <Button x:Name="Place" Content="删除" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Height="24" FontSize="11" Margin="550,1.893,0,0" Click="BlockList"/>
+                            <Button x:Name="_break" Content="删除" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Height="24" FontSize="11" Margin="550,39,0,0" Click="BlockList"/>
+                            <TextBox x:Name="can" HorizontalAlignment="Left" Height="23" Margin="60,320,0,0" TextWrapping="Wrap" Text="石头(minecraft:stone)" VerticalAlignment="Top" Width="211"/>
+                            <TextBlock Text="方块名称：" Foreground="{DynamicResource ForegroundBrush}" HorizontalAlignment="Left" Margin="0,326,0,0" VerticalAlignment="Top"/>
+                            <Button x:Name="CP" Content="可以放置" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" FontSize="11" Margin="276,320,0,0" Click="Add" ToolTip="添加到可以放置的方块列表"/>
+                            <Button x:Name="addBreak" Content="可以破坏" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" FontSize="11" Margin="335,320,0,0" Click="Add" ToolTip="添加到可以破坏的方块列表"/>
+                            <Label x:Name="isBlock" Content="&#xA;&#xA;&#xA;&#xA;  当前选中的&#xA;  物品无法放&#xA;  置在方块上" HorizontalAlignment="Left" Margin="409,37,0,0" VerticalAlignment="Top" Height="319" Width="133" FontSize="20" Background="#BFFFFFFF" Visibility="Hidden"/>
+                            <TextBlock Text="选择方块" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top" FontSize="20" FontStyle="Italic" Foreground="Red"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="显示名称" Tag="pack://application:,,,/CommandsGenerator;component/images/display.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="10">
+                            <GroupBox Header="隐藏显示信息" HorizontalAlignment="Left" Margin="328,0,0,0" VerticalAlignment="Top" Height="346">
+                                <Grid>
+                                    <TextBlock Text="隐藏附魔信息" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,6,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:ToggleSwitchButton x:Name="hide1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,0,0,0"/>
+                                    <TextBlock Text="隐藏属性信息" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,50,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:ToggleSwitchButton x:Name="hide2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,43,0,0"/>
+                                    <TextBlock Text="隐藏无法破坏属性" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,95,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:ToggleSwitchButton x:Name="hide4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,88,0,0"/>
+                                    <TextBlock Text="隐藏能破坏的方块" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,138,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBlock Text="隐藏能放置的方块" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,182,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBlock Text="隐藏其他信息" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,225,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <control:ToggleSwitchButton x:Name="hide8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,132,0,0"/>
+                                    <control:ToggleSwitchButton x:Name="hide16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,175,0,0"/>
+                                    <control:ToggleSwitchButton x:Name="hide32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="138,219,0,0"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="文本信息" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Height="168.666" Width="312">
+                                <Grid>
+                                    <TextBox x:Name="IName" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="300" control:TextBoxHelper.ClearTextButton="True" control:TextBoxHelper.Watermark="物品名字"/>
+                                    <TextBox x:Name="ILore" HorizontalAlignment="Left" Height="101" Margin="0,30,0,0" VerticalAlignment="Top" Width="300" AcceptsReturn="True" control:TextBoxHelper.ClearTextButton="True" control:TextBoxHelper.Watermark="物品描述"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="" HorizontalAlignment="Left" Margin="0,188,0,0" VerticalAlignment="Top">
+                                <tools:ColorPicker x:Name="color" Width="300" IsEnabled="False"/>
+                            </GroupBox>
+                            <CheckBox x:Name="ENC" Content="颜色选择    仅用于修改可染色物品的颜色" HorizontalAlignment="Left" Margin="4,192.666,0,0" VerticalAlignment="Top" Foreground="White" Click="ENC_Click"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="特殊属性" Tag="pack://application:,,,/CommandsGenerator;component/images/OProperty.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <tools:VerticalSmoothScrollViewer>
+                            <Grid Margin="10">
+                                <GroupBox Header="告示牌文本信息" HorizontalAlignment="Left" Margin="0,368,0,0" VerticalAlignment="Top" Height="160" Width="443">
+                                    <TextBox x:Name="signData" control:TextBoxHelper.Watermark="    在此处填写告示牌的文本数据&#xA; (告示牌编辑器中获取的物品标签)" IsEnabled="False"/>
+                                </GroupBox>
+                                <GroupBox Header="Json书本信息" HorizontalAlignment="Left" Margin="0,544,0,0" VerticalAlignment="Top" Height="160" Width="444">
+                                    <TextBox x:Name="bookData" control:TextBoxHelper.Watermark="    在此处填写Json书的文本数据&#xA; (Json书编辑器中获取的物品标签)" IsEnabled="False"/>
+                                </GroupBox>
+                                <GroupBox Header="命令方块" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Height="72" Width="444">
+                                    <TextBox x:Name="cmd" control:TextBoxHelper.Watermark="在此处填写命令方块中要执行的命令" IsEnabled="False"/>
+                                </GroupBox>
+                                <GroupBox Header="信标效果" HorizontalAlignment="Left" Margin="0,90,0,0" VerticalAlignment="Top" Height="264" Width="443">
+                                    <Grid x:Name="Beacon" IsEnabled="False">
+                                        <Image Source="images/ItemsPick/beacon/back.png" Stretch="Uniform" Margin="0,11,0,-11"/>
+                                        <ToggleButton x:Name="e1" HorizontalAlignment="Left" Margin="92,65,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="速度" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/1.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e2" HorizontalAlignment="Left" Margin="140,65,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="急迫" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/2.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e3" HorizontalAlignment="Left" Margin="92,115,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="抗性提升" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/3.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e4" HorizontalAlignment="Left" Margin="140,115,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="跳跃提升" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/4.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e5" HorizontalAlignment="Left" Margin="116,165,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="力量" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/5.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e6" HorizontalAlignment="Left" Margin="274,115,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" ToolTip="生命恢复" Click="BeaconSwitch" BorderBrush="White">
+                                            <ToggleButton.Background>
+                                                <ImageBrush ImageSource="images/ItemsPick/beacon/6.png" Stretch="Uniform"/>
+                                            </ToggleButton.Background>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="e7" HorizontalAlignment="Left" Margin="324,115,0,0" VerticalAlignment="Top" Width="44" BorderThickness="1" Height="44" Style="{StaticResource AccentedSquareButtonStyle}" Background="#00000000" BorderBrush="White" Click="BeaconSwitch" IsEnabled="False"/>
+                                        <TextBlock Text="信标等级：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                        <control:NumericUpDown x:Name="BeaconLevel" HorizontalAlignment="Left" Margin="66,-1,0,0" VerticalAlignment="Top" Width="361" HasDecimals="False" Value="1" Maximum="4" Minimum="1"/>
+                                    </Grid>
+                                </GroupBox>
+                                <Label x:Name="beacon" Content="&#xA;&#xA;&#xA;              仅在获取信标时有效" HorizontalAlignment="Left" Margin="1,117,0,0" VerticalAlignment="Top" Height="236" Width="441" Background="#BF000000" FontSize="25"/>
+                                <Label x:Name="cmdBlock" Content="         仅在获取命令方块时有效" HorizontalAlignment="Left" Margin="1,27,0,0" VerticalAlignment="Top" Height="44" Width="442" Background="#BF000000" FontSize="25"/>
+                                <Label x:Name="sign" Content="&#xA;                         仅在获取&#xA;                      告示牌时有效" HorizontalAlignment="Left" Margin="1,395,0,0" VerticalAlignment="Top" Height="132" Width="441" Background="#BF000000" FontSize="22"/>
+                                <Label x:Name="book" Content="&#xA;                         仅在获取&#xA;                      Json书时有效" HorizontalAlignment="Left" Margin="1,571,0,0" VerticalAlignment="Top" Height="132" Width="442" Background="#BF000000" FontSize="22"/>
+                            </Grid>
+                        </tools:VerticalSmoothScrollViewer>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+            </control:HamburgerMenuItemCollection>
+        </control:HamburgerMenu.ItemsSource>
+    </control:HamburgerMenu>
+    <Grid x:Name="panel" Margin="240,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <control:Tile x:Name="BlocksB" HorizontalAlignment="Left" Height="62" Margin="0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" ToolTip="建筑方块" Click="UpdateItemPick"/>
+        <control:Tile x:Name="BlocksD" HorizontalAlignment="Left" Height="62" Margin="60,0,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="装饰性方块" Click="UpdateItemPick"/>
+        <control:Tile x:Name="Redstone" HorizontalAlignment="Left" Height="62" Margin="120,0,0,0" VerticalAlignment="Top" Width="56" BorderBrush="#00000000" Background="#00000000" ToolTip="红石" Click="UpdateItemPick"/>
+        <WrapPanel x:Name="selector" HorizontalAlignment="Left" Height="216" Margin="16,86,0,0" VerticalAlignment="Top" Width="324" Orientation="Horizontal">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Height="36" Background="#00000000" BorderBrush="#00CCCCCC" Click="GetName"/>
+        </WrapPanel>
+        <Label x:Name="ITEM" Content="建筑方块" HorizontalAlignment="Left" Margin="12,60,0,0" VerticalAlignment="Top" FontSize="13" Foreground="Black"/>
+        <Button x:Name="next" Content="下&#xA;一&#xA;页" HorizontalAlignment="Left" Margin="348,86,0,0" VerticalAlignment="Top" Width="30" Height="108" Style="{DynamicResource SquareButtonStyle}" Click="Page"/>
+        <Button x:Name="last" Content="上&#xA;一&#xA;页" HorizontalAlignment="Left" Margin="348,194,0,0" VerticalAlignment="Top" Width="30" Height="108" Style="{DynamicResource SquareButtonStyle}" Click="Page" IsEnabled="False"/>
+    </Grid>
+</Grid>

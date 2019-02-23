@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls="clr-namespace:MahApps.Metro.Controls"
+                    xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Styles/Colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Styles/Fonts.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Underline.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Badged.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/DateTimePicker.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/DropDownButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/FlipView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Flyout.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/FlyoutsControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Glow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroAnimatedSingleRowTabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroAnimatedTabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroContentControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroHeader.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroTabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroTabItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/MetroWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/NumericUpDown.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Pivot.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/ProgressRing.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/RangeSlider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/SplitButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/SplitView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/HamburgerMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Tile.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/ToggleSwitch.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/TransitioningContentControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/WindowButtonCommands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/WindowCommands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/HotKeyBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/ContentControlEx.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Libraries/MahApps.Metro/Themes/Dialogs/BaseMetroDialog.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--  set up default styles for our custom controls  -->
+
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.ToggleSwitchButton}" TargetType="{x:Type Controls:ToggleSwitchButton}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.ToggleSwitch}" TargetType="{x:Type Controls:ToggleSwitch}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.ContentControlEx}" TargetType="{x:Type Controls:ContentControlEx}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.MetroThumbContentControl}" TargetType="{x:Type Controls:MetroThumbContentControl}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.WindowButtonCommands}" TargetType="{x:Type Controls:WindowButtonCommands}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.HamburgerMenu}" TargetType="{x:Type Controls:HamburgerMenu}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.MetroHeader}" TargetType="{x:Type Controls:MetroHeader}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.MetroDialog}" TargetType="{x:Type Dialogs:BaseMetroDialog}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.RangeSlider}" TargetType="{x:Type Controls:RangeSlider}" />
+    <Style BasedOn="{StaticResource MahApps.Metro.Styles.MetroProgressBar}" TargetType="{x:Type Controls:MetroProgressBar}" />
+
+</ResourceDictionary>

@@ -1,0 +1,269 @@
+﻿<Custom:HamburgerMenu
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:h="http://helix-toolkit.org/wpf"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    x:Class="MinecraftToolsBox.Commands.EntityNBT"
+    mc:Ignorable="d" ItemClick="HamburgerMenu_ItemClick" PaneBackground="#FF303031" SelectedIndex="0" IsPaneOpen="True" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+    <Custom:HamburgerMenu.ContentTemplate>
+        <DataTemplate>
+            <ContentControl Content="{Binding Content}"/>
+        </DataTemplate>
+    </Custom:HamburgerMenu.ContentTemplate>
+    <Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <DataTemplate>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="实体NBT"/>
+        </DataTemplate>
+    </Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+    <Custom:HamburgerMenu.ItemsSource>
+        <Custom:HamburgerMenuItemCollection>
+            <tools:HamburgerMenuContentItem Label="实体数据" Tag="pack://application:,,,/CommandsGenerator;component/images/data.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10">
+                        <GroupBox Header="实体列表" HorizontalAlignment="Left" Margin="0" Width="150">
+                            <TreeView x:Name="view" Width="150" SelectedItemChanged="TreeView_SelectedItemChanged">
+                                <TreeViewItem x:Name="neutral" Header="中立生物" IsExpanded="True">
+                                    <TreeViewItem ToolTip="Enderman" Header="末影人" x:Name="e1"/>
+                                    <TreeViewItem ToolTip="Wolf" Header="狼"/>
+                                    <TreeViewItem ToolTip="PolarBear" Header="北极熊"/>
+                                    <TreeViewItem ToolTip="PigZombie" Header="僵尸猪人"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="hostile" Header="敌对生物" IsExpanded="True">
+                                    <TreeViewItem ToolTip="Guardian" Header="守卫者" />
+                                    <TreeViewItem ToolTip="LavaSlime" Header="岩浆怪"/>
+                                    <TreeViewItem ToolTip="Zombie" Header="僵尸" />
+                                    <TreeViewItem ToolTip="CaveSpider" Header="洞穴蜘蛛"/>
+                                    <TreeViewItem ToolTip="Giant" Header="巨人"/>
+                                    <TreeViewItem ToolTip="Endermite" Header="末影螨"/>
+                                    <TreeViewItem ToolTip="Creeper" Header="爬行者"/>
+                                    <TreeViewItem ToolTip="Silverfish" Header="蠹虫"/>
+                                    <TreeViewItem ToolTip="Shulker" Header="潜匿之贝"/>
+                                    <TreeViewItem ToolTip="Skeleton" Header="骷髅"/>
+                                    <TreeViewItem ToolTip="Witch" Header="女巫"/>
+                                    <TreeViewItem ToolTip="Slime" Header="史莱姆"/>
+                                    <TreeViewItem ToolTip="Blaze" Header="烈焰人"/>
+                                    <TreeViewItem ToolTip="Spider" Header="蜘蛛"/>
+                                    <TreeViewItem ToolTip="Ghast" Header="恶魂"/>
+                                    <TreeViewItem ToolTip="WitherSkull" Header="凋零骷髅"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="friend" Header="友好生物" IsExpanded="True">
+                                    <TreeViewItem ToolTip="EntiyHorse" Header="马"/>
+                                    <TreeViewItem ToolTip="Villager" Header="村民"/>
+                                    <TreeViewItem ToolTip="SnowMan" Header="雪傀儡"/>
+                                    <TreeViewItem ToolTip="MushroomCow" Header="蘑菇牛"/>
+                                    <TreeViewItem ToolTip="Chicken" Header="鸡"/>
+                                    <TreeViewItem ToolTip="VillagerGolem" Header="铁傀儡"/>
+                                    <TreeViewItem ToolTip="Squid" Header="墨鱼"/>
+                                    <TreeViewItem ToolTip="Ozelot" Header="豹猫"/>
+                                    <TreeViewItem ToolTip="Cow" Header="牛"/>
+                                    <TreeViewItem ToolTip="Pig" Header="猪"/>
+                                    <TreeViewItem ToolTip="Bat" Header="蝙蝠"/>
+                                    <TreeViewItem ToolTip="Sheep" Header="羊"/>
+                                    <TreeViewItem ToolTip="Rabbit" Header="兔子"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="BOSS" Header="BOSS" IsExpanded="True">
+                                    <TreeViewItem ToolTip="EnderDragon" Header="末影龙"/>
+                                    <TreeViewItem ToolTip="WitherBoss" Header="凋零"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="_throw" Header="投掷物" IsExpanded="True">
+                                    <TreeViewItem ToolTip="EyeOfEnderSignal" Header="末影之眼"/>
+                                    <TreeViewItem ToolTip="SpectralArrow" Header="光灵箭"/>
+                                    <TreeViewItem ToolTip="Fireball" Header="火球"/>
+                                    <TreeViewItem ToolTip="DragonFireball" Header="龙的火球"/>
+                                    <TreeViewItem ToolTip="ThrownPotion" Header="药水瓶"/>
+                                    <TreeViewItem ToolTip="Arrow" Header="箭"/>
+                                    <TreeViewItem ToolTip="Snowball" Header="雪球"/>
+                                    <TreeViewItem ToolTip="ThrownExpBottle" Header="附魔之瓶"/>
+                                    <TreeViewItem ToolTip="ThrownEnderpearl" Header="末影珍珠"/>
+                                    <TreeViewItem ToolTip="ShulkerBullet" Header="潜匿之贝的子弹"/>
+                                    <TreeViewItem ToolTip="SmallFireball" Header="小型火球"/>
+                                    <TreeViewItem ToolTip="ThrownEgg" Header="鸡蛋"/>
+                                    <TreeViewItem ToolTip="AreaEffectCloud" Header="药水云"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="traffic" Header="交通工具" IsExpanded="True">
+                                    <TreeViewItem ToolTip="MinecartChest" Header="箱子矿车"/>
+                                    <TreeViewItem ToolTip="MinecartCommandBlock" Header="命令方块矿车"/>
+                                    <TreeViewItem ToolTip="MinecartTNT" Header="TNT矿车"/>
+                                    <TreeViewItem ToolTip="MinecartSpwaner" Header="刷怪笼矿车"/>
+                                    <TreeViewItem ToolTip="MinecartHopper" Header="漏斗矿车"/>
+                                    <TreeViewItem ToolTip="MinecartRideable" Header="矿车"/>
+                                    <TreeViewItem ToolTip="MinecartFurnace" Header="熔炉矿车"/>
+                                    <TreeViewItem ToolTip="Boat" Header="船"/>
+                                </TreeViewItem>
+                                <TreeViewItem x:Name="other" Header="其他实体" IsExpanded="True">
+                                    <TreeViewItem ToolTip="ItemFrame" Header="物品展示框"/>
+                                    <TreeViewItem ToolTip="Item" Header="掉落物"/>
+                                    <TreeViewItem ToolTip="LeashKnot" Header="栅栏上的栓绳"/>
+                                    <TreeViewItem ToolTip="EnderCrystal" Header="末影水晶"/>
+                                    <TreeViewItem ToolTip="XPOrb" Header="经验球"/>
+                                    <TreeViewItem ToolTip="FireworksRocketEntity" Header="飞行的烟花"/>
+                                    <TreeViewItem ToolTip="FallingSand" Header="掉落沙"/>
+                                    <TreeViewItem ToolTip="PrimedTnt" Header="点燃的TNT"/>
+                                    <TreeViewItem ToolTip="ArmorStand" Header="盔甲架"/>
+                                    <TreeViewItem ToolTip="Painting" Header="挂着的画"/>
+                                    <TreeViewItem ToolTip="LightningBolt" Header="闪电"/>
+                                </TreeViewItem>
+                            </TreeView>
+                        </GroupBox>
+                        <GroupBox Header="实体数据" Margin="165,0,0,135">
+                            <tools:VerticalSmoothScrollViewer x:Name="EntityData"/>
+                        </GroupBox>
+                        <GroupBox VerticalAlignment="Bottom" Margin="165,0,0,0" Height="122" Header="实体基本属性" Foreground="{DynamicResource ForegroundBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="燃烧" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="0" FontSize="14" Margin="0,5,0,0" Height="17.78" Width="28"/>
+                                <Custom:NumericUpDown x:Name="fire" Margin="32,0,0,0" Grid.Column="0" VerticalAlignment="Top" Minimum="0" Value="0" Maximum="1638.35" Interval="0.05" ToolTip="生物燃烧的时间（秒）"/>
+                                <TextBlock Text="摔落" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,35,0,0" Grid.Column="0" Height="17.78" Width="28"/>
+                                <Custom:NumericUpDown x:Name="fall" Margin="32,30,0,0" VerticalAlignment="Top" Grid.Column="0" Minimum="0" Value="0" Maximum="1638.35" Interval="0.05" ToolTip="实体已经下降的距离，更大的值将造成更大的摔落伤害" />
+                                <TextBlock Text="氧气" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Grid.Column="1" Margin="3,35,0,0"/>
+                                <Custom:NumericUpDown x:Name="air" Margin="35,30,5,0" VerticalAlignment="Top" Minimum="0" Value="15" Maximum="15" Interval="0.05" Grid.Column="1" Grid.ColumnSpan="2" ToolTip="实体剩余的氧气值（秒）"/>
+                                <TextBlock Text="静音" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="3,5,0,0" Grid.Column="1"/>
+                                <Custom:ToggleSwitchButton x:Name="silent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,-3,0,0" Grid.Column="1" ToolTip="使实体不会发出声音" />
+                                <TextBlock Text="无敌" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="3,5,0,0" Grid.Column="2"/>
+                                <Custom:ToggleSwitchButton x:Name="inu" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="30,-2,0,0" Grid.Column="2" ToolTip="使生物无法收到伤害"/>
+                                <TextBlock Text="显示" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,5,0,0" Grid.Column="3"/>
+                                <Custom:ToggleSwitchButton x:Name="NVisible" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="28,-3,0,0" Grid.Column="3" ToolTip="是否显示实体的自定义名称"/>
+                                <TextBlock Text="落地" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,5,0,0" Grid.Column="4"/>
+                                <Custom:ToggleSwitchButton x:Name="onground" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,-3,0,0" Grid.Column="4" ToolTip="实体是否接触地面（仅用于匹配NBT模式）"/>
+                                <TextBlock Text="名字" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,65,0,0" Grid.Column="0"/>
+                                <TextBox x:Name="name" Margin="32,60,0,-1" VerticalAlignment="Top" Grid.Column="0" Custom:TextBoxHelper.Watermark="自定义的名字" ToolTip="自定义实体的名字，显示在实体的上方"/>
+                                <TextBlock Text="发光" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,35,0,0" Grid.Column="3"/>
+                                <Custom:ToggleSwitchButton x:Name="glow" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="28,27,0,0" Grid.Column="3" ToolTip="实体是否发光"/>
+                                <TextBlock Text="0重力" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,35,0,0" Grid.Column="4"/>
+                                <Custom:ToggleSwitchButton x:Name="NoG" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,29,0,0" Grid.Column="4" ToolTip="使生物无视重力"/>
+                                <Button x:Name="get" Content="获取实体的NBT标签" Grid.Column="1" Grid.ColumnSpan="4" Margin="5,60,2,0" Style="{DynamicResource SquareButtonStyle}" Click="Get_Click"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="药水效果" Tag="pack://application:,,,/CommandsGenerator;component/images/potion.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <tools:VerticalSmoothScrollViewer>
+                        <local:PotionEditor x:Name="potion" HorizontalAlignment="Left"/>
+                    </tools:VerticalSmoothScrollViewer>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="生物属性" Tag="pack://application:,,,/CommandsGenerator;component/images/property.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10">
+                        <GroupBox Header="加成属性" HorizontalAlignment="Left" Margin="0" Background="#FFA2FF00" BorderBrush="#FFA2FF00" Foreground="{DynamicResource ForegroundBrush}">
+                            <Grid x:Name="pro">
+                                <Custom:NumericUpDown x:Name="value1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="32" ToolTip="增加生物跟随距离" Margin="66,1,0,0" Maximum="2048" Minimum="0"/>
+                                <TextBlock Text="生物跟随" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="增加生物跟随距离"/>
+                                <Custom:NumericUpDown x:Name="value5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" HasDecimals="False" FontSize="14" Value="20" ToolTip="提升最高生命值" Margin="66,129,0,0" Minimum="0" Maximum="1.7E+308"/>
+                                <TextBlock Text="最大生命" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="提升最高生命值" Margin="0,128,0,0"/>
+                                <Custom:NumericUpDown x:Name="value2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="0.7" ToolTip="增加移动速度" Margin="66,33,0,0" Interval="0.1" Minimum="0" Maximum="1.7E+308"/>
+                                <TextBlock Text="移动速度" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="增加移动速度" Margin="0,32,0,0"/>
+                                <Custom:NumericUpDown x:Name="value6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="2" ToolTip="增加攻击伤害" Margin="66,161,0,0" Minimum="0" Maximum="1.7E+308"/>
+                                <TextBlock Text="攻击伤害" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="增加攻击伤害&#xD;&#xA;这个选项无法在铁傀儡中使用" Margin="0,160,0,0"/>
+                                <Custom:NumericUpDown x:Name="value3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="0" ToolTip="增加盔甲韧性" Margin="66,67,0,0" Maximum="20" Minimum="0"/>
+                                <TextBlock Text="盔甲韧性" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="增加盔甲值" Margin="0,66,0,0"/>
+                                <Custom:NumericUpDown x:Name="value7" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="0" ToolTip="提高对击退的抵抗" Margin="66,194,0,0" Minimum="0" Maximum="1" Interval="0.05"/>
+                                <TextBlock Text="击退抗性" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="提高对击退的抵抗" Margin="0,193,0,0"/>
+                                <Custom:NumericUpDown x:Name="value4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Speedup="False" FontSize="14" Value="0" ToolTip="提高盔甲防御力" Margin="66,98,0,0" Maximum="30" Minimum="0"/>
+                                <TextBlock Text="盔甲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" ToolTip="抵挡的伤害量" Margin="0,97,0,0"/>
+                                <Button x:Name="clear" Content="清空属性" HorizontalAlignment="Left" VerticalAlignment="Top" Width="186" Style="{DynamicResource SquareButtonStyle}" BorderThickness="1" Click="Properties" Margin="0,226,0,0"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="生物属性" Margin="0" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundBrush}">
+                            <tools:VerticalSmoothScrollViewer>
+                                <Grid x:Name="mob">
+                                    <Custom:ToggleSwitchButton x:Name="dis" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="40,194,0,0"/>
+                                    <TextBlock Text="不消失" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,203,0,0" ToolTip="使生物不会因距离玩家超过128而消失"/>
+                                    <Custom:ToggleSwitchButton x:Name="noAI" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="40,228,0,0"/>
+                                    <TextBlock Text="无AI" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,236,0,0" ToolTip="使生物没有AI"/>
+                                    <Custom:ToggleSwitchButton x:Name="pick" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="80,155,0,0"/>
+                                    <CheckBox x:Name="canP" Content="捡起物品" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,162,0,0" ToolTip="使生物会捡起物品（捡起地上的物品，穿戴盔甲）&#xD;&#xA;勾选以设置该参数"/>
+                                    <Custom:ToggleSwitchButton x:Name="leashed" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="40,310,0,0" ToolTip="表示生物被拴住栅栏上，开启后在下方填写坐标指定栓柱的栅栏坐标"/>
+                                    <TextBlock Text="被拴住" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,318,0,0"/>
+                                    <TextBlock Text="生命值" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,6,0,0" ToolTip="设置生物当前的生命值"/>
+                                    <Custom:NumericUpDown x:Name="health" HorizontalAlignment="Left" Margin="59,0,0,0" VerticalAlignment="Top" Width="110" Minimum="0" Maximum="3.40282347E+38" Custom:TextBoxHelper.Watermark="默认值" HasDecimals="False"/>
+                                    <TextBlock Text="额外生命" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,37,0,0" ToolTip="伤害吸收效果额外添加的生命值"/>
+                                    <Custom:NumericUpDown x:Name="abs" HorizontalAlignment="Left" Margin="59,31,0,0" VerticalAlignment="Top" Width="110" Minimum="0" Maximum="3.40282347E+38" HasDecimals="False" Value="0"/>
+                                    <TextBlock Text="伤害时间" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,67,0,0" ToolTip="生物最后一次被攻击的时间（秒）"/>
+                                    <Custom:NumericUpDown x:Name="hurt" HorizontalAlignment="Left" Margin="59,62,0,0" VerticalAlignment="Top" Width="110" Minimum="0" Maximum="157374182.35" Interval="0.05" Value="0"/>
+                                    <TextBlock Text="受到伤害" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,96,0,0" ToolTip="生物被攻击之后变红的剩余时间（秒）&#xA;若最近没有被攻击则为0"/>
+                                    <Custom:NumericUpDown x:Name="getH" HorizontalAlignment="Left" Margin="59,93,0,0" VerticalAlignment="Top" Width="110" Minimum="0" Maximum="1638.35" Interval="0.05" Value="0"/>
+                                    <Custom:ToggleSwitchButton x:Name="left" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Margin="40,262,0,0"/>
+                                    <TextBlock Text="左手" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,270,0,0" ToolTip="设置生物的左手为主手"/>
+                                    <TextBlock Text="X:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5,354,0,0"/>
+                                    <Custom:NumericUpDown x:Name="LocX" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="25,350,0,0"/>
+                                    <TextBlock Text="Y:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5,384,0,0"/>
+                                    <Custom:NumericUpDown x:Name="LocY" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" FontSize="16" Margin="25,380,0,0"/>
+                                    <TextBlock Text="Z:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5,414,0,0"/>
+                                    <Custom:NumericUpDown x:Name="LocZ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" FontSize="16" Margin="25,410,0,0"/>
+                                </Grid>
+                            </tools:VerticalSmoothScrollViewer>
+                        </GroupBox>
+                        <GroupBox Header="生物属性" Margin="210,0,205,0" Foreground="{DynamicResource ForegroundBrush}">
+                            <Grid>
+                                <TextBlock Text="主手" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,5,0,0" ToolTip="主手上拿着的物品"/>
+                                <TextBlock Text="副手" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,36,0,0" ToolTip="副手上拿着的物品"/>
+                                <TextBlock Text="头盔" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,67,0,0" ToolTip="头盔上戴着的物品"/>
+                                <TextBlock Text="护腿" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,98,0,0" ToolTip="腿上穿着的物品"/>
+                                <TextBlock Text="胸甲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,129,0,0" ToolTip="身上穿着的物品"/>
+                                <TextBlock Text="靴子" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,160,0,0" ToolTip="脚上穿着的物品"/>
+                                <TextBox x:Name="H1" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,0,110,0"/>
+                                <TextBox x:Name="H2" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,31,110,0"/>
+                                <TextBox x:Name="A1" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,62,110,0"/>
+                                <TextBox x:Name="A2" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,93,110,0"/>
+                                <TextBox x:Name="A3" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,124,110,0"/>
+                                <TextBox x:Name="A4" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="填写物品NBT标签" Margin="30,155,110,0"/>
+                                <Custom:NumericUpDown x:Name="H1C" HorizontalAlignment="Right" Margin="143,0,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                                <Custom:NumericUpDown x:Name="A1C" HorizontalAlignment="Right" Margin="143,62,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                                <Custom:NumericUpDown x:Name="A3C" HorizontalAlignment="Right" Margin="143,124,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                                <Custom:NumericUpDown x:Name="H2C" HorizontalAlignment="Right" Margin="143,31,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                                <Custom:NumericUpDown x:Name="A2C" HorizontalAlignment="Right" Margin="143,93,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                                <Custom:NumericUpDown x:Name="A4C" HorizontalAlignment="Right" Margin="143,155,0,0" VerticalAlignment="Top" Minimum="0" Maximum="100" Width="110" Custom:TextBoxHelper.Watermark="掉落率%"/>
+                            </Grid>
+                        </GroupBox>
+                        <TextBlock x:Name="show" Text="&#xD;&#xA;&#xD;&#xA;            当前生成的实体不属于生物" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="223,37,0,0" ToolTip="" Height="164" Width="492" Background="#CCFFFFFF" Visibility="Hidden"/>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="方向/运动" Tag="pack://application:,,,/CommandsGenerator;component/images/CSys.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid Margin="10">
+                        <h:HelixViewport3D ZoomExtentsWhenLoaded="True" Margin="0,0,150,0">
+                            <h:SunLight/>
+                            <h:TubeVisual3D x:Name="tube" Diameter="0.1"/>
+                            <ModelVisual3D x:Name="foo"/>
+                            <h:GridLinesVisual3D Width="20" Length="20" MinorDistance="1" MajorDistance="1" Thickness="0.03"/>
+                            <h:SortingVisual3D x:Name="myview" Method="BoundingBoxCorners" SortingFrequency="2">
+                                <h:CubeVisual3D Center="0,0,1" SideLength="1">
+                                    <h:CubeVisual3D.Fill>
+                                        <ImageBrush ImageSource="images/Steve.png"/>
+                                    </h:CubeVisual3D.Fill>
+                                </h:CubeVisual3D>
+                            </h:SortingVisual3D>
+                        </h:HelixViewport3D>
+                        <GroupBox HorizontalAlignment="Right" Width="155" Margin="0" Foreground="{DynamicResource ForegroundBrush}">
+                            <GroupBox.Header>
+                                <CheckBox x:Name="motion" Content="启用参数" Checked="Motion_Checked" Unchecked="Motion_Checked"/>
+                            </GroupBox.Header>
+                            <WrapPanel x:Name="Motion" IsEnabled="False">
+                                <TextBlock Text="X方向" FontSize="14" ToolTip="在X轴上移动的距离" Margin="0,5,0,0"/>
+                                <Custom:NumericUpDown x:Name="X" VerticalAlignment="Top" Width="101" Minimum="-10" Value="5" ToolTip="在X轴上移动的距离" Maximum="10" Interval="0.1" ValueChanged="Location" Margin="2,0,0,0"/>
+                                <TextBlock Text="Y方向" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,0,0" ToolTip="在Y轴上移动的距离" Width="37"/>
+                                <Custom:NumericUpDown x:Name="Y" VerticalAlignment="Top" Width="101" Minimum="-10" Value="0" ToolTip="在Y轴上移动的距离" Maximum="10" Interval="0.1" ValueChanged="Location" Margin="2,5,0,0"/>
+                                <TextBlock Text="Z方向" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,0,0" ToolTip="在Z轴上移动的距离"/>
+                                <Custom:NumericUpDown x:Name="Z" VerticalAlignment="Top" Width="101" Minimum="-10" Value="0" ToolTip="在Z轴上移动的距离" Maximum="10" Interval="0.1" ValueChanged="Location" Margin="2,5,0,0"/>
+                            </WrapPanel>
+                        </GroupBox>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+        </Custom:HamburgerMenuItemCollection>
+    </Custom:HamburgerMenu.ItemsSource>
+</Custom:HamburgerMenu>

@@ -1,0 +1,352 @@
+﻿<Custom:HamburgerMenu
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    x:Class="MinecraftToolsBox.Commands.BasicCommands"
+    mc:Ignorable="d" x:Name="menu" ItemClick="HamburgerMenu_ItemClick" PaneBackground="#FF303031" SelectedIndex="0" IsPaneOpen="True" ContentTemplate="{DynamicResource HamburgerMenuContentTemplate}" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+    <Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <DataTemplate>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="基础命令"/>
+        </DataTemplate>
+    </Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+    <Custom:HamburgerMenu.ItemsSource>
+        <Custom:HamburgerMenuItemCollection>
+            <tools:HamburgerMenuContentItem Label="世界状态设置" Tag="pack://application:,,,/CommandsGenerator;component/images/icon1.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0">
+                        <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,0,0,0">
+                            <GroupBox.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton x:Name="Set" Content="设置时间" FontSize="16" IsChecked="True" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                                    <RadioButton x:Name="add" Content="加快时间" FontSize="16" Margin="10,0,0,0" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                                </StackPanel>
+                            </GroupBox.Header>
+                            <Grid Height="70" Width="250" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Name="night" Content="设置到夜晚" Grid.Column="1" VerticalAlignment="Bottom" ToolTip="/time set 18000" Style="{DynamicResource SquareButtonStyle}" FontSize="16" FontFamily="Microsoft YaHei Light" BorderBrush="{DynamicResource ForegroundBrush}" Click="AddCommand" Margin="3,0,0,0"/>
+                                <Button Name="day1" Content="设置到白天" VerticalAlignment="Bottom" ToolTip="/time set 1000" Grid.Column="0" Style="{DynamicResource SquareButtonStyle}" FontSize="16" FontFamily="Microsoft YaHei Light" BorderBrush="{DynamicResource ForegroundBrush}" Click="AddCommand" Margin="0,0,3,0"/>
+                                <Custom:NumericUpDown Name="Time1" VerticalAlignment="Top" Minimum="0" Maximum="24000" Height="30" FontSize="16" Value="0" Grid.ColumnSpan="2" />
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton Name="c2" FontSize="16" Content="查看时间" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                            </GroupBox.Header>
+                            <ComboBox Name="query" FontSize="16" SelectedIndex="0">
+                                <ComboBoxItem Content="今天时间" FontSize="16" />
+                                <ComboBoxItem Content="游戏总时间" FontSize="16" />
+                                <ComboBoxItem Content="游戏天数" FontSize="16" />
+                            </ComboBox>
+                        </GroupBox>
+                        <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton Name="c3" Content="天气设置" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                            </GroupBox.Header>
+                            <Grid Height="70">
+                                <TextBlock Text="天气：" HorizontalAlignment="Left" VerticalAlignment="Top" TextBlock.FontSize="16" TextBlock.Foreground="{DynamicResource ForegroundBrush}" Margin="0,5,0,0"/>
+                                <ComboBox Name="weather" Margin="50,0,0,0" VerticalAlignment="Top" FontSize="16" SelectedIndex="0" Width="200">
+                                    <ComboBoxItem Content="晴天" />
+                                    <ComboBoxItem Content="雨天" />
+                                    <ComboBoxItem Content="雷雨天" />
+                                </ComboBox>
+                                <TextBlock Text="时间：" Margin="0,41,0,0" TextBlock.FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" TextBlock.Foreground="{DynamicResource ForegroundBrush}" />
+                                <Custom:NumericUpDown Name="time" Minimum="0" Maximum="1000000" FontSize="16" Value="0" Margin="50,36,0,0" VerticalAlignment="Top" Width="200"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton Name="c4" Content="游戏难度" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                            </GroupBox.Header>
+                            <ComboBox x:Name="difficulty" SelectedIndex="0" FontSize="16" SelectionChanged="Difficulty_SelectionChanged">
+                                <ComboBoxItem Content="和平" FontSize="16" ToolTip="会生成攻击性生物，但在瞬间从游戏中移除&#xD;&#xA;玩家将随时间恢复生命值。虽然生命值会恢复，但是如果受伤害的速度过快的话还是有可能死亡&#xD;&#xA;从任何其他难度转换到和平难度将导致已存在的攻击性生物从世界中移除，除了敌对状态的狼和微小尺寸的史莱姆&#xD;&#xA;饱食度永远不会耗尽，而且玩家从其它难度转换到和平难度的时候，饱食度会随时间恢复" />
+                                <ComboBoxItem Content="简单" FontSize="16" ToolTip="会生成攻击性生物，不过造成的伤害比普通难度低&#xD;&#xA;爬行者会在离开一段短距离后取消爆炸&#xD;&#xA;饥饿条会开始消耗并在耗尽时将玩家的生命值消减到10格血&#xD;&#xA;洞穴蜘蛛在简单难度中不会使玩家中毒，凋灵也不会在简单难度下使玩家凋零" />
+                                <ComboBoxItem Content="普通" FontSize="16" ToolTip="会生成攻击性生物，能造成标准值的伤害&#xD;&#xA;饱食度可以耗尽并在完全耗尽时将玩家的生命值减到1" />
+                                <ComboBoxItem Content="困难" FontSize="16" ToolTip="会生成攻击性生物，能造成的伤害比普通难度更高&#xD;&#xA;食物条可以耗尽并在完全耗尽时将玩家慢慢饿死&#xD;&#xA;爬行者在和玩家有一段相当远的距离前并不会取消它们的爆炸这使得爆炸更难躲开&#xD;&#xA;在12w06a之后，僵尸能够摧毁木门" />
+                            </ComboBox>
+                        </GroupBox>
+                        <Image Name="DIFFIMG" Source="images/peaceful.png" Margin="0,15,0,0" Width="680"/>
+                        <GroupBox Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton Content="世界出生点" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked" />
+                            </GroupBox.Header>
+                            <DockPanel Name="stack" Margin="0,2,0,10">
+                                <Image DockPanel.Dock="Left" Source="images/spawnarea.png" Height="250"/>
+                                <StackPanel Width="320" Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="世界出生点的坐标" TextBlock.FontSize="16" Margin="0,8,0,0" HorizontalAlignment="Center" TextBlock.Foreground="{DynamicResource ForegroundBrush}" />
+                                    <tools:Location Name="LOC" Margin="0,8,0,0"/>
+                                    <TextBlock Text="     世界生成区域示意图&#xA;白色表示单人游戏生成区域&#xA;蓝色代表多人游戏生成区域&#xA;     黄色代表世界出生点" TextBlock.FontSize="16" HorizontalAlignment="Center" Margin="0,8,0,0" TextBlock.Foreground="{DynamicResource ForegroundBrush}" />
+                                </StackPanel>
+                            </DockPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="游戏规则与模式" Tag="pack://application:,,,/CommandsGenerator;component/images/icon2.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <StackPanel Margin="10,10,0,0">
+                        <GroupBox Height="70" Margin="0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="c5" Content="默认游戏模式" FontSize="16" FontWeight="Medium" FontFamily="等线" IsChecked="True" Checked="Checked2" Unchecked="Checked2"/>
+                            </GroupBox.Header>
+                            <ComboBox x:Name="gamemode" SelectedIndex="0" FontSize="16">
+                                <ComboBoxItem Content="生存模式" ToolTip="在这种模式中，玩家必须收集资源以进行建造、合成及挣取经验值和活下去。&#xA;玩家拥有生命、饥饿和盔甲条，物品栏和水下时的氧气槽。"/>
+                                <ComboBoxItem Content="创造模式" ToolTip="在这个模式中，玩家可以无限使用几乎所有的方块和物品，并可以瞬间破坏。&#xA;玩家是无敌的(掉入虚空或者使用/kill指令除外)&#xA;不显示生命、饥饿、盔甲条和氧气槽，并可以飞行。&#xA;玩家可以使用一些在生存模式中无法用到的物品，如刷怪蛋、海绵&#xA;(自1.8版本起，海绵可以从海底遗迹或击杀远古守卫者而获得)。"/>
+                                <ComboBoxItem Content="冒险模式" ToolTip="玩家可以操作一些物品如拉杆和按钮，并可以与一些生物互动。&#xA;但玩家不能破坏和放置方块。这个模式很适合用于探险类地图中。&#xA;虽然此模式已经发布，但仍然处于开发初期阶段，功能很少。&#xA;目前的缤纷更新使得冒险模式默认不能与大部分方块互动。&#xA;不过缤纷更新中对命令和NBT标签的大部分更新使冒险地图的制作更加方便。"/>
+                                <ComboBoxItem Content="旁观者模式" ToolTip="旁观模式在1.8.被加入。当你在旁观模式时,你可以穿过方块,&#xA;可以通过左键生物进入它们的视角&#xA;但是除了其他处于旁观者模式的的玩家之外，你对所有生物是都隐形的。&#xA;你不能与任何方块、实体和物品栏里的物品互动，当你处于第三人称模式时，你看起来像一个浮空的透明头。&#xA;不像在创造模式下的飞行，你可以使用滚轮调整你的飞行速度。"/>
+                            </ComboBox>
+                        </GroupBox>
+                        <GroupBox Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="c6" Content="游戏规则" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                            </GroupBox.Header>
+                            <Grid Height="60">
+                                <ComboBox x:Name="gamerules" VerticalAlignment="Top" SelectedIndex="0" FontSize="16" SelectionChanged="Gamerules_SelectionChanged">
+                                    <ComboBoxItem Content="命令执行时是否在控制台进行文本提示"/>
+                                    <ComboBoxItem Content="发生随机刻的概率"/>
+                                    <ComboBoxItem Content="玩家能在距离出生点多远的位置重生"/>
+                                    <ComboBoxItem Content="是否检查当玩家使用鞘翅时作弊（移动太快）"/>
+                                    <ComboBoxItem Content="时间是否运动"/>
+                                    <ComboBoxItem Content="非生物实体是否掉落物品"/>
+                                    <ComboBoxItem Content="火是否传播及自然熄灭"/>
+                                    <ComboBoxItem Content="生物是否掉落物品"/>
+                                    <ComboBoxItem Content="生物是否自然生成"/>
+                                    <ComboBoxItem Content="方块被破坏时是否掉落物品（包括TNT破坏的）"/>
+                                    <ComboBoxItem Content="玩家死亡后是否保存物品栏和经验"/>
+                                    <ComboBoxItem Content="是否在服务器日志中记录管理员使用过的命令日志"/>
+                                    <ComboBoxItem Content="生物是否能破坏方块或捡起物品"/>
+                                    <ComboBoxItem Content="玩家是否能在有足够饥饿值时恢复生命值（不影响治疗）"/>
+                                    <ComboBoxItem Content="调试画面显示所有或简化的信息"/>
+                                    <ComboBoxItem Content="是否显示输入指令后返回的提示"/>
+                                    <ComboBoxItem Content="玩家死亡时是否在聊天框有提示"/>
+                                    <ComboBoxItem Content="是否禁止旁观者模式的玩家生成区块"/>
+                                </ComboBox>
+                                <StackPanel Orientation="Horizontal" Margin="0,30,0,0" Height="25">
+                                    <TextBlock x:Name="distance" Text="出生点距离：" Width="100" FontSize="16" IsEnabled="False" Foreground="{DynamicResource ForegroundBrush}" Margin="0,3,0,0"/>
+                                    <Custom:NumericUpDown x:Name="Distance" Minimum="0" Value="10" HasDecimals="False" Width="126" FontSize="16" IsEnabled="False"/>
+                                    <TextBlock x:Name="randomTick" Text="随机刻：" Margin="10,3,0,0" FontSize="16" IsEnabled="False" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="RandomTick" Minimum="0" Value="3" Width="120" FontSize="16" IsEnabled="False"/>
+                                    <TextBlock x:Name="Enable" Text="是否启用：" Margin="10,3,0,0" FontSize="16" IsEnabled="False" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:ToggleSwitch x:Name="isEnable" OffLabel="禁用" OnLabel="启用" Foreground="{DynamicResource ForegroundBrush}" Margin="0,-5,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="粒子效果" Tag="pack://application:,,,/CommandsGenerator;component/images/icon3.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <DockPanel MaxHeight="400" MaxWidth="800">
+                        <GroupBox Header="坐标位置" Height="120" DockPanel.Dock="Bottom">
+                            <Grid Height="65" Width="560" HorizontalAlignment="Left">
+                                <tools:LocationPlus x:Name="loc" HorizontalAlignment="Left" Margin="90,1,0,0" VerticalAlignment="Top" Height="28"/>
+                                <Label Content="起始坐标：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+                                <Label Content="延伸坐标：" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" FontSize="16"/>
+                                <tools:Location x:Name="dloc" HorizontalAlignment="Left" Margin="211,36,0,0" VerticalAlignment="Top" Height="28"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="选项" DockPanel.Dock="Left" Width="300">
+                            <Grid HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="244" Margin="0,0,-2,-6">
+                                <Label Content="粒子效果：" HorizontalAlignment="Left" Margin="2,2,0,0" VerticalAlignment="Top" FontSize="16"/>
+                                <ComboBox x:Name="particle" HorizontalAlignment="Left" Margin="92,2,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="0" FontSize="16" Height="30" SelectionChanged="Particle_SelectionChanged">
+                                    <ComboBoxItem Content="爆炸" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="大爆炸" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="巨大爆炸" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="烟花" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="水滴" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="水花" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="水波" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="水流" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="虚空粒子" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="击打" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="魔法" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="烟" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="浓烟" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="药水" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="伤害药水" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="药水效果" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="信标" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="女巫的魔法" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="渗透的水滴" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="渗透的岩浆" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="生气的村民" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="快乐的村民" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="菌丝" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="音符" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="传送门" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="银河字符" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="火焰" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="岩浆" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="脚印" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="红石" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="破碎的雪球" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="史莱姆碎片" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="爱心" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="屏障" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="烟雾" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="雪花" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="雨天" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="远古守卫者" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="末地杆" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="龙的吐息" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="生物受伤" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="生物被剑攻击" HorizontalAlignment="Left" Width="129"/>
+                                    <ComboBoxItem Content="灰尘" HorizontalAlignment="Left" Width="129"/>
+                                </ComboBox>
+                                <ComboBox x:Name="particle_mode" HorizontalAlignment="Left" Margin="92,37,0,0" VerticalAlignment="Top" Width="148" SelectedIndex="0" FontSize="16" Height="30">
+                                    <ComboBoxItem Content="普通"/>
+                                    <ComboBoxItem Content="加强"/>
+                                </ComboBox>
+                                <Label Content="模式：" HorizontalAlignment="Left" Margin="2,37,0,0" VerticalAlignment="Top" FontSize="16"/>
+                                <Label Content="速度：" HorizontalAlignment="Left" Margin="2,72,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.5,-0.067"/>
+                                <Label Content="数量：" HorizontalAlignment="Left" Margin="4,107,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="1.81,0.533"/>
+                                <Custom:NumericUpDown x:Name="speed" Minimum="0" Maximum="1" Value="0.1" Interval="0.05" HorizontalAlignment="Left" Height="30" Margin="92,72,0,0" VerticalAlignment="Top" Width="125" FontSize="16"/>
+                                <Custom:NumericUpDown x:Name="amount" Minimum="0" HasDecimals="False" Value="5" HorizontalAlignment="Left" Height="30" Margin="92,107,0,0" VerticalAlignment="Top" Width="125" FontSize="16"/>
+                            </Grid>
+                        </GroupBox>
+                        <Image x:Name="view" MaxHeight="230"/>
+                    </DockPanel>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="世界边界" Tag="pack://application:,,,/CommandsGenerator;component/images/icon4.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <StackPanel Margin="10,10,0,0" HorizontalAlignment="Left">
+                        <GroupBox Width="500" Margin="0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="center" FontSize="16" FontWeight="Medium" Content="设置边界中心" IsChecked="True" FontFamily="等线" Checked="Checked3" Unchecked="Checked3"/>
+                            </GroupBox.Header>
+                            <Grid Height="92">
+                                <Label Content="中心坐标：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+                                <CheckBox x:Name="tilde" Content="使用相对坐标" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,6,0,0"/>
+                                <Label Content="Z：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,62,0,0"/>
+                                <Label Content="X：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,31,0,0"/>
+                                <Custom:NumericUpDown x:Name="center_X" FontSize="16" VerticalAlignment="Top" Margin="32,31,0,0"/>
+                                <Custom:NumericUpDown x:Name="center_Z" FontSize="16" VerticalAlignment="Top" Margin="32,63,0,0"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Width="500" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="bordersize" FontSize="16" FontWeight="Medium" Content="调整边界大小" FontFamily="等线" Checked="Checked3" Unchecked="Checked3"/>
+                            </GroupBox.Header>
+                            <Grid Height="110">
+                                <RadioButton x:Name="add_border" Content="增加/缩小" FontSize="16" IsChecked="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                <RadioButton x:Name="set_border" Content="设置边界" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,25"/>
+                                <Label Content="大小：" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,80,0,0"/>
+                                <Label Content="变化时间：" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,48,0,0"/>
+                                <Custom:NumericUpDown x:Name="size" Minimum="0" VerticalAlignment="Top" FontSize="16" Margin="90,49,0,0"/>
+                                <Custom:NumericUpDown x:Name="change_time" Minimum="0" VerticalAlignment="Top" FontSize="16" Margin="58,81,0,0"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Width="500" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="damage" FontSize="16" FontWeight="Medium" Content="设置边界伤害" FontFamily="等线" Checked="Checked3" Unchecked="Checked3"/>
+                            </GroupBox.Header>
+                            <Grid Height="75">
+                                <RadioButton x:Name="damage_amount" VerticalAlignment="Top" Content="设置边界伤害血量" FontSize="16" IsChecked="True"/>
+                                <RadioButton x:Name="damage_buffer" VerticalAlignment="Top" Content="设置伤害缓冲距离" FontSize="16" Margin="0,25"/>
+                                <Label Content="伤害量/距离：" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="0,45,0,0"/>
+                                <Custom:NumericUpDown x:Name="damage_arg" FontSize="16" Margin="110,46,0,0" Maximum="30000000" Minimum="-30000000"/>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Width="500" Margin="0,15,0,0">
+                            <GroupBox.Header>
+                                <RadioButton x:Name="warn" FontSize="16" FontWeight="Medium" Content="设置边界警告" FontFamily="等线" Checked="Checked3" Unchecked="Checked3"/>
+                            </GroupBox.Header>
+                            <Grid Height="75">
+                                <RadioButton x:Name="warn_distance" Content="设置警告距离" FontSize="16" IsChecked="True" VerticalAlignment="Top"/>
+                                <RadioButton x:Name="warn_time" Content="设置警告时间" FontSize="16" VerticalAlignment="Top" Margin="0,25"/>
+                                <Label Content="距离/时间：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,45,0,0"/>
+                                <Custom:NumericUpDown x:Name="warning_arg" FontSize="16" Margin="91,45,0,0"/>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="帮助" Tag="pack://application:,,,/CommandsGenerator;component/images/icon5.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid>
+                        <RadioButton x:Name="page" Content="浏览指令列表" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" FontSize="16" IsChecked="True" FontFamily="等线"/>
+                        <RadioButton x:Name="command" Content="显示指令的说明" HorizontalAlignment="Left" Height="20" Margin="10,98,0,0" VerticalAlignment="Top" Width="142" FontSize="16" FontFamily="等线"/>
+                        <ComboBox x:Name="Page" HorizontalAlignment="Left" Height="26" Margin="75,37,0,0" VerticalAlignment="Top" Width="250" SelectedIndex="0" FontSize="16">
+                            <ComboBoxItem Content="第1页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第2页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第3页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第4页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第5页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第6页" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="第7页" HorizontalAlignment="Left" Width="113"/>
+                        </ComboBox>
+                        <Label x:Name="PAGE" Content="页数：" HorizontalAlignment="Left" Height="30" Margin="10,35,0,0" VerticalAlignment="Top" Width="55" FontSize="16"/>
+                        <Label x:Name="COMMAND" Content="指令：" HorizontalAlignment="Left" Height="30" Margin="10,123,0,0" VerticalAlignment="Top" Width="55" FontSize="16"/>
+                        <ComboBox x:Name="Command" HorizontalAlignment="Left" Height="26" Margin="75,125,0,0" VerticalAlignment="Top" Width="250" SelectedIndex="0" FontSize="16">
+                            <ComboBoxItem Content="defaultgamemode" HorizontalAlignment="Left" Width="160" Margin="0,0,-9,0"/>
+                            <ComboBoxItem Content="msg" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="testfor" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="summon" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="spreadplayers" HorizontalAlignment="Left" Width="168" Margin="0,0,-17,0"/>
+                            <ComboBoxItem Content="seed" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="achievement" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="tellraw" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="rell" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="title" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="gamemode" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="toggledownfall" HorizontalAlignment="Left" Width="165" Margin="0,0,-14,0"/>
+                            <ComboBoxItem Content="testforblock" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="stats" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="weather" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="me" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="particle" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="scoreboard" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="give" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="debug" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="worldborder" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="clear" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="replaceitem" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="say" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="trigger" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="kill" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="spawnpoint" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="fill" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="execute" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="setblock" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="entitydata" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="difficulty" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="blockdata" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="help" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="gamerule" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="playsound" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="effect" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="enchant" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="w" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="publish" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="xp" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="clone" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="time" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="testforblocks" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="tp" HorizontalAlignment="Left" Width="113"/>
+                            <ComboBoxItem Content="setworldspawn" HorizontalAlignment="Left" Width="113"/>
+                        </ComboBox>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+            <tools:HamburgerMenuContentItem Label="其它" Tag="pack://application:,,,/CommandsGenerator;component/images/icon6.png">
+                <tools:HamburgerMenuContentItem.Content>
+                    <Grid>
+                        <WrapPanel Width="440" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Custom:Tile Title="切换天气" Height="100" Width="205" Click="AddCommand" ToolTip="/toggledownfall"/>
+                            <Custom:Tile Title="开始调试" Height="100" Width="100" Click="AddCommand" ToolTip="/debug start" Margin="5,0"/>
+                            <Custom:Tile Title="停止调试" Height="100" Width="100" Click="AddCommand" ToolTip="/debug stop"/>
+                            <Custom:Tile Title="对局域网开放" Height="100" Width="205" Click="AddCommand" ToolTip="/publish"/>
+                            <Custom:Tile Title="显示世界种子" Height="100" Width="210" Click="AddCommand" ToolTip="/seed" Margin="5,0"/>
+                        </WrapPanel>
+                    </Grid>
+                </tools:HamburgerMenuContentItem.Content>
+            </tools:HamburgerMenuContentItem>
+        </Custom:HamburgerMenuItemCollection>
+    </Custom:HamburgerMenu.ItemsSource>
+</Custom:HamburgerMenu>

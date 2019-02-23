@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B034EAB8-30DC-4D5D-9525-9913C338628D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MinecraftToolsBoxSDK</RootNamespace>
+    <AssemblyName>MinecraftToolsBoxSDK</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\packages\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.1.6.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\MinecraftToolsBox\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2013">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Json\Advancements\Advancement.cs" />
+    <Compile Include="Json\Advancements\BasicConditions.cs" />
+    <Compile Include="Json\Advancements\Conditions.cs" />
+    <Compile Include="Json\Advancements\Display.cs" />
+    <Compile Include="Json\Advancements\Reward.cs" />
+    <Compile Include="Controls\MtbWindow\MtbWindow.xaml.cs">
+      <DependentUpon>MtbWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorPicker\BindOnEnterTextBox.cs" />
+    <Compile Include="Controls\ColorPicker\ColorComboBox.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPicker.cs" />
+    <Compile Include="Controls\ColorPicker\ColorSlider.cs" />
+    <Compile Include="Controls\ColorPicker\ColorUtils.cs" />
+    <Compile Include="Controls\ColorPicker\HsvControl.cs" />
+    <Compile Include="Controls\ColorPicker\SpectrumSlider.cs" />
+    <Compile Include="Controls\DragHelper\CustomThumb.cs" />
+    <Compile Include="Controls\DragHelper\DragChangedEventArgs.cs" />
+    <Compile Include="Controls\DragHelper\DragControlHelper.cs" />
+    <Compile Include="Controls\DragHelper\DragDirection.cs" />
+    <Compile Include="Controls\DragHelper\DragHelperBase.cs" />
+    <Compile Include="Controls\TreeDataGrid\TreeDataGrid.cs" />
+    <Compile Include="Controls\TreeDataGrid\TreeDataGridElement.cs" />
+    <Compile Include="Controls\TreeDataGrid\TreeDataGridFlatModel.cs" />
+    <Compile Include="Controls\TreeDataGrid\TreeDataGridModel.cs" />
+    <Compile Include="Controls\TreeDataGrid\TreeDataGridTemplateColumn.cs" />
+    <Compile Include="Json\Converters.cs" />
+    <Compile Include="HamburgerMenuContentItem.cs" />
+    <Compile Include="Json\LootTable\LootTable.cs" />
+    <Compile Include="MtbPlugin.cs" />
+    <Compile Include="Controls\IPBox\IPBox.xaml.cs">
+      <DependentUpon>IPBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IPBox\IPTextBox.cs" />
+    <Compile Include="Controls\Coordinate\Location.xaml.cs">
+      <DependentUpon>Location.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Coordinate\LocationPlus.xaml.cs">
+      <DependentUpon>LocationPlus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IPBox\NumTextBox.cs" />
+    <Compile Include="Controls\JsonEditor\JsonEditor.cs" />
+    <Compile Include="Controls\JsonEditor\JsonEventEditor.xaml.cs">
+      <DependentUpon>JsonEventEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JsonEditor\JsonObjectiveEditor.xaml.cs">
+      <DependentUpon>JsonObjectiveEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JsonEditor\JsonSelectorEditor.xaml.cs">
+      <DependentUpon>JsonSelectorEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JsonEditor\JsonText.cs" />
+    <Compile Include="Controls\JsonEditor\MinecraftJsonText.cs" />
+    <Compile Include="Nbt\Entity\Entity.cs" />
+    <Compile Include="Nbt\NbtAttribute.cs" />
+    <Compile Include="Nbt\NbtSerializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\TargetSelector\EntitySelector.xaml.cs">
+      <DependentUpon>EntitySelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TargetSelector\PlayerSelector.xaml.cs">
+      <DependentUpon>PlayerSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmoothScrollViewer\SmoothScrollViewer.cs" />
+    <Compile Include="Controls\TaskBarButton\TaskBarButton.cs" />
+    <Compile Include="WindowView.xaml.cs">
+      <DependentUpon>WindowView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Controls\MtbWindow\MtbWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ColorPicker\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DragHelper\DragHelperBaseStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\IPBox\IPBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Coordinate\Location.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Coordinate\LocationPlus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JsonEditor\JsonEventEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JsonEditor\JsonObjectiveEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JsonEditor\JsonSelectorEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TargetSelector\EntitySelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TargetSelector\PlayerSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TaskBarButton\TaskBarButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TreeDataGrid\TreeDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\JsonEditor\event.png" />
+    <Resource Include="Controls\JsonEditor\objective.png" />
+    <Resource Include="Controls\JsonEditor\selector.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,91 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+      xmlns:local="clr-namespace:MTB.Commands"
+      x:Class="MTB.Commands.VillagerTrade"
+      mc:Ignorable="d" d:DesignHeight="355" d:DesignWidth="1050">
+    <Grid.Resources>
+        <local:RowToIndexConv x:Key="RowToIndexConv"/>
+    </Grid.Resources>
+    <GroupBox HorizontalAlignment="Left" Header="村民属性" Custom:ControlsHelper.HeaderFontSize="16" FontSize="16" Margin="255,10,0,10">
+        <Grid>
+            <ComboBox x:Name="profession" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="125" ToolTip="村民的材质ID。这同时会影响到交易选项。" FontSize="16" SelectedIndex="0" SelectionChanged="profession_SelectionChanged">
+                <ComboBoxItem Content="&lt;随机&gt;"/>
+                <ComboBoxItem Content="农民"/>
+                <ComboBoxItem Content="图书管理员"/>
+                <ComboBoxItem Content="牧师"/>
+                <ComboBoxItem Content="铁匠"/>
+                <ComboBoxItem Content="屠夫"/>
+                <ComboBoxItem Content="傻子"/>
+            </ComboBox>
+            <ComboBox x:Name="career" HorizontalAlignment="Left" Margin="80,42,0,0" VerticalAlignment="Top" Width="125" ToolTip="村民的职业ID。请先设置村民类型，这同时也会影响到交易选项，并且对它的在GUI里的实体名（如果它没有被命名）有影响。" FontSize="16" SelectedIndex="0">
+                <ComboBoxItem Content="&lt;随机&gt;"/>
+                <ComboBoxItem Content="农民"/>
+                <ComboBoxItem Content="渔夫"/>
+                <ComboBoxItem Content="牧羊人"/>
+                <ComboBoxItem Content="造箭师"/>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Left" Margin="0,3,0,0" Text="村民类型：" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="0,48,0,0" Text="村民职业：" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="0,86,0,0" Text="职业等级：" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="careerlevel" HorizontalAlignment="Left" Margin="80,83,0,0" VerticalAlignment="Top" Width="125" Minimum="0" Maximum="2147483647" ToolTip="设为0将被重置职业"/>
+            <TextBlock HorizontalAlignment="Left" Margin="0,125,0,0" Text="财富值：" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="riches" HorizontalAlignment="Left" Margin="80,122,0,0" VerticalAlignment="Top" Width="125" Minimum="0" Maximum="2147483647" ToolTip="暂未使用。随着村民收到绿宝石而上升。"/>
+            <CheckBox x:Name="setwilling" HorizontalAlignment="Left" Margin="0,165,0,0" Content="愿意交配：" ToolTip="勾选表示指定该参数" VerticalAlignment="Top"/>
+            <Custom:ToggleSwitchButton x:Name="willing" Content="ToggleSwitchButton" HorizontalAlignment="Left" Margin="105,157,0,0" VerticalAlignment="Top" ToolTip=" true代表这个村民愿意进行交配。会在进行过一个确定的交易（是交易菜单刷新的交易）后变成 true，然后在交配后变成false。"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox HorizontalAlignment="Left" Header="村民物品栏" Custom:ControlsHelper.HeaderFontSize="16" FontSize="16" Margin="10" Width="236">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="1:" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="2:" VerticalAlignment="Top" Margin="0,28,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="3:" VerticalAlignment="Top" Margin="0,56,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="4:" VerticalAlignment="Top" Margin="0,84,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="5:" VerticalAlignment="Top" Margin="0,112,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="6:" VerticalAlignment="Top" Margin="0,140,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="7:" VerticalAlignment="Top" Margin="0,168,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBlock Text="8:" VerticalAlignment="Top" Margin="0,196,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <TextBox x:Name="I1" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I2" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,28,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I3" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,56,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I4" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,84,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I5" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,112,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I6" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,140,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I7" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,168,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+            <TextBox x:Name="I8" VerticalAlignment="Top" Grid.Column="1" FontSize="12" MinHeight="20" Margin="0,196,0,0" Custom:TextBoxHelper.Watermark="输入物品NBT标签"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox Header="交易项目" Custom:ControlsHelper.HeaderFontSize="16" Margin="480,10,10,10">
+        <Grid>
+            <Image HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="212" Source="pack://application:,,,/CommandsGenerator;component/images/villager_trade_gui.png"/>
+            <DataGrid x:Name="trades" Margin="0,60,0,0" RowHeaderWidth="20" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="True" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" HeadersVisibility="All" CanUserDeleteRows="True" CanUserReorderColumns="False" ItemsSource="{Binding}" AddingNewItem="trades_AddingNewItem" UnloadingRow="trades_UnloadingRow">
+                <DataGrid.RowHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="2" Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource RowToIndexConv}}"/>
+                    </DataTemplate>
+                </DataGrid.RowHeaderTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="购入A(物品NBT)" Width="*" Binding="{Binding BuyA}"/>
+                    <DataGridTextColumn Header="购入B(物品NBT)" Width="*" Binding="{Binding BuyB}"/>
+                    <DataGridTextColumn Header="出售(物品NBT)" Width="*" Binding="{Binding Sell}"/>
+                    <DataGridCheckBoxColumn Header="交易经验" Width="70" Binding="{Binding RewardExp}"/>
+                    <Custom:DataGridNumericUpDownColumn Header="允许交易次数" Width="90" Binding="{Binding MaxUses}" Minimum="0"/>
+                    <Custom:DataGridNumericUpDownColumn Header="已交易" Width="90" Binding="{Binding Uses}" Minimum="0"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock HorizontalAlignment="Left" Margin="6,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"><Run Text="购入"/><LineBreak/><Run Text="  A"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="58,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White"><Run Text="购入"/><LineBreak/><Run Text="  B"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="174,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="出售" Foreground="White"/>
+            <Button Content="获取村民NBT" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="55" VerticalAlignment="Top" Width="220" Style="{DynamicResource SquareButtonStyle}" FontSize="16" Margin="0,0,111,0" Click="Button_Click_2"/>
+            <Button Content="上移选中项" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" BorderBrush="#FF119EDA" Click="Button_Click"/>
+            <Button Content="下移选中项" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" Margin="0,30,0,0" BorderBrush="#FF119EDA" Click="Button_Click_1"/>
+        </Grid>
+    </GroupBox>
+</Grid>

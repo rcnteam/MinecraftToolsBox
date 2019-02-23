@@ -1,0 +1,9 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Controls/TreeDataGrid/TreeDataGrid.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Controls/ColorPicker/ColorPicker.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Controls/TaskBarButton/TaskBarButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MinecraftToolsBoxSDK;component/Controls/DragHelper/DragHelperBaseStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

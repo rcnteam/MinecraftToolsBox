@@ -1,0 +1,79 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+      x:Class="MinecraftToolsBox.Commands.EntityFriend"
+      mc:Ignorable="d" d:DesignWidth="600" Height="192">
+    <Grid.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Grid.Resources>
+    <GroupBox x:Name="E1" Header="雪傀儡" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="pump" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <Label Content="南瓜：" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="控制雪傀儡是否有南瓜头"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E2" Header="猪" HorizontalAlignment="Left" Margin="153,0,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="saddle" HorizontalAlignment="Left" Margin="42,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="鞍：" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="启用后猪身上有鞍"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E3" Header="蝙蝠" HorizontalAlignment="Left" Margin="291,0,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="bat" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="挂着：" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="启用后蝙蝠会倒挂在方块下"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E4" Header="铁傀儡" HorizontalAlignment="Left" Margin="444,0,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="player" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <Label Content="玩家制造" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="启用后这个铁傀儡永远不会攻击玩家"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E5" Header="羊" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="shear" HorizontalAlignment="Left" Margin="74,2,0,0" VerticalAlignment="Top" Width="95"/>
+            <Label Content="剪羊毛" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="启用后生成一只没有羊毛的羊"/>
+            <Custom:NumericUpDown x:Name="color" HorizontalAlignment="Left" Margin="74,48,0,0" VerticalAlignment="Top" Width="95" Minimum="0" Maximum="15" Custom:TextBoxHelper.Watermark="随机值"/>
+            <Label Content="羊毛颜色" HorizontalAlignment="Left" Margin="0,46,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="指定羊毛的颜色"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E6" Header="鸡" HorizontalAlignment="Left" Margin="186,78,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <Custom:ToggleSwitchButton x:Name="jokey" HorizontalAlignment="Left" Margin="70,2,0,0" VerticalAlignment="Top" Width="92"/>
+            <Label Content="僵尸鸡" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="小僵尸骑的鸡，启用该选项后杀死这只鸡会获得更多经验"/>
+            <Custom:NumericUpDown x:Name="lay" HorizontalAlignment="Left" Margin="70,48,0,0" VerticalAlignment="Top" Width="92" Minimum="0" Maximum="2147483647" Custom:TextBoxHelper.Watermark="默认"/>
+            <Label Content="下蛋时间" HorizontalAlignment="Left" Margin="-4,46,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="将会在这个时间之后下蛋（秒）"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="E7" Header="豹猫" HorizontalAlignment="Left" Margin="366,78,0,0" VerticalAlignment="Top" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <ComboBox x:Name="cat" HorizontalAlignment="Left" Width="83" Height="76" SelectedIndex="4">
+            <Image Source="images/cat/0.png"/>
+            <Image Source="images/cat/1.png"/>
+            <Image Source="images/cat/2.png"/>
+            <Image Source="images/cat/3.png"/>
+            <ComboBoxItem Content="随机"/>
+        </ComboBox>
+    </GroupBox>
+    <GroupBox x:Name="E8" Header="兔子" HorizontalAlignment="Left" Margin="466,78,0,0" VerticalAlignment="Top" Height="114" Background="#CCFF9600" BorderBrush="#CCFF9600" IsEnabled="False">
+        <Grid>
+            <ComboBox x:Name="rabbit" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="122" SelectedIndex="7">
+                <Image Source="images/rabbit/0.png"/>
+                <Image Source="images/rabbit/1.png"/>
+                <Image Source="images/rabbit/2.png"/>
+                <Image Source="images/rabbit/3.png"/>
+                <Image Source="images/rabbit/4.png"/>
+                <Image Source="images/rabbit/5.png"/>
+                <Image Source="images/rabbit/99.png"/>
+                <ComboBoxItem Content="随机"/>
+            </ComboBox>
+            <Label Content="食物" HorizontalAlignment="Left" Margin="-5,46,0,0" VerticalAlignment="Top" FontSize="16" ToolTip="距离下一次吃田里的萝卜的时间（随机值，下降0-2每Tick）"/>
+            <Custom:NumericUpDown x:Name="food" HorizontalAlignment="Left" Margin="34,49,0,-9" VerticalAlignment="Top" Width="88" Minimum="0" Maximum="2147483647"/>
+        </Grid>
+    </GroupBox>
+</Grid>

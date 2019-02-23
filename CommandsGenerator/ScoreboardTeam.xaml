@@ -1,0 +1,159 @@
+﻿<DockPanel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    x:Class="MinecraftToolsBox.Commands.ScoreboardTeam"
+    mc:Ignorable="d">
+    <tools:EntitySelector DockPanel.Dock="Right" Margin="0,0,0,6"/>
+    <Custom:HamburgerMenu x:Name="menu" ItemClick="HamburgerMenu_ItemClick" PaneBackground="#FF303031" SelectedIndex="2" IsPaneOpen="True" ContentTemplate="{DynamicResource HamburgerMenuContentTemplate}" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+        <Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="记分板队伍命令"/>
+            </DataTemplate>
+        </Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <Custom:HamburgerMenu.ItemsSource>
+            <Custom:HamburgerMenuItemCollection>
+                <tools:HamburgerMenuContentItem Label="信息">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="10">
+                            <TextBlock Text="列出所有队伍、其显示名称、队员数量&#xD;&#xA;使用以上可选参数以显示指定队伍的信息" Margin="0,50,0,0" VerticalAlignment="Top" FontSize="18" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <Button x:Name="list" Content="显示所有队伍信息" HorizontalAlignment="Left" Width="260" Margin="0,120,0,0" VerticalAlignment="Top" FontSize="16" Click="Button_Click" Style="{DynamicResource SquareButtonStyle}"/>
+                            <TextBlock Text="指定队伍名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5,7,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <TextBox x:Name="teamName1" HorizontalAlignment="Left" Height="31" Margin="121,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="16"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="队伍管理">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="10">
+                            <GroupBox HorizontalAlignment="Left" Height="105" Margin="0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="add" Content="创建队伍" IsChecked="True" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <TextBlock Text="队伍名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,4,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBox x:Name="Tname" Margin="80,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+                                    <TextBlock Text="显示名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,40,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBox x:Name="disName" Margin="80,36,0,0" VerticalAlignment="Top" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="remove" Content="删除队伍" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <TextBox x:Name="removeName" FontSize="16"/>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,205,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="empty" Content="清空队伍中所有成员" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <TextBox x:Name="emptyName" FontSize="16"/>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,290,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="join" Content="加入队伍" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <TextBlock Text="队伍名称：" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBox x:Name="joinTeam" Margin="80,0,0,0" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,375,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="leave" Content="退出队伍" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <TextBlock Text="队伍名称：" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <TextBox x:Name="leaveTeam" Margin="80,0,0,0" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                            <Button x:Name="Leave" Content="使执行者离开队伍" HorizontalAlignment="Left" Margin="0,460,0,0" VerticalAlignment="Top" Width="260" FontSize="16" Click="Button_Click" Style="{DynamicResource SquareButtonStyle}"/>
+                            <TextBlock Text="将目标选择器指定的玩家移出队伍&#xD;&#xA;如果不指定，执行命令的玩家或实体会离开自己的队伍" Margin="0,500,0,0" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" Foreground="{DynamicResource ForegroundBrush}"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="队伍设置">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="10">
+                            <TextBlock Text="内部名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,5,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                            <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="30" Margin="80,0,0,0" VerticalAlignment="Top" Width="180" FontSize="16" Custom:TextBoxHelper.Watermark="需要调整设置的队伍"/>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="color" Content="队伍名称的颜色显示" IsChecked="True" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <ComboBox x:Name="dis_color" SelectedIndex="0" FontSize="16">
+                                    <ComboBoxItem x:Name="reset" Content="默认值"/>
+                                    <ComboBoxItem x:Name="black" Content="黑"/>
+                                    <ComboBoxItem x:Name="dark_blue" Content="深蓝" Foreground="DarkBlue"/>
+                                    <ComboBoxItem x:Name="dark_green" Content="深绿" Foreground="DarkGreen"/>
+                                    <ComboBoxItem x:Name="dark_aqua" Content="深青" Foreground="DarkCyan"/>
+                                    <ComboBoxItem x:Name="dark_red" Content="暗红" Foreground="DarkRed"/>
+                                    <ComboBoxItem x:Name="dark_purple" Content="深紫" Foreground="DarkViolet"/>
+                                    <ComboBoxItem x:Name="gold" Content="金" Foreground="Gold"/>
+                                    <ComboBoxItem x:Name="gray" Content="灰" Foreground="Gray"/>
+                                    <ComboBoxItem x:Name="dark_gray" Content="深灰" Foreground="DarkGray"/>
+                                    <ComboBoxItem x:Name="blue" Content="蓝" Foreground="Blue"/>
+                                    <ComboBoxItem x:Name="green" Content="绿" Foreground="Green"/>
+                                    <ComboBoxItem x:Name="aqua" Content="青" Foreground="Aqua"/>
+                                    <ComboBoxItem x:Name="red" Content="红" Foreground="Red"/>
+                                    <ComboBoxItem x:Name="light_purple" Content="亮紫" Foreground="Violet"/>
+                                    <ComboBoxItem x:Name="yellow" Content="黄" Foreground="Yellow"/>
+                                    <ComboBoxItem x:Name="white" Content="白" Foreground="White" Background="Black"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,125,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="nametagVisibility" Content="队伍成员名字显示" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <ComboBox x:Name="pro1" FontSize="16" SelectedIndex="0">
+                                    <ComboBoxItem x:Name="always" Content="所有人可见"/>
+                                    <ComboBoxItem x:Name="hideForOtherTeams" Content="仅队友可见"/>
+                                    <ComboBoxItem x:Name="hideForOwnTeam" Content="其他队伍可见"/>
+                                    <ComboBoxItem x:Name="never" Content="不可见"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,210,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="deathMessageVisibility" Content="成员死亡信息显示" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <ComboBox x:Name="pro2" FontSize="16" SelectedIndex="0">
+                                    <ComboBoxItem Content="所有人可见"/>
+                                    <ComboBoxItem Content="仅队友可见"/>
+                                    <ComboBoxItem Content="其他队伍可见"/>
+                                    <ComboBoxItem Content="不可见"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,295,0,0" VerticalAlignment="Top" Width="260">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="collisionRule" Content="队伍成员直接的碰撞规则" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <ComboBox x:Name="pro3" SelectedIndex="0" FontSize="16">
+                                    <ComboBoxItem Content="正常碰撞"/>
+                                    <ComboBoxItem Content="仅与队友发生碰撞"/>
+                                    <ComboBoxItem Content="仅与敌人碰撞"/>
+                                    <ComboBoxItem Content="不发生碰撞"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="150,380,0,0" VerticalAlignment="Top">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="friendlyfire" Content="队友伤害" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <Custom:ToggleSwitch x:Name="Enable" OnLabel="启用" OffLabel="禁用" Foreground="{DynamicResource ForegroundBrush}"/>
+                            </GroupBox>
+                            <GroupBox HorizontalAlignment="Left" Margin="0,380,0,0" VerticalAlignment="Top" Width="122">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="seeFriendlyInvisibles" Content="隐身的队友" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked2" Unchecked="Checked2"/>
+                                </GroupBox.Header>
+                                <Custom:ToggleSwitch x:Name="Visible" OnLabel="可见" OffLabel="不可见" Foreground="{DynamicResource ForegroundBrush}"/>
+                            </GroupBox>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+            </Custom:HamburgerMenuItemCollection>
+        </Custom:HamburgerMenu.ItemsSource>
+    </Custom:HamburgerMenu>
+</DockPanel>

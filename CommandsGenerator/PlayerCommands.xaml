@@ -1,0 +1,325 @@
+﻿<DockPanel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    x:Class="MinecraftToolsBox.Commands.PlayerCommands"
+    mc:Ignorable="d">
+    <tools:PlayerSelector x:Name="PlayerSelector" DockPanel.Dock="Right" Margin="0,0,0,6"/>
+    <Custom:HamburgerMenu x:Name="menu" ItemClick="HamburgerMenu_ItemClick" PaneBackground="#FF303031" SelectedIndex="0" IsPaneOpen="True" ContentTemplate="{DynamicResource HamburgerMenuContentTemplate}" ItemTemplate="{DynamicResource HamburgerMenuItemTemplate}">
+        <Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="White" Text="玩家命令"/>
+            </DataTemplate>
+        </Custom:HamburgerMenu.HamburgerMenuHeaderTemplate>
+        <Custom:HamburgerMenu.ItemsSource>
+            <Custom:HamburgerMenuItemCollection>
+                <tools:HamburgerMenuContentItem Label="玩家数据" Tag="pack://application:,,,/CommandsGenerator;component/images/icon16.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <StackPanel Margin="10">
+                            <GroupBox Width="260" HorizontalAlignment="Left" Margin="0">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="c1" Content="增加经验" IsChecked="True" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <TextBlock Text="经验数量：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,5,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="exp" Minimum="0" Maximum="1999999999" FontSize="16" Margin="80,0,0,0" HasDecimals="False" Value="0"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="c2" Content="改变等级" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid Height="90">
+                                    <TextBlock Text="等级数量：" HorizontalAlignment="Left" FontSize="16" Canvas.Top="35" Margin="0,30,0,0" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="levels" Minimum="0" Value="0" FontSize="16" Margin="80,25,0,0" VerticalAlignment="Top"/>
+                                    <Button x:Name="level_min" Content="扣除全部等级" VerticalAlignment="Bottom" FontSize="15" Click="Level_min_Click" Style="{DynamicResource SquareButtonStyle}"/>
+                                    <RadioButton x:Name="addL" Content="增加" Height="20" Canvas.Left="10" Canvas.Top="10" Width="60" FontSize="16" BorderBrush="Lime" IsChecked="True" Margin="0,0,188,0" VerticalAlignment="Top" d:LayoutOverrides="Height"/>
+                                    <RadioButton Content="减少" Height="20" Canvas.Left="90" Canvas.Top="10" Width="60" FontSize="16" BorderBrush="Red" d:LayoutOverrides="Height" VerticalAlignment="Top" Margin="80,0,108,0"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="c3" Content="设置游戏模式" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <ComboBox x:Name="game_mode" SelectedIndex="0" FontSize="16">
+                                    <ComboBoxItem Content="生存"/>
+                                    <ComboBoxItem Content="创造"/>
+                                    <ComboBoxItem Content="冒险"/>
+                                    <ComboBoxItem Content="旁观者"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <GroupBox Width="260" HorizontalAlignment="Left" Margin="0,15,0,0">
+                                <GroupBox.Header>
+                                    <RadioButton x:Name="c4" Content="设置重生点坐标" FontSize="16" FontWeight="Medium" FontFamily="等线" Checked="Checked" Unchecked="Checked"/>
+                                </GroupBox.Header>
+                                <Grid Height="200">
+                                    <CheckBox x:Name="tilde_Copy" Content="使用相对坐标" FontSize="16" Height="34.667" VerticalAlignment="Top" Margin="10,0,117,0"/>
+                                    <Button x:Name="sp1" Content="执行者的重生点到当前位置" Margin="10,0,10,42" VerticalAlignment="Bottom" Width="228" FontSize="16" Click="Sp1" Style="{DynamicResource SquareButtonStyle}" FontFamily="Microsoft YaHei Light"/>
+                                    <Button x:Name="sp2" Content="目标的重生点到他的位置" Margin="10,0,10,5" VerticalAlignment="Bottom" FontSize="16" Click="Sp2" Style="{DynamicResource SquareButtonStyle}" FontFamily="Microsoft YaHei Light"/>
+                                    <TextBlock Text="X:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="14,33,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocX_sp" Margin="36,30.5,10,0" VerticalAlignment="Top" Height="25" FontSize="16"/>
+                                    <TextBlock Text="Y:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="14,63,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocY_sp" Margin="36,60.5,10,0" VerticalAlignment="Top" Height="25" FontSize="16"/>
+                                    <TextBlock Text="Z:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="14,93,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocZ_sp" Margin="36,90.5,10,84.5" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="聊天" Tag="pack://application:,,,/CommandsGenerator;component/images/icon17.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <GroupBox Margin="10,10,0,0">
+                            <GroupBox.Header>
+                                <Grid Margin="-3">
+                                    <TextBlock Text="信息" FontSize="16" Margin="5,2,0,0" HorizontalAlignment="Left" Foreground="White"/>
+                                    <CheckBox x:Name="isPrivate" Content="私聊模式" FontSize="16" Margin="50,0,0,0" HorizontalAlignment="Left"/>
+                                    <Button x:Name="addTarget" Content="添加一个目标选择器" HorizontalAlignment="Right" Style="{DynamicResource SquareButtonStyle}" Click="AddTarget_Click"/>
+                                </Grid>
+                            </GroupBox.Header>
+                            <TextBox x:Name="msg"/>
+                        </GroupBox>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="成就" Tag="pack://application:,,,/CommandsGenerator;component/images/icon18.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid>
+                            <ScrollViewer x:Name="Map" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="463" HorizontalScrollBarVisibility="Visible">
+                                <Grid x:Name="map" Width="756" HorizontalAlignment="Left" Height="1003">
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="pack://application:,,,/CommandsGenerator;component/images/achievement_map.png"/>
+                                    </Grid.Background>
+                                    <Button x:Name="_1" HorizontalAlignment="Left" Height="44" Margin="240,285,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="打开物品栏"/>
+                                    <Button x:Name="_2" HorizontalAlignment="Left" Height="44" Margin="336,333,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="获得木头"/>
+                                    <Button x:Name="_3" HorizontalAlignment="Left" Height="44" Margin="432,237,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="这是？工作台！"/>
+                                    <Button x:Name="_4" HorizontalAlignment="Left" Height="44" Margin="432,381,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="采矿时间到"/>
+                                    <Button x:Name="_5" HorizontalAlignment="Left" Height="44" Margin="384,477,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="热门话题"/>
+                                    <Button x:Name="_6" HorizontalAlignment="Left" Height="44" Margin="288,477,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="来硬的"/>
+                                    <Button x:Name="_7" HorizontalAlignment="Left" Height="44" Margin="336,141,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="耕种时间到！"/>
+                                    <Button x:Name="_8" HorizontalAlignment="Left" Height="44" Margin="192,141,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="烤面包"/>
+                                    <Button x:Name="_9" HorizontalAlignment="Left" Height="44" Margin="240,45,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="蛋糕是个谎言"/>
+                                    <Button x:Name="_10" HorizontalAlignment="Left" Height="44" Margin="528,381,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="获得升级"/>
+                                    <Button x:Name="_11" HorizontalAlignment="Left" Height="44" Margin="336,573,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="美味的鱼儿"/>
+                                    <Button x:Name="_12" HorizontalAlignment="Left" Height="44" Margin="336,429,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="在铁路上"/>
+                                    <Button x:Name="_13" HorizontalAlignment="Left" Height="44" Margin="528,237,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="出击时间到！"/>
+                                    <Button x:Name="_14" HorizontalAlignment="Left" Height="44" Margin="622,237,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="怪物猎人"/>
+                                    <Button x:Name="_15" HorizontalAlignment="Left" Height="44" Margin="575,141,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="斗牛士"/>
+                                    <Button x:Name="_16" HorizontalAlignment="Left" Height="44" Margin="671,141,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="当猪飞的时候！"/>
+                                    <Button x:Name="_17" HorizontalAlignment="Left" Height="44" Margin="575,285,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="狙击手的对决"/>
+                                    <Button x:Name="_18" HorizontalAlignment="Left" Height="44" Margin="192,522,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="钻石！"/>
+                                    <Button x:Name="_19" HorizontalAlignment="Left" Height="44" Margin="192,621,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="我们需要再深入些"/>
+                                    <Button x:Name="_20" HorizontalAlignment="Left" Height="44" Margin="47,668,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="见鬼去吧"/>
+                                    <Button x:Name="_21" HorizontalAlignment="Left" Height="44" Margin="240,717,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="与火共舞"/>
+                                    <Button x:Name="_22" HorizontalAlignment="Left" Height="44" Margin="336,668,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="本地的酿造厂"/>
+                                    <Button x:Name="_23" HorizontalAlignment="Left" Height="44" Margin="384,764,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="结束了？"/>
+                                    <Button x:Name="_24" HorizontalAlignment="Left" Height="44" Margin="432,908,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="结束了。"/>
+                                    <Button x:Name="_25" HorizontalAlignment="Left" Height="44" Margin="47,477,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="附魔师"/>
+                                    <Button x:Name="_26" HorizontalAlignment="Left" Height="44" Margin="47,333,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="赶尽杀绝"/>
+                                    <Button x:Name="_27" HorizontalAlignment="Left" Height="44" Margin="96,573,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="图书管理员"/>
+                                    <Button x:Name="_28" HorizontalAlignment="Left" Height="44" Margin="432,668,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="探索的时光"/>
+                                    <Button x:Name="_29" HorizontalAlignment="Left" Height="44" Margin="575,861,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="开始了？"/>
+                                    <Button x:Name="_30" HorizontalAlignment="Left" Height="44" Margin="575,764,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="开始了。"/>
+                                    <Button x:Name="_31" HorizontalAlignment="Left" Height="44" Margin="575,668,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="信标工程师"/>
+                                    <Button x:Name="_32" HorizontalAlignment="Left" Height="44" Margin="575,45,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="种群恢复"/>
+                                    <Button x:Name="_33" HorizontalAlignment="Left" Height="44" Margin="192,381,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="给你钻石！"/>
+                                    <Button x:Name="_34" HorizontalAlignment="Left" Height="44" Margin="528,477,0,0" VerticalAlignment="Top" Width="44" Background="#00000000" BorderBrush="#00000000" Click="ACHIEVEMENT" ToolTip="君临天下"/>
+                                </Grid>
+                            </ScrollViewer>
+                            <GroupBox Header="      成就    点击图标快速选择" HorizontalAlignment="Left" Margin="6,273,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="12">
+                                <ComboBox x:Name="ach" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" FontSize="16" SelectedIndex="0">
+                                    <ComboBoxItem x:Name="ALL" Content="所有成就"/>
+                                    <ComboBoxItem x:Name="openInventory" Content="打开物品栏"/>
+                                    <ComboBoxItem x:Name="mineWood" Content="获得木头"/>
+                                    <ComboBoxItem x:Name="buildWorkBench" Content="这是？工作台！"/>
+                                    <ComboBoxItem x:Name="buildPickaxe" Content="采矿时间到"/>
+                                    <ComboBoxItem x:Name="buildFurnace" Content="热门话题"/>
+                                    <ComboBoxItem x:Name="acquireIron" Content="来硬的"/>
+                                    <ComboBoxItem x:Name="buildHoe" Content="耕种时间到！"/>
+                                    <ComboBoxItem x:Name="makeBread" Content="烤面包"/>
+                                    <ComboBoxItem x:Name="bakeCake" Content="蛋糕是个谎言"/>
+                                    <ComboBoxItem x:Name="buildBetterPickaxe" Content="获得升级" />
+                                    <ComboBoxItem x:Name="cookFish" Content="美味的鱼儿"/>
+                                    <ComboBoxItem x:Name="onARail" Content="在铁路上"/>
+                                    <ComboBoxItem x:Name="buildSword" Content="出击时间到！"/>
+                                    <ComboBoxItem x:Name="killEnemy" Content="怪物猎人"/>
+                                    <ComboBoxItem x:Name="killCow" Content="斗牛士"/>
+                                    <ComboBoxItem x:Name="flyPig" Content="当猪飞的时候！"/>
+                                    <ComboBoxItem x:Name="snipeSkeleton" Content="狙击手的对决"/>
+                                    <ComboBoxItem x:Name="diamonds" Content="钻石！"/>
+                                    <ComboBoxItem x:Name="portal" Content="我们需要再深入些"/>
+                                    <ComboBoxItem x:Name="ghast" Content="见鬼去吧"/>
+                                    <ComboBoxItem x:Name="blazeRod" Content="与火共舞"/>
+                                    <ComboBoxItem x:Name="potion" Content="本地的酿造厂" />
+                                    <ComboBoxItem x:Name="theEnd" Content="结束了？" />
+                                    <ComboBoxItem x:Name="theEnd2" Content="结束了。"/>
+                                    <ComboBoxItem x:Name="enchantments" Content= "附魔师" />
+                                    <ComboBoxItem x:Name="overkill" Content="赶尽杀绝"/>
+                                    <ComboBoxItem x:Name="bookcase" Content="图书管理员"/>
+                                    <ComboBoxItem x:Name="exploreAllBiomes" Content="探索的时光"/>
+                                    <ComboBoxItem x:Name="spawnWither" Content="开始了？"/>
+                                    <ComboBoxItem x:Name="killWither" Content="开始了。"/>
+                                    <ComboBoxItem x:Name="fullBeacon" Content="信标工程师"/>
+                                    <ComboBoxItem x:Name="breedCow" Content="种群恢复"/>
+                                    <ComboBoxItem x:Name="diamondsToYou" Content="给你钻石！"/>
+                                    <ComboBoxItem x:Name="overpowered" Content="君临天下"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <Grid Margin="6,248,255,74">
+                                <RadioButton x:Name="take" Content="消除成就/统计" HorizontalAlignment="Left" Margin="106,0,0,0" VerticalAlignment="Top" BorderBrush="Red"/>
+                                <RadioButton x:Name="give" Content="给予成就/统计" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" BorderBrush="Lime"/>
+                            </Grid>
+                            <GroupBox Header="      统计数据" HorizontalAlignment="Left" Margin="241,273,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="12">
+                                <ComboBox x:Name="Stat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" FontSize="16" SelectedIndex="0">
+                                    <ComboBoxItem x:Name="leaveGame" Content="游戏退出次数"/>
+                                    <ComboBoxItem x:Name="playOneMinute" Content="游戏时间（分钟）"/>
+                                    <ComboBoxItem x:Name="imeSinceDeath" Content="上次死亡时间"/>
+                                    <ComboBoxItem x:Name="walkOneCm" Content="行走距离"/>
+                                    <ComboBoxItem x:Name="crouchOneCm" Content="潜行距离"/>
+                                    <ComboBoxItem x:Name="sprintOneCm" Content="疾跑距离"/>
+                                    <ComboBoxItem x:Name="swimOneCm" Content="游泳距离"/>
+                                    <ComboBoxItem x:Name="fallOneCm" Content="掉落高度"/>
+                                    <ComboBoxItem x:Name="climbOneCm" Content="攀爬高度"/>
+                                    <ComboBoxItem x:Name="flyOneCm" Content="飞行距离"/>
+                                    <ComboBoxItem x:Name="diveOneCm" Content="潜水距离"/>
+                                    <ComboBoxItem x:Name="minecartOneCm" Content="坐矿车移动距离"/>
+                                    <ComboBoxItem x:Name="boatOneCm" Content="坐船移动距离"/>
+                                    <ComboBoxItem x:Name="pigOneCm" Content="骑猪移动距离"/>
+                                    <ComboBoxItem x:Name="horseOneCm" Content="骑马移动距离"/>
+                                    <ComboBoxItem x:Name="jump" Content="跳跃次数"/>
+                                    <ComboBoxItem x:Name="drop" Content="物品掉落"/>
+                                    <ComboBoxItem x:Name="damageDealt" Content="造成伤害"/>
+                                    <ComboBoxItem x:Name="amageTaken" Content="受到伤害"/>
+                                    <ComboBoxItem x:Name="deaths" Content="死亡次数"/>
+                                    <ComboBoxItem x:Name="mobKills" Content="生物击杀数"/>
+                                    <ComboBoxItem x:Name="animalsBred" Content="生物繁殖数"/>
+                                    <ComboBoxItem x:Name="playerKills" Content="玩家击杀数"/>
+                                    <ComboBoxItem x:Name="fishCaught" Content="捕鱼数"/>
+                                    <ComboBoxItem x:Name="unkFished" Content="钓垃圾"/>
+                                    <ComboBoxItem x:Name="treasureFished" Content="钓宝藏"/>
+                                    <ComboBoxItem x:Name="talkedToVillager" Content="与村民说话"/>
+                                    <ComboBoxItem x:Name="tradedWithVillager" Content="与村民交易"/>
+                                    <ComboBoxItem x:Name="cakeSlicesEaten" Content="食用蛋糕次数"/>
+                                    <ComboBoxItem x:Name="cauldronFilled" Content="填满炼药锅"/>
+                                    <ComboBoxItem x:Name="cauldronUsed" Content="从炼药锅取水"/>
+                                    <ComboBoxItem x:Name="armorCleaned" Content="清洗盔甲次数"/>
+                                    <ComboBoxItem x:Name="bannerCleaned" Content="清洗旗帜次数"/>
+                                    <ComboBoxItem x:Name="brewingstandInteraction" Content="与酿造台互动次数"/>
+                                    <ComboBoxItem x:Name="beaconInteraction" Content="与信标互动次数"/>
+                                    <ComboBoxItem x:Name="dropperInspected" Content="搜查投掷器次数"/>
+                                    <ComboBoxItem x:Name="hopperInspected" Content="搜查漏斗次数"/>
+                                    <ComboBoxItem x:Name="dispenserInspected" Content="搜查发射器次数"/>
+                                    <ComboBoxItem x:Name="noteblockPlayed" Content="音符盒播放次数"/>
+                                    <ComboBoxItem x:Name="noteblockTuned" Content="音符盒调音次数"/>
+                                    <ComboBoxItem x:Name="flowerPotted" Content="盆栽种植数"/>
+                                    <ComboBoxItem x:Name="trappedChestTriggered" Content="陷阱箱触发次数"/>
+                                    <ComboBoxItem x:Name="enderchestOpened" Content="打开末影箱次数"/>
+                                    <ComboBoxItem x:Name="itemEnchanted" Content="物品附魔次数"/>
+                                    <ComboBoxItem x:Name="recordPlayed" Content="播放唱片次数"/>
+                                    <ComboBoxItem x:Name="furnaceInteraction" Content="与熔炉互动次数"/>
+                                    <ComboBoxItem x:Name="craftingTableInteraction" Content="与工作台互动次数"/>
+                                    <ComboBoxItem x:Name="chestOpened" Content="开箱次数"/>
+                                </ComboBox>
+                            </GroupBox>
+                            <RadioButton x:Name="achi" HorizontalAlignment="Left" Margin="11,278,0,0" VerticalAlignment="Top" Width="18" IsChecked="True"/>
+                            <RadioButton x:Name="stat" HorizontalAlignment="Left" Margin="245,278,0,0" VerticalAlignment="Top" Width="18"/>
+                            <Label Content="仅1.8及以下版本" HorizontalAlignment="Left" Margin="365,275,0,0" VerticalAlignment="Top" FontSize="11" Foreground="#FFFD0000" FontStyle="Italic"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="播放声音" Tag="pack://application:,,,/CommandsGenerator;component/images/icon19.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="10,10,0,10">
+                            <GroupBox Header="坐标" HorizontalAlignment="Left" Margin="0,141,0,0" VerticalAlignment="Top" Width="260" Custom:ControlsHelper.HeaderFontSize="12">
+                                <Grid>
+                                    <TextBlock Text="X:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,2,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocX" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="221" FontSize="16"/>
+                                    <TextBlock Text="Y:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,32,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocY" HorizontalAlignment="Left" Margin="25,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="221" FontSize="16"/>
+                                    <TextBlock Text="Z:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,62,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <tools:LocBox x:Name="LocZ" HorizontalAlignment="Left" Margin="25,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="221" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="音量/音调" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="260" Custom:ControlsHelper.HeaderFontSize="12">
+                                <Grid>
+                                    <TextBlock Text="音量：" HorizontalAlignment="Left" Margin="9,5,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="volume" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Top" FontSize="16" Width="188"/>
+                                    <TextBlock Text="音调：" HorizontalAlignment="Left" Margin="8,35,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="tune" HorizontalAlignment="Left" Margin="60,33,0,0" VerticalAlignment="Top" Width="188" FontSize="16"/>
+                                    <TextBlock Text="最小音量：" HorizontalAlignment="Left" Margin="9,69,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <Custom:NumericUpDown x:Name="min_volume" HorizontalAlignment="Left" Margin="92,66,0,0" VerticalAlignment="Top" Width="156" FontSize="16"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="声音ID" Margin="0,280,0,0" MinHeight="200" MaxHeight="800" HorizontalAlignment="Left" Width="280">
+                                <Grid>
+                                    <TextBox x:Name="sound" Margin="55,0,65,0" VerticalAlignment="Top" BorderBrush="#B241B1FF" Height="27"/>
+                                    <Button x:Name="search_sound" Content="搜索" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" BorderBrush="#B241B1FF" BorderThickness="1" ToolTip="点击后以左边文本框内的文字作为关键词搜素" Click="Playsound_search" Style="{DynamicResource SquareButtonStyle}"/>
+                                    <TextBlock Text="声音：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="7,2,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                                    <ListView x:Name="result" Margin="0,30,0,0" SelectionChanged="Select_sound"/>
+                                </Grid>
+                            </GroupBox>
+                            <CheckBox x:Name="tilde" Content="使用相对坐标" HorizontalAlignment="Left" Height="25" Margin="154,142,0,0" VerticalAlignment="Top" Width="98"/>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+                <tools:HamburgerMenuContentItem Label="附魔" Tag="pack://application:,,,/CommandsGenerator;component/images/enchant.png">
+                    <tools:HamburgerMenuContentItem.Content>
+                        <Grid Margin="5">
+                            <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Top">
+                                <TextBlock Text="等级：" FontSize="16" Foreground="{DynamicResource ForegroundBrush}" Margin="5,5,0,0"/>
+                                <Custom:NumericUpDown x:Name="en_level" Minimum="0" Maximum="3" Value="0" Width="230" Height="25" HasDecimals="False"/>
+                            </StackPanel>
+                            <GroupBox Header="附魔" Margin="1,32,0,0" Width="282" HorizontalAlignment="Left" Height="330">
+                                <TreeView x:Name="enchant">
+                                    <TreeViewItem x:Name="en1" Header="盔甲" IsExpanded="True">
+                                        <TreeViewItem x:Name="protection" Header="保护"/>
+                                        <TreeViewItem x:Name="fire_protection" Header="火焰保护"/>
+                                        <TreeViewItem x:Name="feather_falling" Header="摔落保护"/>
+                                        <TreeViewItem x:Name="blast_protection" Header="爆炸保护"/>
+                                        <TreeViewItem x:Name="projectile_protection" Header="弹射物保护"/>
+                                        <TreeViewItem x:Name="respiration" Header="水下呼吸"/>
+                                        <TreeViewItem x:Name="aqua_affinity" Header="水下速掘"/>
+                                        <TreeViewItem x:Name="thorns" Header="荆棘"/>
+                                        <TreeViewItem x:Name="depth_strider" Header="深海探索者"/>
+                                        <TreeViewItem x:Name="frost_walker" Header="冰霜行者"/>
+                                        <TreeViewItem x:Name="curse_of_binding" Header="绑定"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem x:Name="en2" Header="武器" IsExpanded="True">
+                                        <TreeViewItem x:Name="sharpness" Header="锋利"/>
+                                        <TreeViewItem x:Name="smite" Header="亡灵杀手"/>
+                                        <TreeViewItem x:Name="bane_of_arthropods" Header="节肢杀手"/>
+                                        <TreeViewItem x:Name="knockback" Header="击退"/>
+                                        <TreeViewItem x:Name="fire_aspect" Header="火焰附加"/>
+                                        <TreeViewItem x:Name="looting" Header="抢夺"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem x:Name="en3" Header="工具" IsExpanded="True">
+                                        <TreeViewItem x:Name="unbreaking" Header="耐久"/>
+                                        <TreeViewItem x:Name="efficiency" Header="效率"/>
+                                        <TreeViewItem x:Name="silk_touch" Header="精准采集"/>
+                                        <TreeViewItem x:Name="fortune" Header="时运"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem x:Name="en4" Header="弓" IsExpanded="True">
+                                        <TreeViewItem x:Name="power" Header="力量"/>
+                                        <TreeViewItem x:Name="punch" Header="冲击"/>
+                                        <TreeViewItem x:Name="flame" Header="火矢"/>
+                                        <TreeViewItem x:Name="infinity" Header="无限"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem x:Name="en5" Header="鱼竿" IsExpanded="True">
+                                        <TreeViewItem x:Name="luck_of_the_sea" Header="海之眷顾"/>
+                                        <TreeViewItem x:Name="lure" Header="钓饵"/>
+                                    </TreeViewItem>
+                                    <TreeViewItem x:Name="en6" Header="其他" IsExpanded="True">
+                                        <TreeViewItem x:Name="mending" Header="经验修补"/>
+                                        <TreeViewItem x:Name="curse_of_vanishing" Header="消失诅咒"/>
+                                    </TreeViewItem>
+                                </TreeView>
+                            </GroupBox>
+                        </Grid>
+                    </tools:HamburgerMenuContentItem.Content>
+                </tools:HamburgerMenuContentItem>
+            </Custom:HamburgerMenuItemCollection>
+        </Custom:HamburgerMenu.ItemsSource>
+    </Custom:HamburgerMenu>
+</DockPanel>

@@ -1,0 +1,49 @@
+﻿<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="MinecraftToolsBox.Commands.Tellraw"
+    mc:Ignorable="d" d:DesignWidth="960">
+    <Button x:Name="c" HorizontalAlignment="Left" Height="30" Margin="204,0,0,0" VerticalAlignment="Top" Width="60">
+        <Grid Margin="0,-5">
+            <ComboBox x:Name="TextColor" SelectedIndex="15" MinHeight="10" MinWidth="15" Width="50" BorderThickness="0" Margin="0" HorizontalAlignment="Left">
+                <ComboBoxItem ToolTip="white" Background="White" Height="20" Width="20" Margin="0,0,57,-20" BorderBrush="Black" BorderThickness="1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_blue" Background="#FF0000AA" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_green" Background="#FF00AA00" Height="20" Margin="39,-2,19,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_aqua" Background="#FF00AAAA" Height="20" Margin="58,-22,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_red" Background="#FFAA0000" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_purple" Background="#FFAA00AA" Height="20" Margin="20,-2,38,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="gold" Background="#FFFFAA00" Height="20" Margin="39,-42,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="gray" Background="#FFAAAAAA" Height="20" Margin="58,-23,0,-1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_gray" Background="#FF555555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="blue" Background="#FF5555FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="green" Background="#FF55FF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="aqua" Background="#FF55FFFF" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="red" Background="#FFFF5555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="light_purple" Background="#FFFF55FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="yellow" Background="#FFFFFF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="black" Background="Black" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+            </ComboBox>
+            <Image Height="22" Width="22" Stretch="None" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/fontcolor.png" ToolTip="改变颜色" HorizontalAlignment="Left"/>
+        </Grid>
+    </Button>
+    <ToggleButton x:Name="bold" Content="B" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="加粗"/>
+    <ToggleButton x:Name="italic" Content="I" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="40,0,0,0" FontStyle="Italic" FontFamily="NSimSun" FontWeight="Bold" ToolTip="斜体"/>
+    <ToggleButton x:Name="underlined" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="81,0,0,0" FontWeight="Bold" ToolTip="下划线">
+        <Image Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/underlined.png"/>
+    </ToggleButton>
+    <ToggleButton x:Name="strikethrough" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="122,0,0,0" FontWeight="Bold" ToolTip="删除线">
+        <Image x:Name="image" Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/strikethrough.png"/>
+    </ToggleButton>
+    <Button x:Name="clearStyle" Content="A" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="清除文本格式" Margin="0,0,410,0"/>
+    <ToggleButton x:Name="obfuscated" Content="O" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="163,0,0,0" FontWeight="Normal" ToolTip="随机字符"/>
+    <tools:JsonEditor x:Name="doc" Height="150" Margin="0,35,410,0" VerticalAlignment="Top" Background="#FF41547D" Foreground="White" FontSize="16"/>
+    <tools:EntitySelector x:Name="ES" HorizontalAlignment="Right" Background="#FF252526"/>
+    <Button x:Name="addSelector" Content="添加目标选择器到文本中" HorizontalAlignment="Left" Margin="0,190,0,0" VerticalAlignment="Top" Width="158" ToolTip="在右侧编辑目标选择器，添加后将会显示符合条件的实体名称"/>
+    <Button x:Name="addObjective" Content="添加计分板数据到文本中" HorizontalAlignment="Left" Margin="163,190,0,0" VerticalAlignment="Top" Width="167" ToolTip="添加一个记分板分数到文本中，将会显示符合条件的实体在指定记分板上的分数"/>
+    <Button x:Name="addEvent" Content="添加事件" HorizontalAlignment="Left" Margin="335,190,0,0" VerticalAlignment="Top" Width="167" ToolTip="为选中的文本添加点击事件与悬浮事件"/>
+</Grid>

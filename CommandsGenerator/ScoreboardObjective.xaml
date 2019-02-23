@@ -1,0 +1,271 @@
+﻿<Tools:VerticalSmoothScrollViewer
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+    xmlns:Tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    x:Class="MinecraftToolsBox.Commands.ScoreboardObjective"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Button x:Name="obj_list" Content="显示所有目标" Height="36" Margin="0,560,0,0" Width="360" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="列出所有存在的目标，以及它们的显示名称与准则" Click="Obj_list_Click" Style="{DynamicResource SquareButtonStyle}" FontSize="16"/>
+        <GroupBox Margin="0,490,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="360">
+            <GroupBox.Header>
+                <RadioButton x:Name="remove" Content="删除计分板目标" Checked="Checked" Unchecked="Checked" FontSize="16" FontWeight="Medium" FontFamily="等线"/>
+            </GroupBox.Header>
+            <TextBox x:Name="rem_tar" Custom:TextBoxHelper.Watermark="记分板内部名称"/>
+        </GroupBox>
+        <GroupBox HorizontalAlignment="Left" Margin="0,340,0,0" VerticalAlignment="Top" Width="360">
+            <GroupBox.Header>
+                <RadioButton x:Name="setdisplay" Content="设置计分板的显示位置与颜色" Checked="Checked" Unchecked="Checked" FontSize="16" FontWeight="Medium" FontFamily="等线"/>
+            </GroupBox.Header>
+            <Grid>
+                <TextBlock Text="计分板名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,6,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                <TextBox x:Name="display_tar" Margin="96,0,0,0" VerticalAlignment="Top" FontSize="16" Custom:TextBoxHelper.Watermark="内部名称"/>
+                <TextBlock Text="显示位置：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="2,39,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                <ComboBox x:Name="slot" Margin="82,36,0,0" VerticalAlignment="Top" SelectedIndex="0" FontSize="16">
+                    <ComboBoxItem x:Name="list" Content="列表" ToolTip="在玩家列表中以黄色文字在玩家名称后显示分数信息，不显示目标名称"/>
+                    <ComboBoxItem x:Name="sidebar" Content="侧边栏" ToolTip="在屏幕的右侧显示，在列表的最上方显示目标的显示名称，并显示玩家的高分榜"/>
+                    <ComboBoxItem x:Name="belowName" Content="名字下方" ToolTip="在玩家的名字之下，在他们的头之上，于目标的显示名称后面显示分数。"/>
+                    <ComboBoxItem x:Name="sbt" Content="侧边栏.队伍.&lt;颜色&gt;" ToolTip="同侧边栏，只显示指定了颜色的team玩家"/>
+                </ComboBox>
+                <TextBlock Text="颜色：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,69.84,0,0" FontStyle="Italic" Foreground="{DynamicResource ForegroundBrush}"/>
+                <ComboBox x:Name="dis_color" Margin="82,67,0,0" VerticalAlignment="Top" SelectedIndex="0" FontSize="16" ToolTip="显示位置选中 侧边栏.队伍.&lt;颜色&gt; 时填写">
+                    <ComboBoxItem Content="黑"/>
+                    <ComboBoxItem Content="深蓝" Foreground="DarkBlue"/>
+                    <ComboBoxItem Content="深绿" Foreground="DarkGreen"/>
+                    <ComboBoxItem Content="深青" Foreground="DarkCyan"/>
+                    <ComboBoxItem Content="暗红" Foreground="DarkRed"/>
+                    <ComboBoxItem Content="深紫" Foreground="DarkViolet"/>
+                    <ComboBoxItem Content="金" Foreground="Gold"/>
+                    <ComboBoxItem Content="灰" Foreground="Gray"/>
+                    <ComboBoxItem Content="深灰" Foreground="DarkGray"/>
+                    <ComboBoxItem Content="蓝" Foreground="Blue"/>
+                    <ComboBoxItem Content="绿" Foreground="Green"/>
+                    <ComboBoxItem Content="青" Foreground="Aqua"/>
+                    <ComboBoxItem Content="红" Foreground="Red"/>
+                    <ComboBoxItem Content="亮紫" Foreground="Violet"/>
+                    <ComboBoxItem Content="黄" Foreground="Yellow"/>
+                    <ComboBoxItem Content="白" Foreground="White" Background="Black"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="500">
+            <GroupBox.Header>
+                <RadioButton x:Name="add" Content="创建计分板" IsChecked="True" Checked="Checked" Unchecked="Checked" FontSize="16" FontWeight="Medium" FontFamily="等线"/>
+            </GroupBox.Header>
+            <Grid>
+                <TextBlock Text="内部名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Width="85" Foreground="{DynamicResource ForegroundBrush}" Margin="0,3,0,0"/>
+                <TextBox x:Name="name" HorizontalAlignment="Left" Height="25" Margin="85,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" FontSize="16" ToolTip="在内部计算的名称，必须唯一"/>
+                <TextBlock Text="显示名称：" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="0,33,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                <TextBox x:Name="dis_name" HorizontalAlignment="Left" Height="25" Margin="85,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" FontSize="16" ToolTip="显示在屏幕上的文字"/>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,95,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="ach" Content="成就" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <ComboBox x:Name="achievement" HorizontalAlignment="Left" FontSize="16" Margin="93,96,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
+                    <ComboBoxItem x:Name="openInventory" Content="打开物品栏"/>
+                    <ComboBoxItem x:Name="mineWood" Content="获得木头"/>
+                    <ComboBoxItem x:Name="buildWorkBench" Content="这是？工作台！"/>
+                    <ComboBoxItem x:Name="buildPickaxe" Content="采矿时间到"/>
+                    <ComboBoxItem x:Name="buildFurnace" Content="热门话题"/>
+                    <ComboBoxItem x:Name="acquireIron" Content="来硬的"/>
+                    <ComboBoxItem x:Name="buildHoe" Content="耕种时间到！"/>
+                    <ComboBoxItem x:Name="makeBread" Content="烤面包"/>
+                    <ComboBoxItem x:Name="bakeCake" Content="蛋糕是个谎言"/>
+                    <ComboBoxItem x:Name="buildBetterPickaxe" Content="获得升级" />
+                    <ComboBoxItem x:Name="cookFish" Content="美味的鱼儿"/>
+                    <ComboBoxItem x:Name="onARail" Content="在铁路上"/>
+                    <ComboBoxItem x:Name="buildSword" Content="出击时间到！"/>
+                    <ComboBoxItem x:Name="killEnemy" Content="怪物猎人"/>
+                    <ComboBoxItem x:Name="killCow" Content="斗牛士"/>
+                    <ComboBoxItem x:Name="flyPig" Content="当猪飞的时候！"/>
+                    <ComboBoxItem x:Name="snipeSkeleton" Content="狙击手的对决"/>
+                    <ComboBoxItem x:Name="diamonds" Content="钻石！"/>
+                    <ComboBoxItem x:Name="portal" Content="我们需要再深入些"/>
+                    <ComboBoxItem x:Name="ghast" Content="见鬼去吧"/>
+                    <ComboBoxItem x:Name="blazeRod" Content="与火共舞"/>
+                    <ComboBoxItem x:Name="potion" Content="本地的酿造厂" />
+                    <ComboBoxItem x:Name="theEnd" Content="结束了？" />
+                    <ComboBoxItem x:Name="theEnd2" Content="结束了。"/>
+                    <ComboBoxItem x:Name="enchantments" Content= "附魔师" />
+                    <ComboBoxItem x:Name="overkill" Content="赶尽杀绝"/>
+                    <ComboBoxItem x:Name="bookcase" Content="图书管理员"/>
+                    <ComboBoxItem x:Name="exploreAllBiomes" Content="探索的时光"/>
+                    <ComboBoxItem x:Name="spawnWither" Content="开始了？"/>
+                    <ComboBoxItem x:Name="killWither" Content="开始了。"/>
+                    <ComboBoxItem x:Name="fullBeacon" Content="信标工程师"/>
+                    <ComboBoxItem x:Name="breedCow" Content="种群恢复"/>
+                    <ComboBoxItem x:Name="diamondsToYou" Content="给你钻石！"/>
+                    <ComboBoxItem x:Name="overpowered" Content="君临天下"/>
+                </ComboBox>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,62,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="CRIT" Content="基本准则" FontSize="16" IsChecked="True" Margin="-3,-2,0,0" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,128,0,0" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111" Height="28">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="stat" Content="统计" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <ComboBox x:Name="Stat" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,129,0,0" Width="165" SelectedIndex="0" FontSize="16">
+                    <ComboBoxItem x:Name="leaveGame" Content="游戏退出次数"/>
+                    <ComboBoxItem x:Name="playOneMinute" Content="游戏时间（分钟）"/>
+                    <ComboBoxItem x:Name="imeSinceDeath" Content="上次死亡时间"/>
+                    <ComboBoxItem x:Name="walkOneCm" Content="行走距离"/>
+                    <ComboBoxItem x:Name="crouchOneCm" Content="潜行距离"/>
+                    <ComboBoxItem x:Name="sprintOneCm" Content="疾跑距离"/>
+                    <ComboBoxItem x:Name="swimOneCm" Content="游泳距离"/>
+                    <ComboBoxItem x:Name="fallOneCm" Content="掉落高度"/>
+                    <ComboBoxItem x:Name="climbOneCm" Content="攀爬高度"/>
+                    <ComboBoxItem x:Name="flyOneCm" Content="飞行距离"/>
+                    <ComboBoxItem x:Name="diveOneCm" Content="潜水距离"/>
+                    <ComboBoxItem x:Name="minecartOneCm" Content="坐矿车移动距离"/>
+                    <ComboBoxItem x:Name="boatOneCm" Content="坐船移动距离"/>
+                    <ComboBoxItem x:Name="pigOneCm" Content="骑猪移动距离"/>
+                    <ComboBoxItem x:Name="horseOneCm" Content="骑马移动距离"/>
+                    <ComboBoxItem x:Name="jump" Content="跳跃次数"/>
+                    <ComboBoxItem x:Name="drop" Content="物品掉落"/>
+                    <ComboBoxItem x:Name="damageDealt" Content="造成伤害"/>
+                    <ComboBoxItem x:Name="damageTaken" Content="受到伤害"/>
+                    <ComboBoxItem x:Name="deaths" Content="死亡次数"/>
+                    <ComboBoxItem x:Name="mobKills" Content="生物击杀数"/>
+                    <ComboBoxItem x:Name="animalsBred" Content="生物繁殖数"/>
+                    <ComboBoxItem x:Name="playerKills" Content="玩家击杀数"/>
+                    <ComboBoxItem x:Name="fishCaught" Content="捕鱼数"/>
+                    <ComboBoxItem x:Name="unkFished" Content="钓垃圾"/>
+                    <ComboBoxItem x:Name="treasureFished" Content="钓宝藏"/>
+                    <ComboBoxItem x:Name="talkedToVillager" Content="与村民说话"/>
+                    <ComboBoxItem x:Name="tradedWithVillager" Content="与村民交易"/>
+                    <ComboBoxItem x:Name="cakeSlicesEaten" Content="食用蛋糕次数"/>
+                    <ComboBoxItem x:Name="cauldronFilled" Content="填满炼药锅"/>
+                    <ComboBoxItem x:Name="cauldronUsed" Content="从炼药锅取水"/>
+                    <ComboBoxItem x:Name="armorCleaned" Content="清洗盔甲次数"/>
+                    <ComboBoxItem x:Name="bannerCleaned" Content="清洗旗帜次数"/>
+                    <ComboBoxItem x:Name="brewingstandInteraction" Content="与酿造台互动次数"/>
+                    <ComboBoxItem x:Name="beaconInteraction" Content="与信标互动次数"/>
+                    <ComboBoxItem x:Name="dropperInspected" Content="搜查投掷器次数"/>
+                    <ComboBoxItem x:Name="hopperInspected" Content="搜查漏斗次数"/>
+                    <ComboBoxItem x:Name="dispenserInspected" Content="搜查发射器次数"/>
+                    <ComboBoxItem x:Name="noteblockPlayed" Content="音符盒播放次数"/>
+                    <ComboBoxItem x:Name="noteblockTuned" Content="音符盒调音次数"/>
+                    <ComboBoxItem x:Name="flowerPotted" Content="盆栽种植数"/>
+                    <ComboBoxItem x:Name="trappedChestTriggered" Content="陷阱箱触发次数"/>
+                    <ComboBoxItem x:Name="enderchestOpened" Content="打开末影箱次数"/>
+                    <ComboBoxItem x:Name="itemEnchanted" Content="物品附魔次数"/>
+                    <ComboBoxItem x:Name="recordPlayed" Content="播放唱片次数"/>
+                    <ComboBoxItem x:Name="furnaceInteraction" Content="与熔炉互动次数"/>
+                    <ComboBoxItem x:Name="craftingTableInteraction" Content="与工作台互动次数"/>
+                    <ComboBoxItem x:Name="chestOpened" Content="开箱次数"/>
+                </ComboBox>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,162,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="craft" Content="创造物品" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <TextBox x:Name="craftItem" Height="14" Margin="93,163,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" FontSize="16" Custom:TextBoxHelper.Watermark="物品名称" ToolTip="不加minecraft:"/>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,195,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="use" Content="使用物品" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <TextBox x:Name="useItem" Height="14" Margin="93,196,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" FontSize="16" Custom:TextBoxHelper.Watermark="物品名称" ToolTip="不加minecraft:"/>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,228,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="_break" Content="用坏物品" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <TextBox x:Name="breakItem" Height="14" Margin="93,229,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" FontSize="16" Custom:TextBoxHelper.Watermark="物品名称" ToolTip="不加minecraft:"/>
+                <GroupBox HorizontalAlignment="Left" Height="28" Margin="0,261,0,0" VerticalAlignment="Top" Width="259" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="mine" Content="破坏方块" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                </GroupBox>
+                <TextBox x:Name="mineBlock" Height="14" Margin="93,262,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" FontSize="16" Custom:TextBoxHelper.Watermark="方块名称" ToolTip="不加minecraft:"/>
+                <GroupBox HorizontalAlignment="Left" Height="111" Margin="273,0,0,0" VerticalAlignment="Top" Width="215" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="entity" Content="实体" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <RadioButton x:Name="killEntity" Content="杀死实体" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12"/>
+                        <RadioButton x:Name="entityKilledBy" Content="被实体杀死" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" FontSize="12"/>
+                        <ComboBox x:Name="Entity" Margin="0,38,0,0" VerticalAlignment="Top" SelectedIndex="0">
+                            <ComboBoxItem x:Name="Bat" Content="蝙蝠"/>
+                            <ComboBoxItem x:Name="Blaze" Content="烈焰人"/>
+                            <ComboBoxItem x:Name="CaveSpider" Content="洞穴蜘蛛"/>
+                            <ComboBoxItem x:Name="Chicken" Content="鸡"/>
+                            <ComboBoxItem x:Name="Cow" Content="牛"/>
+                            <ComboBoxItem x:Name="Creeper" Content="爬行者"/>
+                            <ComboBoxItem x:Name="Enderman" Content="末影人"/>
+                            <ComboBoxItem x:Name="Endermite" Content="末影螨"/>
+                            <ComboBoxItem x:Name="EntiyHorse" Content="马"/>
+                            <ComboBoxItem x:Name="Ghast" Content="恶魂"/>
+                            <ComboBoxItem x:Name="Guardian" Content="守卫者" />
+                            <ComboBoxItem x:Name="LavaSlime" Content="岩浆怪"/>
+                            <ComboBoxItem x:Name="MushroomCow" Content="蘑菇牛"/>
+                            <ComboBoxItem x:Name="Ozelot" Content="豹猫"/>
+                            <ComboBoxItem x:Name="Pig" Content="猪"/>
+                            <ComboBoxItem x:Name="PigZombie" Content="僵尸猪人"/>
+                            <ComboBoxItem x:Name="Rabbit" Content="兔子"/>
+                            <ComboBoxItem x:Name="Sheep" Content="羊"/>
+                            <ComboBoxItem x:Name="Silverfish" Content="蠹虫"/>
+                            <ComboBoxItem x:Name="Skeleton" Content="骷髅"/>
+                            <ComboBoxItem x:Name="Slime" Content="史莱姆"/>
+                            <ComboBoxItem x:Name="Spider" Content="蜘蛛"/>
+                            <ComboBoxItem x:Name="Squid" Content="墨鱼"/>
+                            <ComboBoxItem x:Name="Villager" Content="村民"/>
+                            <ComboBoxItem x:Name="Witch" Content="女巫"/>
+                            <ComboBoxItem x:Name="Wolf" Content="狼"/>
+                            <ComboBoxItem x:Name="Zombie" Content="僵尸" />
+                        </ComboBox>
+                        <TextBlock Text="实体名称：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox HorizontalAlignment="Left" Margin="273,123,0,0" VerticalAlignment="Top" Width="215" Background="#E5DA9111" ToolTip="高级准则" BorderBrush="#E5DA9111">
+                    <GroupBox.Header>
+                        <RadioButton x:Name="team" Content="团队" Margin="-3,-2,0,0" FontSize="16" Checked="Checked2" Unchecked="Checked2"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <RadioButton x:Name="teamkill" Content="杀死队伍成员" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0"/>
+                        <RadioButton x:Name="killedByTeam" Content="被队伍成员杀死" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top"/>
+                        <TextBlock Text="队伍颜色：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,39.76,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+                        <ComboBox x:Name="color" Margin="0,55,0,0" VerticalAlignment="Top" SelectedIndex="0" FontSize="16">
+                            <ComboBoxItem Content="黑"/>
+                            <ComboBoxItem Content="深蓝" Foreground="DarkBlue"/>
+                            <ComboBoxItem Content="深绿" Foreground="DarkGreen"/>
+                            <ComboBoxItem Content="深青" Foreground="DarkCyan"/>
+                            <ComboBoxItem Content="暗红" Foreground="DarkRed"/>
+                            <ComboBoxItem Content="深紫" Foreground="DarkViolet"/>
+                            <ComboBoxItem Content="金" Foreground="Gold"/>
+                            <ComboBoxItem Content="灰" Foreground="Gray"/>
+                            <ComboBoxItem Content="深灰" Foreground="DarkGray"/>
+                            <ComboBoxItem Content="蓝" Foreground="Blue"/>
+                            <ComboBoxItem Content="绿" Foreground="Green"/>
+                            <ComboBoxItem Content="青" Foreground="Aqua"/>
+                            <ComboBoxItem Content="红" Foreground="Red"/>
+                            <ComboBoxItem Content="亮紫" Foreground="Violet"/>
+                            <ComboBoxItem Content="黄" Foreground="Yellow"/>
+                            <ComboBoxItem Content="白" Foreground="White" Background="Black"/>
+                        </ComboBox>
+                    </Grid>
+                </GroupBox>
+                <ComboBox x:Name="crit" HorizontalAlignment="Left" Margin="93,63,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0" FontSize="16">
+                    <ComboBoxItem x:Name="dummy" Content="虚拟型" ToolTip="只能通过命令修改分数"/>
+                    <ComboBoxItem x:Name="trigger" Content="触发器" ToolTip="只能通过/trigger命令修改分数"/>
+                    <ComboBoxItem x:Name="deathCount" Content="死亡计数" ToolTip="玩家死亡时自动增加分数"/>
+                    <ComboBoxItem x:Name="playerKillCount" Content="杀人计数" ToolTip="玩家杀死其他玩家时自动增加分数"/>
+                    <ComboBoxItem x:Name="totalKillCount" Content="杀怪计数" ToolTip="玩家杀死其他生物时自动增加分数"/>
+                    <ComboBoxItem x:Name="health" Content="生命值" ToolTip="根据玩家的生命值变化"/>
+                    <ComboBoxItem x:Name="xp" Content="经验值" ToolTip="根据玩家的经验值变化"/>
+                    <ComboBoxItem x:Name="level" Content="等级" ToolTip="对应玩家的等级"/>
+                    <ComboBoxItem x:Name="food" Content="饱食度" ToolTip="代表玩家的饱食度，在0-20之间"/>
+                    <ComboBoxItem x:Name="air" Content="氧气值" ToolTip="对应玩家的氧气值，0-300之间"/>
+                    <ComboBoxItem x:Name="armor" Content="盔甲值" ToolTip="对应玩家的盔甲值"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Tools:VerticalSmoothScrollViewer>

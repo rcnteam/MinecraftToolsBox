@@ -1,0 +1,11 @@
+﻿<Grid x:Class="MinecraftToolsBox.Database.Template"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MinecraftToolsBox.Database"
+             mc:Ignorable="d" 
+             d:DesignHeight="25" d:DesignWidth="332">
+    <Button x:Name="Button" Content="" HorizontalAlignment="Left" Margin="257,0,0,0" VerticalAlignment="Top" Width="75" FontSize="11" ToolTip=""/>
+    <TextBox x:Name="data" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Margin="0,0,0,-1"/>
+</Grid>

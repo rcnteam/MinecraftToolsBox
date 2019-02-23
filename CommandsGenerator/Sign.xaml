@@ -1,0 +1,149 @@
+﻿<Grid        
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"
+    x:Class="MinecraftToolsBox.Commands.Sign"
+    mc:Ignorable="d" Height="355" Width="1040">
+    <Grid.Resources>
+        <Style x:Key="ColorPickerItemStyle" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Background" Value="{DynamicResource WhiteBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="MinHeight" Value="22"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="RenderOptions.ClearTypeHint" Value="{Binding (RenderOptions.ClearTypeHint), FallbackValue=Auto, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Grid Background="{TemplateBinding Background}" RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
+                            <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Grid Margin="{TemplateBinding BorderThickness}">
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Grid.Resources>
+    <Image x:Name="SIGN" HorizontalAlignment="Left" Height="160" Margin="0,35,0,0" VerticalAlignment="Top" Width="322" Source="pack://application:,,,/MTB.TranslationTools;component/sign.png"/>
+    <GroupBox Header="执行命令" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,200,0,0" Width="322" Height="155">
+        <Grid>
+            <TextBox x:Name="Cmd1" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="命令1"/>
+            <TextBox x:Name="Cmd2" Margin="0,30,0,0" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="命令2"/>
+            <TextBox x:Name="Cmd3" Margin="0,60,0,0" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="命令3"/>
+            <TextBox x:Name="Cmd4" Margin="0,90,0,0" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="命令4"/>
+        </Grid>
+    </GroupBox>
+    <Button x:Name="getTag_Item" Content="生成物品标签" HorizontalAlignment="Left" Margin="327,327,0,0" VerticalAlignment="Top" Width="150" ToolTip="获取告示牌物品NBT，可用于物品生成器" Click="GetTag_Click"  FontWeight="Normal"/>
+    <Button x:Name="getTag_Block" Content="生成方块标签" HorizontalAlignment="Left" Margin="485,327,0,0" VerticalAlignment="Top" Width="150" ToolTip="获取告示牌方块NBT，可用于方块处理" Click="GetTag_Click" FontWeight="Normal"/>
+    <Button x:Name="c" HorizontalAlignment="Left" Height="30" Margin="204,0,0,0" VerticalAlignment="Top" Width="60">
+        <Grid Margin="0,-5">
+            <ComboBox x:Name="TextColor" SelectedIndex="15" MinHeight="10" MinWidth="15" Width="50" BorderThickness="0" Margin="0" HorizontalAlignment="Left">
+                <ComboBoxItem ToolTip="white" Background="White" Height="20" Width="20" Margin="0,0,57,-20" BorderBrush="Black" BorderThickness="1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_blue" Background="#FF0000AA" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_green" Background="#FF00AA00" Height="20" Margin="39,-2,19,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_aqua" Background="#FF00AAAA" Height="20" Margin="58,-22,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_red" Background="#FFAA0000" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_purple" Background="#FFAA00AA" Height="20" Margin="20,-2,38,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="gold" Background="#FFFFAA00" Height="20" Margin="39,-42,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="gray" Background="#FFAAAAAA" Height="20" Margin="58,-23,0,-1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="dark_gray" Background="#FF555555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="blue" Background="#FF5555FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="green" Background="#FF55FF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="aqua" Background="#FF55FFFF" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="red" Background="#FFFF5555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="light_purple" Background="#FFFF55FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="yellow" Background="#FFFFFF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                <ComboBoxItem ToolTip="black" Background="Black" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+            </ComboBox>
+            <Image Height="22" Width="22" Stretch="None" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/fontcolor.png" ToolTip="改变颜色" HorizontalAlignment="Left"/>
+        </Grid>
+    </Button>
+    <ToggleButton x:Name="bold" Content="B" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="加粗"/>
+    <ToggleButton x:Name="italic" Content="I" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="40,0,0,0" FontStyle="Italic" FontFamily="NSimSun" FontWeight="Bold" ToolTip="斜体"/>
+    <ToggleButton x:Name="underlined" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="81,0,0,0" FontWeight="Bold" ToolTip="下划线">
+        <Image Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/underlined.png"/>
+    </ToggleButton>
+    <ToggleButton x:Name="strikethrough" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="122,0,0,0" FontWeight="Bold" ToolTip="删除线">
+        <Image x:Name="image" Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/strikethrough.png"/>
+    </ToggleButton>
+    <Button x:Name="clearStyle" Content="A" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="清除文本格式" Margin="292,0,0,0"/>
+    <ToggleButton x:Name="obfuscated" Content="O" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="163,0,0,0" FontWeight="Normal" ToolTip="随机字符"/>
+    <tools:EntitySelector x:Name="ES" HorizontalAlignment="Right" Margin="0,0,0,5"/>
+    <tools:VerticalSmoothScrollViewer HorizontalAlignment="Left" Height="322" Margin="327,0,0,0" VerticalAlignment="Top" Width="313">
+        <Grid>
+            <GroupBox Header="    通过replaceitem填充物品栏" Margin="0,84,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16">
+                <Grid>
+                    <Label Content="物品栏编号：" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top"/>
+                    <tools:NumTextBox x:Name="ivt" Margin="82,0,0,0"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="    通过give获取物品"  VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16" Margin="0,5,0,0">
+                <Grid>
+                    <Label Content="数量：" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top"/>
+                    <Custom:NumericUpDown x:Name="amount" FontSize="16" Minimum="0" Maximum="64" Value="1" Margin="46,0,0,0"/>
+                </Grid>
+            </GroupBox>
+            <RadioButton x:Name="give" Content="RadioButton" HorizontalAlignment="Left" Height="18" Margin="5,13,0,0" VerticalAlignment="Top" Width="18" IsChecked="True"/>
+            <RadioButton x:Name="item" Content="RadioButton" HorizontalAlignment="Left" Height="18" Margin="4,92,0,0" VerticalAlignment="Top" Width="18"/>
+            <GroupBox Header="    通过setblock/blockdata改变" Margin="0,165,0,0" VerticalAlignment="Top" Custom:ControlsHelper.HeaderFontSize="16">
+                <Grid>
+                    <Canvas x:Name="direction" HorizontalAlignment="Left" Height="120" Margin="0,122,0,0" VerticalAlignment="Top" Width="120">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/CommandsGenerator;component/images/face.png"/>
+                        </Canvas.Background>
+                        <RadioButton x:Name="N" Content="" Canvas.Left="51" Width="18" Canvas.Top="1"/>
+                        <RadioButton x:Name="S" Content="" Canvas.Left="51" Width="18" Canvas.Top="97"/>
+                        <RadioButton x:Name="W" Content="" Width="18" Canvas.Top="50" Canvas.Left="5"/>
+                        <RadioButton x:Name="E" Content="" Canvas.Left="94" Width="18" Canvas.Top="50"/>
+                        <RadioButton x:Name="NEN" Content="" Canvas.Left="69" Width="18" Canvas.Top="4"/>
+                        <RadioButton x:Name="NE" Content="" Canvas.Left="82" Width="18" Canvas.Top="17"/>
+                        <RadioButton x:Name="NEE" Content="" Canvas.Left="92" Width="18" Canvas.Top="32"/>
+                        <RadioButton x:Name="SEE" Content="" Canvas.Left="92" Width="18" Canvas.Top="68"/>
+                        <RadioButton x:Name="SE" Content="" Canvas.Left="82" Width="18" Canvas.Top="83"/>
+                        <RadioButton x:Name="SES" Content="" Canvas.Left="69" Width="18" Canvas.Top="96"/>
+                        <RadioButton x:Name="NWN" Content="" Canvas.Left="33" Width="18" Canvas.Top="4"/>
+                        <RadioButton x:Name="NW" Content="" Canvas.Left="20" Width="18" Canvas.Top="17"/>
+                        <RadioButton x:Name="NWW" Content="" Canvas.Left="11" Width="18" Canvas.Top="33"/>
+                        <RadioButton x:Name="SWW" Content="" Canvas.Left="11" Width="18" Canvas.Top="68"/>
+                        <RadioButton x:Name="SW" Content="" Canvas.Left="20" Width="18" Canvas.Top="83"/>
+                        <RadioButton x:Name="SWS" Content="" Canvas.Left="33" Width="18" Canvas.Top="96"/>
+                        <Label Content="方向" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="37" Foreground="White" Canvas.Left="-4" Canvas.Top="-6"/>
+                    </Canvas>
+                    <RadioButton x:Name="wallsign" Content="挂在墙上" HorizontalAlignment="Left" Margin="140,122,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" FontSize="16" Click="SignChanged"/>
+                    <RadioButton x:Name="standingsign" Content="立在地上" HorizontalAlignment="Left" Margin="140,142,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="True" FontSize="16" Click="SignChanged"/>
+                    <Image x:Name="stand" HorizontalAlignment="Right" Height="53" Margin="0,122,0,0" VerticalAlignment="Top" Width="55" Source="pack://application:,,,/CommandsGenerator;component/images/Standing_Sign.png"/>
+                    <Label x:Name="X" Content="X:" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="26" FontSize="16" Margin="0,20,0,0" Foreground="White"/>
+                    <Label x:Name="Y" Content="Y:" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="26" FontSize="16" Margin="0,50,0,0" Foreground="White"/>
+                    <Label x:Name="Z" Content="Z:" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="26" FontSize="16" Margin="0,79,0,0" Foreground="White"/>
+                    <tools:LocBox x:Name="LocX" HorizontalAlignment="Left" Margin="30,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="208" FontSize="16"/>
+                    <tools:LocBox x:Name="LocY" HorizontalAlignment="Left" Margin="30,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="208" FontSize="16"/>
+                    <tools:LocBox x:Name="LocZ" HorizontalAlignment="Left" Margin="30,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="208" FontSize="16"/>
+                    <CheckBox x:Name="tilde" Content="使用相对坐标" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="126" FontSize="16" Foreground="White"/>
+                    <Border BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Left" Height="34" Margin="140,198,0,0" VerticalAlignment="Top" Width="111">
+                        <CheckBox x:Name="isData" Content="使用blockdata&#xA;更改方块数据" Foreground="White" Click="Button_Click"/>
+                    </Border>
+                </Grid>
+            </GroupBox>
+            <RadioButton x:Name="block" Content="RadioButton" HorizontalAlignment="Left" Height="18" Margin="4,173,0,0" VerticalAlignment="Top" Width="18"/>
+        </Grid>
+    </tools:VerticalSmoothScrollViewer>
+    <tools:JsonEditor x:Name="line1" HorizontalAlignment="Left" FontSize="16" Background="#00000000" Margin="10,50,0,0" VerticalAlignment="Top" Width="302" AcceptsReturn="False" GotFocus="FocusedChanged" KeyDown="EnterPressed" BorderBrush="#4CABADB3"/>
+    <tools:JsonEditor x:Name="line2" HorizontalAlignment="Left" FontSize="16" Background="#00000000" Margin="10,85,0,0" VerticalAlignment="Top" Width="302" AcceptsReturn="False" GotFocus="FocusedChanged" KeyDown="EnterPressed" BorderBrush="#4CABADB3"/>
+    <tools:JsonEditor x:Name="line3" HorizontalAlignment="Left" FontSize="16" Background="#00000000" Margin="10,120,0,0" VerticalAlignment="Top" Width="302" AcceptsReturn="False" GotFocus="FocusedChanged" KeyDown="EnterPressed" BorderBrush="#4CABADB3"/>
+    <tools:JsonEditor x:Name="line4" HorizontalAlignment="Left" FontSize="16" Background="#00000000" Margin="10,155,0,0" VerticalAlignment="Top" Width="302" AcceptsReturn="False" GotFocus="FocusedChanged" KeyDown="EnterPressed" BorderBrush="#4CABADB3"/>
+    <Button x:Name="addSelector" Content="添加目标选择器" HorizontalAlignment="Left" Margin="88,200,0,0" VerticalAlignment="Top" Width="105" ToolTip="在右侧编辑目标选择器，添加后将会显示符合条件的实体名称" MinHeight="27" Height="27" FontSize="11"/>
+    <Button x:Name="addObjective" Content="添加计分板数据" HorizontalAlignment="Left" Margin="206,200,0,0" VerticalAlignment="Top" Width="110" ToolTip="添加一个记分板分数到文本中，将会显示符合条件的实体在指定记分板上的分数" MinHeight="27" Height="27" FontSize="11"/>
+</Grid>

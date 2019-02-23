@@ -1,0 +1,68 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:Commands="clr-namespace:MTB.Commands"
+      xmlns:Tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK"  x:Class="MinecraftToolsBox.Commands.Firework"
+      mc:Ignorable="d" d:DesignHeight="370" d:DesignWidth="960">
+    <Grid.Resources>
+        <Commands:RowToIndexConv x:Key="RowToIndexConv"/>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <TextBlock HorizontalAlignment="Left" Margin="10,12,0,0" Text="飞行时间：" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}"/>
+    <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" Text="飞行高度：" VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource ForegroundBrush}" Grid.Column="1"/>
+    <Custom:NumericUpDown Margin="90,10,0,0" VerticalAlignment="Top" Custom:TextBoxHelper.Watermark="Ticks"/>
+    <Custom:NumericUpDown x:Name="height" Margin="90,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+    <Button x:Name="getINBT" Content="获取物品NBT" Margin="10,9" VerticalAlignment="Top" Grid.Column="2"/>
+    <Button Content="获取实体NBT" Margin="10,9" VerticalAlignment="Top" Grid.Column="3"/>
+    <DataGrid x:Name="dg" Margin="0,50,0,0" Grid.ColumnSpan="4" CanUserSortColumns="False" AutoGenerateColumns="False" CanUserAddRows="True" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" HeadersVisibility="All" CanUserDeleteRows="True" CanUserReorderColumns="False" ItemsSource="{Binding}" AddingNewItem="Fireworks_AddingNewItem" UnloadingRow="Fireworks_UnloadingRow">
+        <DataGrid.RowHeaderTemplate>
+            <DataTemplate>
+                <TextBlock Margin="2" Text="{Binding Converter={StaticResource RowToIndexConv}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"/>
+            </DataTemplate>
+        </DataGrid.RowHeaderTemplate>
+        <DataGrid.Columns>
+            <DataGridCheckBoxColumn Header="踪迹效果" Width="70" Binding="{Binding Trail}"/>
+            <DataGridCheckBoxColumn Header="闪烁效果" Width="70" Binding="{Binding Flicker}"/>
+            <DataGridComboBoxColumn x:Name="cbc" Header="图案类型" Width="130" SelectedItemBinding="{Binding Type}" TextBinding="{Binding Type,UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGridTemplateColumn Width="*" IsReadOnly="True">
+                <DataGridTemplateColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="爆炸时颜色" Margin="0,7,0,0"/>
+                            <Button Content="编辑选中项" Click="Button_Click" Margin="3,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.HeaderTemplate>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Label Background="{Binding Color}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="爆炸后渐变色" Margin="0,7,0,0"/>
+                            <Button Content="编辑选中项" Click="Button_Click2" Margin="3,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.HeaderTemplate>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Label Background="{Binding FadeColor}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</Grid>

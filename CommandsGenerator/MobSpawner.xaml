@@ -1,0 +1,61 @@
+﻿<Grid
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+      xmlns:Commands="clr-namespace:MTB.Commands" x:Class="MinecraftToolsBox.Commands.MobSpawner"
+      mc:Ignorable="d" d:DesignHeight="355" d:DesignWidth="1050">
+    <Grid.Resources>
+        <Commands:RowToIndexConv x:Key="RowToIndexConv"/>
+    </Grid.Resources>
+    <GroupBox Header="生成条件" HorizontalAlignment="Left" Margin="10" Width="220" Custom:ControlsHelper.HeaderFontSize="16" FontSize="16">
+        <Grid >
+            <TextBlock HorizontalAlignment="Left" Text="生成范围：" VerticalAlignment="Top" Margin="0,4,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="range" Margin="80,0,0,0" VerticalAlignment="Top" HasDecimals="False" Value="4" Minimum="1" Maximum="32767" ToolTip="刷怪箱可以随机生成实体的范围，生成区域为正方体。该参数表示刷怪箱到正方体一个面的距离"/>
+            <TextBlock HorizontalAlignment="Left" Text="实体上限：" VerticalAlignment="Top" Margin="0,44,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="maxnearby" Margin="80,40,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="0" Maximum="32767" ToolTip="实体ID与刷怪箱EntityID相同的实体在生成范围中最大存在数量，如果周围实体数量超过该值，刷怪箱将停止生成"/>
+            <TextBlock HorizontalAlignment="Left" Text="玩家距离：" VerticalAlignment="Top" Margin="0,84,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="requiredrange" Margin="80,80,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="0" Maximum="32767" ToolTip="刷怪箱起效所需玩家与刷怪箱之间的最近距离。&#xA;值得注意的是刷怪箱将会在每一个游戏刻检查当前世界是否有玩家进入该范围。&#xA;注意：实体上限 也需要被设置。"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox Header="生成速率" HorizontalAlignment="Left" Margin="240,10" Width="220" Custom:ControlsHelper.HeaderFontSize="16" FontSize="16">
+        <Grid >
+            <TextBlock HorizontalAlignment="Left" Text="当前延迟：" VerticalAlignment="Top" Margin="0,4,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="delay" Margin="80,0,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="0" Maximum="32767" ToolTip="距离下次生成还隔有的tick&#xA;该值若为0，刷怪箱会在玩家进入它的响应范围时立刻生成"/>
+            <TextBlock HorizontalAlignment="Left" Text="生成数量：" VerticalAlignment="Top" Margin="0,44,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="count" Margin="80,40,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="0" Maximum="32767" Value="0" ToolTip="每次生成实体的数量"/>
+            <TextBlock HorizontalAlignment="Left" Text="最小延迟：" VerticalAlignment="Top" Margin="0,84,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="mindelay" Margin="80,80,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="0" Maximum="32767" ToolTip="生成延迟的随机范围的下限。可能等于 最大延迟"/>
+            <TextBlock HorizontalAlignment="Left" Text="最大延迟：" VerticalAlignment="Top" Margin="0,120,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Custom:NumericUpDown x:Name="maxdelay" Margin="80,116,0,0" VerticalAlignment="Top" HasDecimals="False" Minimum="1" Maximum="32767" ToolTip="生成延迟的随机范围的上限&#xA;警告：Minecraft将会因为此值为0而崩溃，因此请至少设置为1"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox Header="实体信息" Margin="470,10,10,10" Custom:ControlsHelper.HeaderFontSize="16" FontSize="16">
+        <Grid >
+            <TextBlock Text="权重：生成这个实体的权重，至少为1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,55,0,0" Foreground="{DynamicResource ForegroundBrush}"/>
+            <Border Background="White" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image Source="images/mobspawner.png"/>
+            </Border>
+            <DataGrid x:Name="potentials" Margin="0,105,0,0" RowHeaderWidth="20" CanUserSortColumns="False" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="True" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" HeadersVisibility="All" CanUserDeleteRows="True" CanUserReorderColumns="False" ItemsSource="{Binding}" AddingNewItem="Potentials_AddingNewItem" UnloadingRow="Potentials_UnloadingRow">
+                <DataGrid.RowHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="2" Text="{Binding Converter={StaticResource RowToIndexConv}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"/>
+                    </DataTemplate>
+                </DataGrid.RowHeaderTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="生成的实体的NBT" Width="*" Binding="{Binding NBT}"/>
+                    <Custom:DataGridNumericUpDownColumn Header="权重" Width="85" Binding="{Binding Weight}" Minimum="1"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <RadioButton Content="生成固定的实体" HorizontalAlignment="Left" Margin="105,4,0,0" VerticalAlignment="Top"/>
+            <TextBox Margin="246,0,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="从下方列表中随机生成实体" HorizontalAlignment="Left" Margin="105,35,0,0" VerticalAlignment="Top"/>
+            <Button Content="上移选中项" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" BorderBrush="#FF119EDA" Click="Button_Click" Margin="0,75,111,0"/>
+            <Button Content="下移选中项" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" Margin="0,75,0,0" BorderBrush="#FF119EDA" Click="Button_Click_1"/>
+            <Button Content="获取方块NBT" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" Margin="0,75,347,0" Click="Button_Click_2"/>
+            <Button Content="获取物品NBT" Custom:ButtonHelper.PreserveTextCase="True" HorizontalAlignment="Right" Height="25" VerticalAlignment="Top" Width="106" Style="{DynamicResource SquareButtonStyle}" FontSize="11" Margin="0,75,237,0" Click="Button_Click_3"/>
+        </Grid>
+    </GroupBox>
+</Grid>

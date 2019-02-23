@@ -1,0 +1,81 @@
+﻿<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MinecraftToolsBox.Commands"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" 
+    xmlns:tools="clr-namespace:MinecraftToolsBoxSDK;assembly=MinecraftToolsBoxSDK" 
+    x:Class="MinecraftToolsBox.Commands.Book"
+    mc:Ignorable="d" d:DesignHeight="370" d:DesignWidth="960">
+    <tools:VerticalSmoothScrollViewer Margin="0,155,405,0">
+        <WrapPanel x:Name="pageList">
+            <local:BookPage x:Name="Page1"/>
+            <Button x:Name="newPage" Content="添加一页" VerticalContentAlignment="Bottom" Width="150" Height="172" Style="{StaticResource AccentedSquareButtonStyle}" FontWeight="Light" Click="AddPage">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="pack://application:,,,/CommandsGenerator;component/images/add.png"/>
+                </Button.Background>
+            </Button>
+        </WrapPanel>
+    </tools:VerticalSmoothScrollViewer>
+    <GroupBox x:Name="INFO" Header="书本信息" Margin="0,0,752,0" VerticalAlignment="Top" Height="144" Custom:ControlsHelper.HeaderFontSize="16">
+        <Grid>
+            <Label Content="书的标题：" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="16"/>
+            <Label Content="作者信息：" HorizontalAlignment="Left" Margin="0,36,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="16"/>
+            <Label Content="获取数量：" HorizontalAlignment="Left" Margin="0,71,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="16"/>
+            <Custom:NumericUpDown x:Name="count" Margin="90,71,0,0" VerticalAlignment="Top" Height="30" FontSize="16" Value="1" Minimum="1" Maximum="64"/>
+            <TextBox x:Name="author" Height="30" Margin="90,36,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox x:Name="title" Height="30" Margin="90,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+        </Grid>
+    </GroupBox>
+    <GroupBox x:Name="Text" Header="编辑" HorizontalAlignment="Right" Margin="0,0,405,0" VerticalAlignment="Top" Height="144" Width="342" Custom:ControlsHelper.HeaderFontSize="16">
+        <Grid>
+            <Button HorizontalAlignment="Left" Margin="240,35,-6,0" VerticalAlignment="Top" Height="30" Width="90" Click="DeleteSelectedPage">
+                <StackPanel Orientation="Horizontal" Margin="-5">
+                    <Image Source="pack://application:,,,/CommandsGenerator;component/images/delete.png" Height="24" Width="25"/>
+                    <TextBlock Text="删除选中页" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Custom:NumericUpDown x:Name="PageNum" Minimum="1" Maximum="50" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Width="134" Custom:TextBoxHelper.Watermark="指定页码" ToolTip="移动当前页到指定位置" FontSize="16" Height="30" HasDecimals="False"/>
+            <Button Content="移动书页" HorizontalAlignment="Left" Margin="140,35,0,0" VerticalAlignment="Top" Width="95" ToolTip="移动当前页到指定的位置" Click="MoveSelectedPage" Height="30"/>
+            <ToggleButton x:Name="bold" Content="B" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="加粗"/>
+            <ToggleButton x:Name="italic" Content="I" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="35,0,0,0" FontStyle="Italic" FontFamily="NSimSun" FontWeight="Bold" ToolTip="斜体"/>
+            <ToggleButton x:Name="underlined" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="70,0,0,0" FontWeight="Bold" ToolTip="下划线">
+                <Image Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/underlined.png"/>
+            </ToggleButton>
+            <ToggleButton x:Name="strikethrough" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="105,0,0,0" FontWeight="Bold" ToolTip="删除线">
+                <Image x:Name="image" Height="22" Width="22" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/strikethrough.png"/>
+            </ToggleButton>
+            <ToggleButton x:Name="obfuscated" Content="O" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" FontSize="16" Margin="140,0,0,0" FontWeight="Normal" ToolTip="随机字符"/>
+            <Button x:Name="clearStyle" Content="A" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" FontSize="16" ToolTip="清除文本格式"/>
+            <Button x:Name="getTag" Content="获取物品数据标签" HorizontalAlignment="Left" Margin="193,-36,-5,0" VerticalAlignment="Top" Width="142" ToolTip="可用于ReplaceItem" Click="Button_Click" Height="30"/>
+            <Button x:Name="addSelector" Content="添加目标选择器" HorizontalAlignment="Left" Margin="1,70,0,0" VerticalAlignment="Top" Width="99" ToolTip="在右侧编辑目标选择器，添加后将会显示符合条件的实体名称"/>
+            <Button x:Name="addObjective" Content="添加计分板数据" HorizontalAlignment="Left" Margin="105,70,0,0" VerticalAlignment="Top" Width="105" ToolTip="添加一个记分板分数到文本中，将会显示符合条件的实体在指定记分板上的分数"/>
+            <Button x:Name="c" HorizontalAlignment="Left" Height="30" Margin="175,0,0,0" VerticalAlignment="Top" Width="60">
+                <Grid Margin="0,-5">
+                    <ComboBox x:Name="TextColor" SelectedIndex="15" MinHeight="10" MinWidth="15" Width="50" BorderThickness="0" Margin="0" HorizontalAlignment="Left">
+                        <ComboBoxItem ToolTip="white" Background="White" Height="20" Width="20" Margin="0,0,57,-20" BorderBrush="Black" BorderThickness="1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_blue" Background="#FF0000AA" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_green" Background="#FF00AA00" Height="20" Margin="39,-2,19,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_aqua" Background="#FF00AAAA" Height="20" Margin="58,-22,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_red" Background="#FFAA0000" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_purple" Background="#FFAA00AA" Height="20" Margin="20,-2,38,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="gold" Background="#FFFFAA00" Height="20" Margin="39,-42,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="gray" Background="#FFAAAAAA" Height="20" Margin="58,-23,0,-1" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="dark_gray" Background="#FF555555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="blue" Background="#FF5555FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="green" Background="#FF55FF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="aqua" Background="#FF55FFFF" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="red" Background="#FFFF5555" Height="20" Margin="0,0,57,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="light_purple" Background="#FFFF55FF" Height="20" Margin="20,-2,38,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="yellow" Background="#FFFFFF55" Height="20" Margin="39,-2,19,-20" Style="{DynamicResource ColorPickerItemStyle}"/>
+                        <ComboBoxItem ToolTip="black" Background="Black" Height="20" Margin="58,-2,0,0" Style="{DynamicResource ColorPickerItemStyle}"/>
+                    </ComboBox>
+                    <Image Height="22" Width="22" Stretch="None" Source="pack://application:,,,/MinecraftToolsBox;component/images/button/fontcolor.png" ToolTip="改变颜色" HorizontalAlignment="Left"/>
+                </Grid>
+            </Button>
+            <Button x:Name="addEvent" Content="添加事件" HorizontalAlignment="Left" Margin="215,70,0,0" VerticalAlignment="Top" Width="115" ToolTip="为选中的文本添加点击事件与悬浮事件"/>
+        </Grid>
+    </GroupBox>
+    <tools:EntitySelector x:Name="ES" HorizontalAlignment="Right" Margin="0,0,0,5" Background="#FF252526"/>
+</Grid>
